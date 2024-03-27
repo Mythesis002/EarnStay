@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build"  # Command to build your frontend
+  publish = "public"  # Path to your frontend build directory
+
+[dev]
+  command = "npm start"  # Command to start your server
