@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // Endpoint to store data
-app.post('/store-data', require('./functions/storeData'));
+app.post('/store-data', require('./functions/store-data'));
 
 // Serve frontend files
 app.use(express.static('public'));
@@ -16,3 +16,4 @@ app.use(express.static('public'));
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+s
