@@ -1,9 +1,9 @@
 {
-  "name": "your-project",
+  "name": "EarnStay",
   "version": "1.0.0",
   "scripts": {
     "start": "node src/server.js",
-    "build": "npm run build",
+    "build": "echo 'No build necessary for Express.js app'",
     "test": "echo 'No tests available'"
   },
   "dependencies": {
