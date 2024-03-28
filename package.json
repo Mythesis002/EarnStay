@@ -1,10 +1,9 @@
 {
   "name": "EarnStay",
   "version": "1.0.0",
+  "{
   "scripts": {
-    "start": "node src/server.js",
-    "build": "echo 'No build necessary for Express.js app'",
-    "test": "echo 'No tests available'"
+    "build": "[my-framework] build --output public
   },
   "dependencies": {
     "express": "^4.18.3",
