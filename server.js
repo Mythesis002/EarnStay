@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.post('/store-data', require('./functions/storedata'));
 
 // Serve frontend files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // Start server
 app.listen(PORT, () => {
