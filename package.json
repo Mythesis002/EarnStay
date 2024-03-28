@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "build": "npm run build",
+    "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
