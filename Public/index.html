@@ -470,7 +470,7 @@
                 }).then(response => {
                     if (response.ok) {
                         // Change the button text to "Now Buy"
-                        document.getElementById('generateButton').innerText = 'Now Buy';
+                        document.getElementById('generateButton').innerText = 'Continue';
                         // Redirect user to affiliate link when the button is clicked
                         document.getElementById('generateButton').setAttribute('onclick', 'window.location.href="' + affiliateLink + '"');
                         return response.json();
