@@ -1,4 +1,4 @@
 [build]
-  command = "echo 'No build necessary'"
+  command = "npm start"
   functions = "functions"
   publish = "public"
