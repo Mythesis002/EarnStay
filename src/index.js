@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // Endpoint to store data
-app.post('/store-data', require('./functions/storeData'));
+app.post('/store-data', require('./functions/storedata'));
 
 // Serve frontend files
 app.use(express.static('public'));
