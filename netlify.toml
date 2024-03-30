@@ -1,0 +1,6 @@
+[build]
+  command = "webpack --mode production"  
+  publish = "public"  # Path to your frontend build directory
+
+[dev]
+  command = "node server.js"  # Command to start your server
