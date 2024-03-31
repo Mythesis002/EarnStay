@@ -346,7 +346,7 @@
         <p>
             <span style="color: #1DA1F2;">EarnStay</span> revolutionizes online shopping, offering a seamless way to earn while you shop. Simply input product URLs and phone numbers to claim up to 30% profits on purchases. With EarnStay, every purchase translates into financial gain on a futuristic platform. Join Free to experience Profit.
         </p>
-        <button id="closeSkipMessage">Skip</button>
+        <button id="closeSkipMessage">Try Now</button>
     </div>
 
     <div class="container">
@@ -455,7 +455,7 @@
                     if (response.ok) {
                         console.log('Data submitted successfully');
                         // Change button text to "Now Buy"
-                        document.getElementById('generateButton').innerText = 'Now Buy';
+                        document.getElementById('generateButton').innerText = 'Continue';
                         // Redirect user to the affiliate link when the button is clicked
                         document.getElementById('generateButton').setAttribute('onclick', 'window.location.href="' + affiliateLink + '"');
                         return response.json();
