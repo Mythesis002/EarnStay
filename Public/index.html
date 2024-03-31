@@ -455,7 +455,7 @@
                     if (response.ok) {
                         console.log('Data submitted successfully');
                         // Change button text to "Now Buy"
-                        document.getElementById('generateButton').innerText = 'Continue';
+                        document.getElementById('generateButton').innerText = 'Now Buy';
                         // Redirect user to the affiliate link when the button is clicked
                         document.getElementById('generateButton').setAttribute('onclick', 'window.location.href="' + affiliateLink + '"');
                         return response.json();
@@ -467,7 +467,7 @@
                     // Reset button content
                     document.getElementById('generateButton').innerHTML = 'Claim upto 30% Of Purchase';
                 });
-            }, 3000); // Set the loading/spinning time to 3 seconds
+            }, 1000); // Set the loading/spinning time to 3 seconds
         }
     
         function showErrorNotification(message) {
