@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Page</title>
+    <style>
+        /* Paste the extracted header and footer styles here */
+        /* Header styles */
+        .header {
+            position: fixed;
+            top: 0;
+            border-radius: 5px; /* Remove border-radius */
+            border: 2px solid #007bff;
+            border-bottom-width: 7px;
+            background-color: #ffffff; /* Background color */
+            padding-bottom: 40px; /* Padding around the header */
+            padding-left: 227px;
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space items evenly along the main axis */
+            align-items: center; /* Center items vertically */
+            z-index: 999;
+            border-top-left-radius:0px;
+            border-top-right-radius:0px;
+        }
+
+        .menu-button {
+            position: relative;
+            right: 220px;
+            top: 20px;
+            font-size: 14px; /* Font size of the menu button */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        .actions {
+            position: relative;
+            right: 10px;
+            top: 20px;
+            display: flex; /* Use flexbox for layout */
+            /* Center items vertically */
+        }
+
+        .ask-me,
+        .report-button {
+            position: relative;
+            left: px;
+            font-size: 12px;
+            font-weight: 10px;
+            margin-left: 10px; /* Add some spacing between items */
+            text-decoration: none; /* Remove underline from links */
+            color: #333; /* Text color */
+        }
+
+        .report-options {
+            display: none; /* Initially hide the report options */
+            position: absolute; /* Position absolute to overlay other content */
+            top: 100%; /* Position below the report button */
+            right: 0; /* Align with the right edge of the report button */
+            background-color: #fff; /* Background color */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+            padding: 10px; /* Padding inside the report options */
+            z-index: 1; /* Ensure it's above other content */
+        }
+
+        .report-options a {
+            display: block; /* Display links as block elements */
+            color: #333; /* Text color */
+            text-decoration: none; /* Remove underline from links */
+            padding: 5px 0; /* Add some vertical padding */
+        }
+
+        .report-options a:hover {
+            background-color: #f2f2f2; /* Change background color on hover */
+        }
+
+        /* Footer styles */
+        .new_footer_area {
+            background: #fbfbfd;
+        }
+
+        .new_footer_top {
+            padding: 0px 0px 270px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .footer_bottom {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 20px;
+            color: #7f88a6;
+            padding: 27px 0px;
+        }
+
+        .new_footer_top .company_widget p {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 28px;
+            color: #6a7695;
+            margin-bottom: 20px;
+        }
+
+        .new_footer_top .company_widget .f_subscribe_two .btn_get {
+            border-width: 1px;
+            margin-top: 20px;
+        }
+
+        .btn_get_two:hover {
+            background: transparent;
+            color: #5e2ced;
+        }
+
+        .btn_get:hover {
+            color: #fff;
+            background: #6754e2;
+            border-color: #6754e2;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        a:hover,
+        a:focus,
+        .btn:hover,
+        .btn:focus,
+        button:hover,
+        button:focus {
+            text-decoration: none;
+            outline: none;
+        }
+
+        .new_footer_top .f_widget.about-widget .f_list li a:hover {
+            color: #5e2ced;
+        }
+
+        .new_footer_top .f_social_icon a {
+            width: 44px;
+            height: 44px;
+            line-height: 43px;
+            background: transparent;
+            border: 1px solid #e2e2eb;
+            font-size: 24px;
+        }
+
+        .f_social_icon a {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            font-size: 14px;
+            line-height: 45px;
+            color: #858da8;
+            display: inline-block;
+            background: #ebeef5;
+            text-align: center;
+            -webkit-transition: all 0.2s linear;
+            -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+        }
+
+        .ti-facebook:before {
+            content: "\e741";
+        }
+
+        .ti-twitter-alt:before {
+            content: "\e74b";
+        }
+
+        .ti-vimeo-alt:before {
+            content: "\e74a";
+        }
+
+        .ti-pinterest:before {
+            content: "\e731";
+        }
+
+        .btn_get_two {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            background: #0d8adf;
+            border-color: #0d8adf;
+            color: #fff;
+        }
+
+        .btn_get_two:hover {
+            background: transparent;
+            color: #5e2ced;
+        }
+
+        .new_footer_top .f_social_icon a:hover {
+            background: #5e2ced;
+            border-color: #5e2ced;
+            color: white;
+        }
+
+        .new_footer_top .f_social_icon a+a {
+            margin-left: 4px;
+        }
+
+        .new_footer_top .f-title {
+            margin-bottom: 30px;
+            color: #263b5e;
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .f_widget.about-widget .f_list li {
+            margin-bottom: 14px;
+        }
+
+        .new_footer_area .footer-widget-area .social_widget ul li a:hover {
+            background: #5e2ced;
+        }
+
+        .new_footer_area .footer-widget-area .social_widget ul li a {
+            background: #0d8adf;
+        }
+
+        .new_footer_area .footer-widget-area .single_widget {
+            margin-bottom: 50px;
+        }
+
+        .new_footer_area .footer_widget .f_widget.about-widget .f_list li a:hover {
+            color: #5e2ced;
+        }
+
+        .new_footer_area .footer_widget .f_widget.about-widget .f_list li a {
+            color: #263b5e;
+            font-size: 14px;
+        }
+
+        .f_widget.about-widget .f_list li a {
+            color: #263b5e;
+            font-size: 14px;
+        }
+
+        .new_footer_area .f_widget.about-widget .f_list li {
+            margin-bottom: 14px;
+        }
+
+        .f_widget.about-widget .f_list li a:hover {
+            color: #5e2ced;
+        }
+
+        .new_footer_area .f_widget.about-widget .f_list li a {
+            color: #263b5e;
+            font-size: 14px;
+        }
+
+        .new_footer_area .f_widget.about-widget .f_list li {
+            margin-bottom: 14px;
+        }
+
+        .f_widget.about-widget .f_list li a:hover {
+            color: #5e2ced;
+        }
+
+        .new_footer_area .f_widget.about-widget .f_list li a {
+            color: #263b5e;
+            font-size: 14px;
+        }
+
+        .new_footer_area .footer_widget .f_widget.about-widget .f_list li a:hover {
+            color: #5e2ced;
+        }
+
+        .new_footer_area .footer_widget .f_widget.about-widget .f_list li a {
+            color: #263b5e;
+            font-size: 14px;
+        }
+
+        .new_footer_area .footer_widget .f_widget.about-widget .f_list li {
+            margin-bottom: 14px;
+        }
+
+        .new_footer_area .footer_widget .f_widget.about-widget .f_list li a:hover {
+            color: #5e2ced;
+        }
+
+        .new_footer_area .footer_widget .f_widget.about-widget .f_list li a {
+            color: #263b5e;
+            font-size: 14px;
+        }
+
+        .new_footer_area .footer_widget .f_widget.about-widget .f_list li {
+            margin-bottom: 14px;
+        }
+
+        .footer_area {
+            background: #fff;
+            border-top: 1px solid #ededed;
+        }
+
+        .footer-bottom {
+            padding: 25px 0;
+            border-top: 1px solid #ededed;
+            background: #fff;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: #7f88a6;
+        }
+        
+
+        
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <!-- Paste your header content here -->
+        <div class="logo">
+            <a href="#"><img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/b7SLH9vGCBCsAcSEE4HKTW" alt="Logo" style="width: 100px; height: 100px;align-items: center;"></a>
+        </div>
+        
+        <div class="menu-button">
+            <!-- Menu Button -->
+        </div>
+        <div class="actions">
+            <!-- Action Buttons -->
+            <a href="#" class="ask-me">Ask me</a>
+            <div class="report-button">Report</div>
+            <div class="report-options">
+                <!-- Report Options -->
+                <a href="#">Option 1</a>
+                <a href="#">Option 2</a>
+                <a href="#">Option 3</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner and Form Content -->
+    <section class="banner">
+        <!-- Banner Content -->
+    </section>
+    <section class="form">
+        <!-- Form Content -->
+    </section>
+
+    <!-- Footer -->
+    <footer class="new_footer_area">
+        <!-- Paste your footer content here -->
+        <div class="footer_widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                        <div class="single_footer_widget">
+                            <h3 class="footer_title">Quick Links</h3>
+                            <ul class="quick_links">
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-sm-6">
+                        <div class="single_footer_widget">
+                            <h3 class="footer_title">Newsletter</h3>
+                            <p>This Page Is Under Development In EarnStay</p>
+                            <p>WANT To Know Your Order And Earning- Dont Worry It Will Be Email to You a day After 'Claim' If You Had Provided Your Email During Purchage, If Not Don't Worry You Will Get Message To Your Number</p>
+                            <p>Have Any Query-<href="mythesisads@gmail.com">Ask Me</href></p>
+                            <div class="newsletter_form">
+                                <form action="#">
+                                    <input type="email" name="email" placeholder="Enter your email">
+                                    <button type="submit" class="btn">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-sm-6">
+                        <div class="single_footer_widget">
+                            <h3 class="footer_title">Follow Us</h3>
+                            <div class="social_widget">
+                                <ul>
+                                    <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                    <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                                    <li><a href="#"><i class="ti-vimeo-alt"></i></a></li>
+                                    <li><a href="#"><i class="ti-pinterest"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer_social">
+                            <span>Follow us:</span>
+                            <a href="#">Facebook</a>
+                            <a href="#">Twitter</a>
+                            <a href="#">Instagram</a>
+                            <a href="#">Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 text-right">
+                        <p>© 2024 Your Company. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

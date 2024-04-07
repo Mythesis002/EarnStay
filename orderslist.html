@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your existing head content here -->
+    <title>Your Orders - EarnStay.Shop</title>
+    <!-- Additional CSS styles for the orders table -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .header {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 73%;
+            border-radius: 5px; /* Remove border-radius */
+            border: 2px solid #007bff;
+            border-bottom-width: 7px;
+            background-color: #ffffff; /* Background color */
+            padding-bottom: 40px; /* Padding around the header */
+            padding-left: 257px;
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space items evenly along the main axis */
+            align-items: center; /* Center items vertically */
+            z-index: 999;
+            border-top-left-radius:0px;
+            border-top-right-radius:0px;
+}
+.brand-logo {
+            position: fixed;
+            align-items: center;
+            
+            top: 10px;
+            width: 80px;
+            height: 40px;
+            margin: auto;
+            background: url("https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/b7SLH9vGCBCsAcSEE4HKTW") no-repeat center;
+            background-size: 80px;
+            border-radius: 5%;
+            z-index: 1000;
+            /* Center the logo horizontally */
+            left: 45%;
+            transform: translateX(-50%);
+            /* Shift the logo to the right by 40px */
+            margin-right: 45px;
+}
+.menu-button {
+    position: relative;
+    right: 250px;
+    top: 20px;
+    font-size: 14px; /* Font size of the menu button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+.actions {
+    position: relative;
+    right: 10px;
+    top: 20px;
+
+    display: flex; /* Use flexbox for layout */
+     /* Center items vertically */
+}
+.ask-me,
+.report-button {
+    position: relative;
+    left: px;
+    font-size: 12px;
+    font-weight: 10px;
+    
+    justify-content: space-between; 
+    margin-left: 10px; /* Add some spacing between items */
+    text-decoration: none; /* Remove underline from links */
+    color: #000000; /* Text color */
+}
+
+.report-options {
+    display: none; /* Initially hide the report options */
+    position: absolute; /* Position absolute to overlay other content */
+    top: 100%; /* Position below the report button */
+    right: 0; /* Align with the right edge of the report button */
+    background-color: #fff; /* Background color */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    padding: 10px; /* Padding inside the report options */
+    z-index: 1; /* Ensure it's above other content */
+}
+
+.report-options a {
+    display: block; /* Display links as block elements */
+    color: #333; /* Text color */
+    text-decoration: none; /* Remove underline from links */
+    padding: 5px 0; /* Add some vertical padding */
+}
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-title {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .input-container {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 200px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .development {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+        }
+
+        .development p {
+            margin: 5px 0;
+        }
+
+        .development ul {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .col-md-8 {
+    position: relative; /* Change to fixed position */
+    bottom: 0; /* Position at the bottom */
+    left: 0;
+    width: 100%;
+    height: 30px;
+    font-size: small;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    border: 2px solid #007bff;
+    border-top-width: 7px;
+    background-color: #ffffff;
+    display: flex;
+     /* Adjust padding */
+    z-index: 9999; /* Ensure it's above other content */
+}
+    </style>
+</head>
+<body>
+    <div class="container" itemprop="mainEntity">
+        <header class="header">
+            <div class="menu-button">&#9776;</div>
+            <div class="actions">
+                <a href="mailto:mythesisads@gmail.com" class="ask-me">Ask Me</a>
+                <div class="report-button"><a href="https://drive.google.com/file/d/1qFBWLqpQMa4sEBDXVEpB5COTlsAYIZJI/view?usp=sharing">Insights</div>
+                <div class="report-options">
+                    <a href="learn.html">Learn</a>
+                    <a href="learn.html">Earning</a>
+                    <a href="learn.html">More</a>
+                </div>
+
+            </div>
+        </header>
+    <!-- Your existing body content here -->
+
+    <div class="container">
+        <header class="brand-logo"></header>
+        <h1 class="brand-title">Your Orders</h1>
+        
+        <!-- Input field for phone number -->
+        <div class="input-container">
+            <label for="phoneNumberInput"></label>
+            <input type="text" id="phoneNumberInput">
+            <button onclick="fetchOrders()">Retrieve Orders</button>
+        </div>
+
+        <!-- Table to display orders -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Product URL</th>
+                    <th>Date/Time</th>
+                    <th>Ordered</th>
+                    <th>Earnings</th>
+                </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+                <!-- Orders will be dynamically added here -->
+            </tbody>
+        </table>
+
+        <!-- Development information -->
+        <div class="development">
+            
+            <p>Sorry!</p>
+            <p>This Page Is Under Development.</p>
+            <p>You Can Access Your Orders Info In Your Email a Day After Claim.</p>
+            <p>If Not Done That, Just Follow These Steps:</p>
+            <ul>
+                <li>Click on "Ask Me" Button</li>
+                <li>Write "I Want To Know My Orders Details <br> this Is My Phone Number: 63XXXXXX32"</li>
+                <li>Just Click "Send"</li>
+            </ul>
+            <p>In That Way, You Can Get Your Order Details And Earnings In Your Email Inbox.</p>
+        </div>
+        <div class="development">
+            <p>This Isn't Work For Now. This Feature Is "Coming Soon".</p>
+        </div>
+    </div>
+
+    <!-- Your existing footer content here -->
+    <div class="copyright-area">
+        <div class="row">
+            <div class="col-md-8">
+                <p class="rightreservedearnstay">&copy; 2024 - EarnStay - Profit. All rights reserved.</p>
+            </div>
+        </div>
+</div>
+
+    <script>
+        // Function to fetch orders based on phone number
+        function fetchOrders() {
+            var phoneNumber = document.getElementById("phoneNumberInput").value;
+
+            // Call Google Apps Script function to fetch orders based on phone number
+            google.script.run.withSuccessHandler(populateOrders).getOrders(phoneNumber);
+        }
+
+
+        // this is for know delete when no need erro messagre 
+        function showComingSoonMessage() {
+            var messageDiv = document.querySelector(".development");
+            messageDiv.style.display = "block";
+        }
+
+        // Function to populate orders table
+        function populateOrders(orders) {
+            var ordersTableBody = document.getElementById("ordersTableBody");
+
+            // Clear existing rows
+            ordersTableBody.innerHTML = "";
+
+            // Populate table with orders
+            orders.forEach(function(order) {
+                var row = "<tr>" +
+                            "<td><a href='" + order.productLink + "' target='_blank'>" + order.productLink + "</a></td>" +
+                            "<td>" + order.timestamp + "</td>" +
+                            "<td>" + order.ordered + "</td>" +
+                            "<td>" + order.earnings + "</td>" +
+                        "</tr>";
+                ordersTableBody.innerHTML += row;
+            });
+        }
+    </script>
+</body>
+</html>
