@@ -1,6 +1,6 @@
 ---
 
-# EarnStay.Shop - Orders Management System
+# EarnStay.Shop - Paste Product Link And Earn UPto 30% on purchases
 
 Welcome to EarnStay.Shop Orders Management System! This system allows users to retrieve their order details by entering their phone number. It provides a convenient way for users to access information about their orders.
 
