@@ -117,8 +117,110 @@
             border-radius: 5px;
         }
 
+        /* Your provided CSS */
+        @property --k {
+            syntax: '<number>';
+            initial-value: -1;
+            inherits: true
+        }
+
+        /* Updated CSS */
+html, body {
+    min-height: 100%;
+}
+
+body {
+    overflow: auto; /* Enable scrolling when necessary */
+}
+
+/* Your existing CSS */
+/* ... */
+
+
         button {
-            padding: 12px;
+            --m: 1;
+            grid-area: 2/ 1/ span 1/ span 2;
+            position: relative;
+            
+            border: solid 2em transparent;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 1px #23429e;
+            background: 
+                radial-gradient(#111a39, 67.5%, #3476da) padding-box, 
+                radial-gradient(#a0c2ed, 35%, #a0c2ed00 70%) 50% 0/ 80% 50% repeat-y;
+            color: #f2fdfe;
+            font: 700 1.5em/ 1 montserrat, sans-serif;
+            
+            #slow:checked ~ & { --m: 5 }
+            
+            &:active { translate: 0 2px }
+        }
+
+        @keyframes k { 0%, 33.3% { --k: 1 } }
+
+        .particle {
+    /* Existing styles for the particle */
+    --f: 1;
+    --pos-k: max(0, var(--k));
+    --neg-k: max(0, -1*var(--k));
+    --low-c: min(1, 4*(1 - var(--pos-k)));
+    --abs-d: max(var(--neg-k) - 2, 2 - var(--neg-k));
+    --mov-f: var(--pos-k);
+    display: grid;
+    position: absolute;
+    left: calc(100% - var(--x) * 100%); /* Center horizontally */
+    top: calc(100% - var(--y) * 100%); /* Center vertically */
+    rotate: var(--a);
+    animation: k calc(var(--m)*10s) linear infinite;
+    
+    @supports (scale: sqrt(4)) { --mov-f: sqrt(var(--pos-k)) }
+    
+    &::before, &::after {
+        grid-area: 1/ 1;
+        width: .75em;
+        aspect-ratio: 1
+    }
+    
+    &::before {
+        --sa: calc(min(1, 1 - 2*min(.5, var(--mov-f)))*45deg);
+        border-radius: calc(1.25*min(.8, var(--mov-f))*50%) 50% 50%;
+        transform-origin: 0 0;
+        translate: calc(var(--mov-f)*var(--d));
+        rotate: -45deg;
+        scale: var(--f);
+        transform: skew(var(--sa), var(--sa));
+        opacity: var(--low-c);
+        filter: Saturate(var(--low-c));
+        background: radial-gradient(at 85% 85%, #bad9fa, #3e66a4 75%);
+        content: ''
+    }
+    
+    &::after {
+        translate: -50% -50%;
+        scale: calc(var(--f)*(1 - 2*var(--abs-d)));
+        text-align: center;
+        filter: blur(.5px);
+        content: '✦'
+    }
+}
+
+
+        [type='checkbox'] {
+            justify-self: end;
+            margin: 5px;
+            width: 1em;
+            aspect-ratio: 1;
+            
+            &, & + label {
+                align-self: center;
+                font: 1.25em orbitron, monospace;
+                cursor: pointer
+            }
+        }
+
+        /* Additional styles for the button */
+        button {
             background-color: #1DA1F2;
             color: #fff;
             border: none;
@@ -131,9 +233,16 @@
             background-color: #0d8adf;
         }
 
+        /* Ensure existing styles for the particle animation are applied correctly */
+        .button-span {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
         .error-notification {
             size-adjust: 10%;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-family: Arial, sans-serif;
             padding: 2px 50px;
             position: fixed;
             top: 50px;
@@ -211,14 +320,99 @@
         }
 
         .skip-message button {
-            padding: 5px 10px;
-            background-color: #1DA1F2;
-            color: #ffffff;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-top: 5px;
-        }   
+    padding: 10px 20px;
+    background-color: rgb(49, 49, 50);
+    background-image: radial-gradient(circle, rgb(57, 67, 77) 0%, rgb(60, 148, 255) 100%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
+                7px 7px 20px 0px rgba(0,0,0,.1),
+                4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+}
+
+.skip-message button span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.skip-message button:before,
+.skip-message button:after {
+    position: absolute;
+    content: "";
+    height: 0%;
+    width: 1px;
+    box-shadow: -1px -1px 20px 0px rgba(255,255,255,1),
+                -4px -4px 5px 0px rgba(255,255,255,1),
+                7px 7px 20px 0px rgba(0,0,0,.4),
+                4px 4px 5px 0px rgba(0,0,0,.3);
+}
+
+.skip-message button:before {
+    right: 0;
+    top: 0;
+    transition: all 500ms ease;
+}
+
+.skip-message button:after {
+    left: 0;
+    bottom: 0;
+    transition: all 500ms ease;
+}
+
+.skip-message button:hover {
+    background: transparent;
+    color: #76aef1;
+    box-shadow: none;
+}
+
+.skip-message button:hover:before {
+    transition: all 500ms ease;
+    height: 100%;
+}
+
+.skip-message button:hover:after {
+    transition: all 500ms ease;
+    height: 100%;
+}
+
+.skip-message button span:before,
+.skip-message button span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    box-shadow: -1px -1px 20px 0px rgba(255,255,255,1),
+                -4px -4px 5px 0px rgba(255,255,255,1),
+                7px 7px 20px 0px rgba(0,0,0,.4),
+                4px 4px 5px 0px rgba(0,0,0,.3);
+}
+
+.skip-message button span:before {
+    width: 2px;
+    height: 0%;
+}
+
+.skip-message button span:after {
+    width: 0%;
+    height: 2px;
+}
+
+.skip-message button span:hover:before {
+    height: 100%;
+}
+
+.skip-message button span:hover:after {
+    width: 100%;
+}
+
     
         /* Define keyframes for the animation */
         @keyframes slideIn {
@@ -824,6 +1018,84 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+ /* cards design */
+ .cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  top:0;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 10px auto;
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+  
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 10px;
+}
+
+.card .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 10px 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -120px;
+  height: 40px;
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 3px 3px 20px 10px #80cbfa, 
+    -3px -3px 20px 10px #80cbfa;
+}
+
+.title-white {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.title-black {
+  color: rgb(16, 10, 64);
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+
+
+
+.card {
+  margin: 30px auto;
+  width: 300px;
+  height: 150px;
+  border-radius: 10px;
+  background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+}
 
 
 
@@ -895,7 +1167,27 @@ h1, h2, h3, h4, h5, h6 {
         
             <input type="hidden" id="associateTag" name="associateTag" value="7151-21">
         
-            <button type="button" id="generateButton">Claim upto 30% Of Purchase</button>
+            <!-- Your provided HTML -->
+    <input type="checkbox" id="slow">
+    <label for="slow"></label>
+    <button type="button" id="generateButton">
+        Claim UpTo 30% Of Purchase
+        <span class="wrap" aria-hidden="true">
+            <span class="particle" style="--a: -45deg; --x: 53%; --y: 15%; --d: 4em; --f: .7; --t: .15"></span>
+            <span class="particle" style="--a: 150deg; --x: 40%; --y: 70%; --d: 7.5em; --f: .8; --t: .08"></span>
+            <span class="particle" style="--a: 10deg; --x: 50%; --y: 65%; --d: 7em; --f: .6; --t: .25"></span>
+            <span class="particle" style="--a: -120deg; --x: 15%; --y: 10%; --d: 4em"></span>
+            <span class="particle" style="--a: -175deg; --x: 10%; --y: 25%; --d: 5.25em; --f: .6; --t: .32"></span>
+            <span class="particle" style="--a: -18deg; --x: 50%; --y: 25%; --d: 4.75em; --f: .5; --t: .4"></span>
+            <span class="particle" style="--a: -160deg; --x: 30%; --y: 5%; --d: 9em; --f: .9; --t: .5"></span>
+            <span class="particle" style="--a: 175deg; --x: 9%; --y: 30%; --d: 6em; --f: .95; --t: .6"></span>
+            <span class="particle" style="--a: -10deg; --x: 50%; --y: 25%; --d: 4.5em; --f: .55; --t: .67"></span>
+            <span class="particle" style="--a: -140deg; --x: 40%; --y: 10%; --d: 5em; --f: .85; --t: .75"></span>
+            <span class="particle" style="--a: 90deg; --x: 45%; --y: 65%; --d: 4em; --f: .5; --t: .83"></span>
+            <span class="particle" style="--a: 30deg; --x: 50%; --y: 80%; --d: 6.5em; --f: .75; --t: .92"></span>
+        </span>
+    </button>
+
         </form>
 
         
@@ -906,7 +1198,7 @@ h1, h2, h3, h4, h5, h6 {
                         <div class="col-lg-3 col-md-6">
                             <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Know Your Profit</h3>
-                                <p>Receive Email about payout dates and amounts directly to your inbox, ensuring you never miss a payment.!</p>
+                                <p>Receive Email about payout dates and amounts directly to your inbox!</p>
                                 <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1" id="emailForm">
                                     <input type="text" name="EMAIL" id="email" class="form-control memail" placeholder="Email">
 
@@ -915,6 +1207,56 @@ h1, h2, h3, h4, h5, h6 {
                                 </form>
                             </div>
                         </div>
+
+                    <!--brand cards-->
+
+                    <div class="cards-list">
+  
+                        <div class="card 1">
+                          <div class="card_image"> <img src="https://forcebrands.com/blog/wp-content/uploads/2020/08/amazon-1920x1280.jpg" /> </div>
+                       
+                          <div class="card_title title-white">
+                            <p>Amazon</p>
+                          </div>
+                        </div>
+                        
+                        <div class="card 3">
+                          <div class="card_image">
+                            <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+                          </div>
+                          <div class="card_title">
+                            <p>Flipkart</p>
+                          </div>
+                        </div>
+                          
+                          <div class="card 4">
+                          <div class="card_image">
+                            
+                            <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+                            </div>
+                          <div class="card_title title-black">
+                            <p>Mytra</p>
+                          </div>
+                          </div>
+                        
+                        </div>
+                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         <div class="ad-container" id="adContainer">
                             <div class="ad-content">
                                 <!-- Your banner ad content goes here -->
@@ -924,8 +1266,6 @@ h1, h2, h3, h4, h5, h6 {
                             </div>
                             <span class="close-button" onclick="closeBanner()">×</span>
                         </div>
-                        
-                          
                         <div class="col-lg-3 col-md-6">
                             <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
                                  <!-- Clickable site logo -->
