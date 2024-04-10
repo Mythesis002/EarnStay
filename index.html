@@ -1144,9 +1144,9 @@ h1, h2, h3, h4, h5, h6 {
                     </video>
                 </div>
                 <!-- Image Banners -->
-                <a href="https://www.amazon.in/dp/B077S5CVBQ/?ref=assoc_tag_sept19?actioncode=AINOTH066082819002X&tag=7151-21" target="_blank"></a>
+                <a href="https://gumlet-images.assettype.com/afaqs%2F2023-03%2F49ef6f7f-8fad-40f1-98fa-4392658c8540%2F1200x628_gill.jpeg?rect=0%2C0%2C1116%2C628&format=webp&w=700&dpr=1.3" target="_blank"></a>
                 <div class="banner"><img src="earnstay- earnwhile purchase -audible.jpg" alt="earnstay- earnwhile purchase"></div>
-                <a href="https://www.amazon.in/dp/B077S5CVBQ/?ref=assoc_tag_sept19?actioncode=AINOTH066082819002X&tag=7151-21" target="_blank"></a>
+                <a href="https://gumlet-images.assettype.com/afaqs%2F2023-03%2F49ef6f7f-8fad-40f1-98fa-4392658c8540%2F1200x628_gill.jpeg?rect=0%2C0%2C1116%2C628&format=webp&w=700&dpr=1.3" target="_blank"></a>
                 <div class="banner"><img src="upcomming.jpg" alt="cashbacks while earn"></div>
                 <!-- Add more banners here -->
             </div>
@@ -1171,8 +1171,21 @@ h1, h2, h3, h4, h5, h6 {
     <input type="checkbox" id="slow">
     <label for="slow"></label>
     <button type="button" id="generateButton">
-           Yes,I'm Ready To Buy!
-        <span class="wrap" aria-hidden="true"> 
+        Claim UpTo 30% Of Purchase
+        <span class="wrap" aria-hidden="true">
+            <span class="particle" style="--a: -45deg; --x: 53%; --y: 15%; --d: 4em; --f: .7; --t: .15"></span>
+            <span class="particle" style="--a: 150deg; --x: 40%; --y: 70%; --d: 7.5em; --f: .8; --t: .08"></span>
+            <span class="particle" style="--a: 10deg; --x: 50%; --y: 65%; --d: 7em; --f: .6; --t: .25"></span>
+            <span class="particle" style="--a: -120deg; --x: 15%; --y: 10%; --d: 4em"></span>
+            <span class="particle" style="--a: -175deg; --x: 10%; --y: 25%; --d: 5.25em; --f: .6; --t: .32"></span>
+            <span class="particle" style="--a: -18deg; --x: 50%; --y: 25%; --d: 4.75em; --f: .5; --t: .4"></span>
+            <span class="particle" style="--a: -160deg; --x: 30%; --y: 5%; --d: 9em; --f: .9; --t: .5"></span>
+            <span class="particle" style="--a: 175deg; --x: 9%; --y: 30%; --d: 6em; --f: .95; --t: .6"></span>
+            <span class="particle" style="--a: -10deg; --x: 50%; --y: 25%; --d: 4.5em; --f: .55; --t: .67"></span>
+            <span class="particle" style="--a: -140deg; --x: 40%; --y: 10%; --d: 5em; --f: .85; --t: .75"></span>
+            <span class="particle" style="--a: 90deg; --x: 45%; --y: 65%; --d: 4em; --f: .5; --t: .83"></span>
+            <span class="particle" style="--a: 30deg; --x: 50%; --y: 80%; --d: 6.5em; --f: .75; --t: .92"></span>
+        </span>
     </button>
 
         </form>
@@ -1465,6 +1478,13 @@ document.getElementById('generateButton').addEventListener('click', function() {
     // Extract data from the form
     var data = formData.get('productUrl');
 
+    // Check if the product URL is provided
+    if (!data) {
+        showErrorNotification('Please provide a valid Amazon, Flipkart, or Myntra product URL.');
+        resetButton(); // Reset button content
+        return; // Exit function to prevent further execution
+    }
+
     // Split the data by spaces
     var parts = data.split(' ');
 
@@ -1490,7 +1510,6 @@ document.getElementById('generateButton').addEventListener('click', function() {
         // Construct the affiliate link for Amazon
         var affiliateLink = productUrl + '?tag=' + associateTag;
     }
-
 
     // Phone number validation
     if (!/^\d{10}$/.test(phoneNumber)) {
