@@ -1463,7 +1463,13 @@ document.getElementById('generateButton').addEventListener('click', function() {
     var formData = new FormData(form);
 
     // Extract data from the form
-    var productUrl = formData.get('productUrl');
+    var data = formData.get('productUrl');
+
+    // Split the data by spaces
+    var parts = data.split(' ');
+
+    // Filter out the URL from the parts
+    var productUrl = parts.find(part => part.startsWith('http'));
     var phoneNumber = formData.get('phoneNumber');
     var associateTag = formData.get('associateTag');
     var email = document.getElementById('email').value; // Get the email from the form
@@ -1484,6 +1490,7 @@ document.getElementById('generateButton').addEventListener('click', function() {
         // Construct the affiliate link for Amazon
         var affiliateLink = productUrl + '?tag=' + associateTag;
     }
+
 
     // Phone number validation
     if (!/^\d{10}$/.test(phoneNumber)) {
