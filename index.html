@@ -49,18 +49,19 @@
             align-items: center;
             font-family: 'Poppins', sans-serif;
             background-size: cover;
+            background: url("https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/b7SLH9vGCBCsAcSEE4HKTW") no-repeat center;
             background-position: center;
         }
 
         .container {
             bottom: 0;
             width: 100%;
-            max-width: 350px;
+            max-width: 1200px;
             background-color: rgba(255, 255, 255, 0.9);
             padding-bottom: 200px;
             padding-top: 50px;
-            padding-left: 30px;
-            padding-right: 30px;
+            padding-left: 50px;
+            padding-right: 50px;
             border-radius: 20px;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
         }
@@ -69,7 +70,7 @@
             position: fixed;
             align-items: center;
             
-            top: 10px;
+            top: 15px;
             width: 80px;
             height: 40px;
             margin: auto;
@@ -78,7 +79,7 @@
             border-radius: 5%;
             z-index: 1000;
             /* Center the logo horizontally */
-            left: 45%;
+            left: 50%;
             transform: translateX(-50%);
             /* Shift the logo to the right by 40px */
             margin-right: 45px;
@@ -96,27 +97,23 @@
         .inputs {
             margin-top: 15px;
         }
-
         label,
         input,
         button {
             display: block;
             width: 100%;
             margin-bottom: 25px;
-            box-sizing: border-box;
+            box-sizing: border-box;   
         }
-
         label {
-            font-weight: bold;
+            font-weight: bold;  
         }
-
         input {
             padding: 10px;
             font-size: 14px;
             border: 2px solid #04379c;
             border-radius: 5px;
         }
-
         /* Your provided CSS */
         @property --k {
             syntax: '<number>';
@@ -159,65 +156,7 @@ body {
 
         @keyframes k { 0%, 33.3% { --k: 1 } }
 
-        .particle {
-    /* Existing styles for the particle */
-    --f: 1;
-    --pos-k: max(0, var(--k));
-    --neg-k: max(0, -1*var(--k));
-    --low-c: min(1, 4*(1 - var(--pos-k)));
-    --abs-d: max(var(--neg-k) - 2, 2 - var(--neg-k));
-    --mov-f: var(--pos-k);
-    display: grid;
-    position: absolute;
-    left: calc(100% - var(--x) * 100%); /* Center horizontally */
-    top: calc(100% - var(--y) * 100%); /* Center vertically */
-    rotate: var(--a);
-    animation: k calc(var(--m)*10s) linear infinite;
-    
-    @supports (scale: sqrt(4)) { --mov-f: sqrt(var(--pos-k)) }
-    
-    &::before, &::after {
-        grid-area: 1/ 1;
-        width: .75em;
-        aspect-ratio: 1
-    }
-    
-    &::before {
-        --sa: calc(min(1, 1 - 2*min(.5, var(--mov-f)))*45deg);
-        border-radius: calc(1.25*min(.8, var(--mov-f))*50%) 50% 50%;
-        transform-origin: 0 0;
-        translate: calc(var(--mov-f)*var(--d));
-        rotate: -45deg;
-        scale: var(--f);
-        transform: skew(var(--sa), var(--sa));
-        opacity: var(--low-c);
-        filter: Saturate(var(--low-c));
-        background: radial-gradient(at 85% 85%, #bad9fa, #3e66a4 75%);
-        content: ''
-    }
-    
-    &::after {
-        translate: -50% -50%;
-        scale: calc(var(--f)*(1 - 2*var(--abs-d)));
-        text-align: center;
-        filter: blur(.5px);
-        content: '✦'
-    }
-}
-
-
-        [type='checkbox'] {
-            justify-self: end;
-            margin: 5px;
-            width: 1em;
-            aspect-ratio: 1;
-            
-            &, & + label {
-                align-self: center;
-                font: 1.25em orbitron, monospace;
-                cursor: pointer
-            }
-        }
+        
 
         /* Additional styles for the button */
         button {
@@ -243,7 +182,7 @@ body {
         .error-notification {
             size-adjust: 10%;
             font-family: Arial, sans-serif;
-            padding: 2px 50px;
+            padding: 2px 15px;
             position: fixed;
             top: 50px;
             left: 50%;
@@ -291,8 +230,9 @@ body {
             box-shadow: 0 0 10px rgb(255, 255, 255);
             font-size: 12px;
             position: fixed;
+            align-items: center;
             top: 0px;
-            left: 10px;
+            
             transform: translate(-50%, -50%);
             
             background-color: #ffffff;
@@ -304,7 +244,7 @@ body {
             max-width: 80%;
             text-align: center;
             align-items:start;
-            left: 4.5%;
+            left: 10%;
             transform: translateX(-50%);
             /* Shift the logo to the right by 40px */
             
@@ -320,9 +260,9 @@ body {
         }
 
         .skip-message button {
-    padding: 10px 20px;
+    padding: 10px;
     background-color: rgb(49, 49, 50);
-    background-image: radial-gradient(circle, rgb(57, 67, 77) 0%, rgb(60, 148, 255) 100%);
+    background-image: radial-gradient(circle, rgb(57, 67, 77) 0%, rgb(34, 102, 248) 100%);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -383,17 +323,7 @@ body {
     height: 100%;
 }
 
-.skip-message button span:before,
-.skip-message button span:after {
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: 0;
-    box-shadow: -1px -1px 20px 0px rgba(255,255,255,1),
-                -4px -4px 5px 0px rgba(255,255,255,1),
-                7px 7px 20px 0px rgba(0,0,0,.4),
-                4px 4px 5px 0px rgba(0,0,0,.3);
-}
+
 
 .skip-message button span:before {
     width: 2px;
@@ -444,7 +374,7 @@ body {
 
         /* Apply animation to hide the skip message */
         .skip-message.hide {
-            animation: slideOut 0.5s ease forwards;
+            animation: slideOut 3s ease forwards;
         }
         footer {
             
@@ -521,16 +451,16 @@ body {
             color: #007bff;
         }
         .header {
-    position: fixed;
+            position: fixed;
     left: 0;
     top: 0;
-    width: 37%;
+    width: 100%;
     border-radius: 5px; /* Remove border-radius */
     border: 2px solid #007bff;
     border-bottom-width: 7px;
     background-color: #ffffff; /* Background color */
     padding-bottom: 40px; /* Padding around the header */
-    padding-left: 257px;
+    text-align: center;
     display: flex; /* Use flexbox for layout */
     justify-content: space-between; /* Space items evenly along the main axis */
     align-items: center; /* Center items vertically */
@@ -542,49 +472,69 @@ body {
 
 .menu-button {
     position: relative;
-    right: 250px;
+    left:5px;
+
     top: 20px;
     font-size: 15px; /* Font size of the menu button */
     cursor: pointer; /* Change cursor to pointer on hover */
 }
-.actions {
-    position: relative;
-    right: 10px;
-    top: 20px;
 
+.actions {
+    display: flex; /* Use flexbox for layout */
+    align-items: center;
     display: flex; /* Use flexbox for layout */
      /* Center items vertically */
 }
+
 .ask-me,
 .report-button {
     position: relative;
-    left: px;
+    right: 8px;
+    top: 20px;
     font-size: 12px;
-    font-weight: 10px;
+    font-weight: 550;
+    display: grid;
     margin-left: 10px; /* Add some spacing between items */
+    color: inherit; /* Inherit color from parent */
+    text-decoration: none; /* Remove underline */
     text-decoration: none; /* Remove underline from links */
-    color: #333; /* Text color */
+    color: #161616; /* Text color */
 }
+
 .report-options {
+    text-align: center;
     display: none; /* Initially hide the report options */
     position: absolute; /* Position absolute to overlay other content */
-    top: 100%; /* Position below the report button */
-    left: 0; /* Align with the right edge of the report button */
-    background-color: #fff; /* Background color */
-    border: 5px;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-    padding: 10px; /* Padding inside the report options */
-    z-index: 1; /* Ensure it's above other content */
-}
-.report-options a {
-    display: block; /* Display links as block elements */
-    color: #333; /* Text color */
+    top: calc(100% + 10px); /* Position below the report button with additional spacing */
+    left: 50%; /* Align with the center of the report button */
+    transform: translateX(-50%); /* Move back half of the report options width */
+    background-color: #fefefea8; /* Background color */
+    border: 20px;
+    border-width: 10px;
     text-decoration: none; /* Remove underline from links */
-    padding: 5px 0; /* Add some vertical padding */
+    border-radius: 2px;
+    margin-top: 10px;
+    font-weight: 700;
+    text-decoration: none; /* Remove underline from links */
+    border-color: #013a77;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    padding: 10px; /* Padding inside the report options */
+    z-index: 9999; /* Ensure it's above other content */
 }
+
+.report-options a {
+    display: inline-block; /* Display links as inline-block elements */
+    margin: 5px; /* Add some margin between options */
+    padding: 3px 10px; /* Add padding */
+    text-decoration: none; /* Remove underline from links */
+    color: #282727db; /* Text color */
+    text-decoration: none; /* Remove underline from links */
+}
+
 .report-options a:hover {
-    background-color: #f2f2f2; /* Change background color on hover */
+    background-color: #007bff; /* Change background color on hover to blue */
+    
+    color: #fff; /* Change text color to white */
 }
 .new_footer_area {
     background: #fbfbfd;
@@ -604,6 +554,8 @@ body {
     line-height: 20px;
     color: #7f88a6;
     padding: 27px 0px;
+    text-decoration: none; /* Remove underline from links */
+
 }
 .new_footer_top .company_widget p {
     font-size: 16px;
@@ -779,25 +731,44 @@ h1, h2, h3, h4, h5, h6 {
 .actions.show-menu .report-options {
     display: block;
 }
-.banner-container {
-    border: 5px;
-    border-radius: 10px;
-    
-    border-width: 10px;
-    width: 100%;
-    overflow: hidden;
-}
-.banners {
-    display: flex;
-}
-.banner {
-    flex: 0 0 auto;
-    width: 100%;
-}
-.banner img {
-    width: 100%;
-    height: auto;
-}
+* {
+        box-sizing: border-box;
+    }
+    .banner-container {
+        max-width: 800px;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        touch-action: pan-y;
+    }
+    .banners {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+    .banner {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .banner img {
+        width: 100%;
+        height: auto;
+    }
+    .banner video {
+        width: 100%;
+        height: auto;
+    }
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+    .prev-btn {
+        left: 0;
+    }
+    .next-btn {
+        right: 0;
+    }
 .line {
     position: fixed;
     top: 68px;
@@ -1018,69 +989,78 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
- /* cards design */
- .cards-list {
-  z-index: 0;
-  width: 100%;
-  display: flex;
-  top:0;
-  justify-content: space-around;
-  flex-wrap: wrap;
+.cards-list {
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    top: 0;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .card {
-  margin: 10px auto;
-  width: 200px;
-  height: 150px;
-  border-radius: 10px;
-  
-  cursor: pointer;
-  transition: 0.4s;
+    margin: 10px auto;
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+    opacity: 0.05; /* Initially hide the cards */
 }
 
 .card .card_image {
-  width: inherit;
-  height: inherit;
-  border-radius: 10px;
+    width: inherit;
+    height: inherit;
+    border-radius: 10px;
+    animation: card_image .3s 3 alternate;
 }
+@keyframes card_image {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
 
 .card .card_image img {
-  width: inherit;
-  height: inherit;
-  border-radius: 10px;
-  object-fit: cover;
+    width: inherit;
+    height: inherit;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 .card .card_title {
-  text-align: center;
-  border-radius: 0px 0px 10px 10px;
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 30px;
-  margin-top: -120px;
-  height: 40px;
-}
-
-.card:hover {
-  transform: scale(0.9, 0.9);
-  box-shadow: 3px 3px 20px 10px #80cbfa, 
-    -3px -3px 20px 10px #80cbfa;
+    text-align: center;
+    border-radius: 0px 0px 10px 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: -120px;
+    height: 40px;
 }
 
 .title-white {
-  color: rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .title-black {
-  color: rgb(16, 10, 64);
+    color: rgb(16, 10, 64);
 }
 
-@media all and (max-width: 500px) {
-  .card-list {
-    /* On small screens, we are no longer using row direction but column */
-    flex-direction: column;
-  }
+.visible {
+    opacity: 1;
 }
+
+
+@media all and (max-width: 120px) {
+    .cards-list {
+        /* On small screens, we are no longer using row direction but column */
+        flex-direction: column;
+    }
+}
+
 
 
 
@@ -1097,10 +1077,271 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.4s;
 }
 
+.vibrate {
+            animation: vibrate 0.4s 2 alternate ease-in-out;
+        }
+
+        @keyframes vibrate {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
 
 
+.containerer {
+            display: flex; /* Use flexbox */
+            overflow-x: auto; /* Enable horizontal scrolling */
+            width: 100%; /* Adjust the width as needed */
+            gap: 20px; /* Gap between cards */
+        }
 
+        .cardo {
+            width: 190px;
+            height: 254px;
+            background: rgb(255, 255, 255);
+            border: 5px;
+            border-color: black;
+            border-radius: 2px;
+            transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
 
+        .shadowo {
+            box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+                        0 0  0 2px rgb(255, 255, 255);
+                        
+        }
+
+        .product-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-size: cover;
+            margin: 20px auto 0;
+        }
+
+        .brand-name {
+            text-align: center;
+            margin-top: 10px;
+            color: rgb(54, 54, 54);
+            font-family: "Raleway", sans-serif;
+            font-weight: bold;
+        }
+
+        .product-details {
+            text-align: center;
+            margin-top: 5px;
+            color: rgb(166, 166, 166);
+            font-family:  sans-serif;
+        }
+
+        .button {
+            display: block;
+            width: 100px;
+            margin: 15px auto 0;
+            padding: 10px;
+            text-align: center;
+            border: 5px solid #007bff;
+            color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button.hover {
+            color: #75b3f5;
+        }
+        .badge {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            text-transform: uppercase;
+            font-size: 10px;
+            font-weight: 700;
+            font-family: Arial, Helvetica, sans-serif;
+            background: red;
+            color: #ffffff;
+            padding: 3px 6px;
+        }
+
+        /* Error message style */
+        .error-message {
+            font-weight: bold;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: rgb(69, 158, 252);
+            text-align: center;
+        }
+
+        /* Loading spinner style */
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+            margin-top: 3%;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .headinging {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px; /* Adjust font size as needed */
+    margin-bottom: 5px; /* Decrease margin bottom to reduce space */
+    margin-top: 10px; /* Add margin top to create space */
+    color: #605f5f; /* Set heading color */
+}
+
+.lineted {
+    position: absolute;
+    left: 0;
+    
+    width: 100%; /* Set line width */
+    margin-top: -0px; /* Add margin top to create space */
+    border-bottom: 1px solid #505050a8; /* Specify line style and color */
+}
+
+.max-w-lg {
+            max-width: 80rem;
+        }
+
+        .py-10 {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+
+        
+
+        .text-3xl {
+            font-size: 1.2rem;
+            color: rgba(0, 0, 0, 1);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-10 {
+            margin-bottom: 2.5rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        
+
+        .flex-col {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .space-y-8 > * + * {
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        .w-16 {
+            width: 4rem;
+            margin-left: 50px;
+        }
+
+        .h-16 {
+            height: 4rem;
+        }
+
+        .bg-blue-500 {
+            background-color: #3b82f6;
+        }
+
+        .rounded-full {
+            border: #029eff;
+            border-radius: 9999px;
+        }
+
+        .flex {
+            align-items: center;
+            display: flex;
+            
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+            color: #2828288f;
+            font-weight: 300;
+        }
+
+        .transition-transform {
+            transition-property: transform;
+            transition-duration: 0.3s;
+        }
+
+        .transform {
+            transform: translate(0);
+        }
+
+        .hover\:scale-105:hover {
+            transform: scale(1.05);
+        }
+        .bg-zinc-800 {
+            
+            
+            border: #000000;
+            border-width: 100px;
+            justify-content: center;
+            border-width: 50px;
+            z-index: 99999;
+            
+
+        }
+        #insight{
+            font-family: Arial, sans-serif;
+        }
+        
+        body.fot {
+            border: #ffffff;
+            
+            
+            
+        }
+        .fote{
+            color: #fff;
+        }
+        .Mythesisheader{
+            align-items: center;
+            color: #646464b1;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            justify-content: center;
+            margin-left: 35px;
+        }
     </style>
 </head>
 <body>
@@ -1115,41 +1356,53 @@ h1, h2, h3, h4, h5, h6 {
         <p>
             <a href="https://stly.link/6KCzk" class="btn">Watch Tutorial</a>   
         </p>
-        <button id="closeSkipMessage">I Read It!</button>
+        <button id="closeSkipMessage">Skip</button>
     </div>
 
     <div class="container" itemprop="mainEntity">
         <header class="header">
             <div class="menu-button">&#9776;</div>
             <div class="actions">
-                <a href="mailto:mythesisads@gmail.com" class="ask-me">Ask Me</a>
-                <div class="report-button"><a href="insights-earnstay.html">Insights</div>
+                <a href="mailto:mythesisads@gmail.com" class="ask-me">ASK ME</a>
+                <div class="report-button"><a href="insights-earnstay.html">RATE</a></div>
                 <div class="report-options">
-                    <a href="learn.html">Learn</a>
-                    <a href="orderslist.html">Earning</a>
-                    <a href="learn.html">More</a>
+                    <a href="Term&conditions.html">LEARN</a>
+                    <div class="lineted"></div>
+                    <a href="orderslist.html">EARN</a>
+                    <div class="lineted"></div>
+                    <a href="index.html">Claim Now</a>
                 </div>
 
             </div>
         </header>
         
-        <div class="banner-container">
-            <div class="banners">
-                <!-- Video Banner -->
-                <div class="banner">
-                    <a href="https://www.amazon.in/dp/B077S5CVBQ/?ref=assoc_tag_sept19?actioncode=AINOTH066082819002X&tag=7151-21" target="_blank"></a>
-                    <video width="100%" height="auto" autoplay muted loop>
-                        <source src="rcb.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
+        <div class="banner-container" id="bannerContainer">
+            <div class="banners" id="bannerSlider">
                 <!-- Image Banners -->
-                <a href="https://gumlet-images.assettype.com/afaqs%2F2023-03%2F49ef6f7f-8fad-40f1-98fa-4392658c8540%2F1200x628_gill.jpeg?rect=0%2C0%2C1116%2C628&format=webp&w=700&dpr=1.3" target="_blank"></a>
-                <div class="banner"><img src="earnstay- earnwhile purchase -audible.jpg" alt="earnstay- earnwhile purchase"></div>
-                <a href="https://gumlet-images.assettype.com/afaqs%2F2023-03%2F49ef6f7f-8fad-40f1-98fa-4392658c8540%2F1200x628_gill.jpeg?rect=0%2C0%2C1116%2C628&format=webp&w=700&dpr=1.3" target="_blank"></a>
-                <div class="banner"><img src="upcomming.jpg" alt="cashbacks while earn"></div>
+                <div class="banner">
+                    <a href="https://earnstay.shop/" target="_blank"></a>
+                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/ipPv7usUhfs2oXNfMuAXBX" alt="earnstay- earnwhile purchase">
+                </div>
+                <div class="banner">
+                    <a href="https://earnstay.shop/" target="_blank"></a>
+                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/cYapBbPVaGdzEcEjPUCMYT" alt="cashbacks while earn">
+                </div>
+                <div class="banner">
+                    <a href="https://earnstay.shop/" target="_blank"></a>
+                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/ipPv7usUhfs2oXNfMuAXBX" alt="Slide 3">
+                </div>
+                <div class="banner">
+                    <a href="https://earnstay.shop/" target="_blank"></a>
+                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/cYapBbPVaGdzEcEjPUCMYT" alt="Slide 4">
+                </div>
+                <div class="banner">
+                    <a href="https://earnstay.shop/" target="_blank"></a>
+                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/ipPv7usUhfs2oXNfMuAXBX" alt="Slide 5">
+                </div>
                 <!-- Add more banners here -->
             </div>
+            <div class="carousel-btn prev-btn" onclick="prevSlide()">&#10094;</div>
+            <div class="carousel-btn next-btn" onclick="nextSlide()">&#10095;</div>
         </div>
         
         <div class="line"></div>
@@ -1168,18 +1421,20 @@ h1, h2, h3, h4, h5, h6 {
             <input type="hidden" id="associateTag" name="associateTag" value="7151-21">
         
             <!-- Your provided HTML -->
-    <input type="checkbox" id="slow">
-    <label for="slow"></label>
+    
     <button type="button" id="generateButton">
-       Yes,I'm Ready!
-        <span class="wrap" aria-hidden="true">
-            
-        </span>
+        Claim UpTo 30% Of Purchase
+        
     </button>
 
         </form>
-
         
+<h3 class="headinging">Related Offers</h3>
+<div class="lineted"></div> <!-- Line below the heading -->
+    <div class="containerer" id="Product_Url">            
+    </div>
+    
+
         <footer class="new_footer_area bg_color">
             <div class="new_footer_top">
                 <div class="foamter">
@@ -1200,35 +1455,19 @@ h1, h2, h3, h4, h5, h6 {
                     <!--brand cards-->
 
                     <div class="cards-list">
-  
-                        <div class="card 1">
-                          <div class="card_image"> <img src="https://forcebrands.com/blog/wp-content/uploads/2020/08/amazon-1920x1280.jpg" /> </div>
-                       
-                          <div class="card_title title-white">
-                            <p>Amazon</p>
-                          </div>
+                        <div class="card card1">
+                            <div class="card_image"><img src="https://forcebrands.com/blog/wp-content/uploads/2020/08/amazon-1920x1280.jpg" alt="Amazon"></div>
+                            <div class="card_title title-white"><p>Amazon</p></div>
                         </div>
-                        
-                        <div class="card 3">
-                          <div class="card_image">
-                            <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
-                          </div>
-                          <div class="card_title">
-                            <p>Flipkart</p>
-                          </div>
+                        <div class="card card2">
+                            <div class="card_image"><img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" alt="Flipkart"></div>
+                            <div class="card_title"><p>Flipkart</p></div>
                         </div>
-                          
-                          <div class="card 4">
-                          <div class="card_image">
-                            
-                            <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
-                            </div>
-                          <div class="card_title title-black">
-                            <p>Mytra</p>
-                          </div>
-                          </div>
-                        
+                        <div class="card card3">
+                            <div class="card_image"><img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" alt="Myntra"></div>
+                            <div class="card_title title-black"><p>Myntra</p></div>
                         </div>
+                    </div>
                       
 
 
@@ -1275,69 +1514,106 @@ h1, h2, h3, h4, h5, h6 {
                             <span id="share-count">243</span> <!-- Display share count here -->
                         
                         </div>
-                        <h1 class="underline"></h1>
+                        
+<div class="lineted"></div>
 
-                            <div class="container-earnstay mt-5">
-                            <div class="row-earnstay d-flex justify-content-center">
-                                <div class="col-md-8-earnstay">
-                                    <div class="headings-earnstay d-flex justify-content-between align-items-center mb-3">
-                                        <h5>Top Messages<div class="bracket no of emails"></div>(154)</h5>
-                                        
+
+                        <div class="bg-white dark:bg-zinc-800">
+                            <div class="max-w-lg mx-auto py-10 px-4">
+                              <h1 class="text-3xl font-bold text-center text-black dark:text-white mb-10">Get Cashbacks</h1>
+                          
+                              <div class="flex flex-col items-center space-y-8">
+                                <div class="text-center transition-transform transform hover:scale-105" id="paste1">
+                                  <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-4">
+                                    <div class="fote">
+                                    <img
+                                      src="https://icons.getbootstrap.com/assets/icons/clipboard.svg"
+                                      alt="Copy Icon"
+                                      class="w-8 h-8 text-white fill-current"
+                                    />
+                                </div>
+                                  </div>
+                                  <p class="text-lg text-black dark:text-white">Copy the Product Link</p>
+                                </div>
+                          
+                          
+                                <div class="flex flex-col items-center space-y-8">
+                                  <div class="text-center transition-transform transform hover:scale-105"id="paste2">
+                                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-4">
+                                        <div class="fote">
+                                      <img
+                                      src="https://icons.getbootstrap.com/assets/icons/clipboard-check.svg"
+                                        alt="Copy Icon"
+                                        class="w-8 h-8 text-white fill-current"
+                                      />
                                     </div>
-                        
-                                    <div class="card-earnstay p-3">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="user-earnstay d-flex flex-row align-items-center">
-                                                <img src="https://freepnglogo.com/images/all_img/1700403290chatgpt-png.png" width="30" class="user-img-earnstay rounded-circle mr-2">
-                                                <span><small class="font-weight-bold text-primary"></small> <small class="font-weight-bold">EarnStay makes shopping smarter and more rewarding! 💳💸</small></span>
-                                            </div>
-                                            <small>2 days ago</small>
-                                        </div>
-                                        <small></small>
-                                        <div class="action-earnstay d-flex justify-content-between mt-2 align-items-center">
-                                            <div class="reply-earnstay px-4">
-                                                <small>Remove</small>
-                                                <span class="dots-earnstay"></span>
-                                                <small>Reply</small>
-                                                <span class="dots-earnstay"></span>
-                                                <small>Translate</small>
-                                            </div>
-                                            <div class="icons-earnstay align-items-center">
-                                                
-                                                <i class="fa fa-check-circle-o check-icon"></i>
-                                            </div>
-                                        </div>
-                        
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="user-earnstay d-flex flex-row align-items-center">
-                                                <img src="" width="40" class="user-img-earnstay rounded-circle mr-2">
-                                                <span><small class="font-weight-bold text-primary"></small> <small class="font-weight-bold">Thanks,Its Our Hard Work!</small></span>
-                                            </div>
-                                            <small>2 days ago</small>
-                                        </div>
-                                        <small></small>
-                                        <div class="action-earnstay d-flex justify-content-between mt-2 align-items-center">
-                                            <div class="reply-earnstay px-4">
-                                                <small>Thanks</small>
-                                                <span class="dots-earnstay"></span>
-                                                <small>Reply</small>
-                                                <span class="dots-earnstay"></span>
-                                                <small>India</small>
-                                            </div>
-                                            <div class="icons-earnstay align-items-center">
-                                                <i class="fa fa-star text-warning"></i>
-                                                <i class="fa fa-check-circle-o check-icon"></i>
-                                            </div>
-                                        </div>
-
-
                                     </div>
-                                    
-                                    <!-- Other cards with similar classes follow -->
-                        
+                                    <p class="text-lg text-black dark:text-white">Paste Above and Claim</p>
+                                  </div>
+                          
+                          
+                          
+                          
+                                  <div class="flex flex-col items-center space-y-8">
+                                      <div class="text-center transition-transform transform hover:scale-105"id="paste3">
+                                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-4">
+                                            <div class="fote">
+                                          <img
+                                          src="https://icons.getbootstrap.com/assets/icons/currency-rupee.svg"
+                                            alt="Copy Icon"
+                                            class="w-8 h-8 text-white fill-current"
+                                          />
+                                        </div>
+                                        </div>
+                                        <p class="text-lg text-black dark:text-white">You Earn On Purchase!</p>
+                                      </div>
+                          
+                                
+                              </div>
+                            </div>
+
+
+                            <div class="max-w-sm mx-auto">
+                                <div class="bg-zinc-800 p-4 rounded-lg shadow-md mb-6 border border-black">
+                                    <div class="lineted"></div>
+                                    <div class="flex items-center space-x-3 mb-4 border border-black"id='capture1'>
+
+                                        <img class="w-16 h-16 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9FORNQ5JgJo-4Dx-enaJ3yEui1dgHfo0WVqE5YtOBJqYxuhyzmrpgDbENrjakwu55B9I&usqp=CAU" alt="profile image" />
+                                        <div>
+                                            <p class="font-semibold">ianh.eth</p>
+                                            <p class="text-zinc-500">@ianhunter</p>
+                                        </div>
+                                    </div>
+                                    <p class="mb-2">
+                                        Great To save money on purchase,Awssm!
+                                    </p>
+                                    <p class="font-bold">WTF did I do before this?</p>
+                                    <div class="flex justify-between items-center mt-4">
+                                        <span class="text-zinc-700 text-sm">Friday</span>
+                                    </div>
+                                </div>
+                            
+                                <div class="bg-white p-4 rounded-lg shadow-md border border-black">
+                                    <div class="flex items-center space-x-3 mb-4"id='capture2'>
+                                        <img class="w-16 h-16 rounded-full" src="https://img.freepik.com/premium-vector/businessman-profile-cartoon_18591-58481.jpg?w=360" alt="profile image"  />
+                                        <div>
+                                            <p class="font-semibold">subhit</p>
+                                            <p class="text-zinc-500">@subtlyperfect</p>
+                                        </div>
+                                    </div>
+                                    <p class="mb-2">
+                                        Signed up for many Sites earlier today after much procrastination i find this(thanks to the generous
+                                        people at @mythesisads for an early invite), and I LOVE it!
+                                    </p>
+                                    <p>this product is a saviour.</p>
+                                    <p class="font-semibold">claim. Buy. Earn.</p>
+                                    <div class="flex justify-between items-center mt-4">
+                                        <span class="text-zinc-700 text-sm">10 days Ago</span>
+                                    </div>
                                 </div>
                             </div>
-                            </div>        
+                            
+                                    
                         
                         
                         
@@ -1353,14 +1629,15 @@ h1, h2, h3, h4, h5, h6 {
 
                     
                         <div class="col-lg-3 col-md-6">
+                            <div class="lineted"></div>
                             <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="100s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Help</h3>
                                 <ul class="list-unstyled f_list">
-                                    <li><a href="http://earnstay.shop/">FAQ</a></li>
-                                    <li><a href="Term&conditions.html">Term &amp; conditions</a></li>
-                                    <li><a href="insights-earnstay.html">Insights</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">Term &amp; conditions</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1qFBWLqpQMa4sEBDXVEpB5COTlsAYIZJI/view?usp=sharing">Insights</a></li>
                                     <li><a href="mailto:mythesisads@gmail.com">Support </a></li>
-                                    <li><a href="privacy-earnstay.html">Privacy</a></li>
+                                    <li><a href="#">Privacy</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1386,12 +1663,47 @@ h1, h2, h3, h4, h5, h6 {
             </div>
         </footer>
         
-<div class="copyright-area">
+        <div class="lineted"></div>
         <div class="row">
-            <div class="col-md-8">
-                <p class="rightreservedearnstay">&copy; 2024 - EarnStay - Profit. All rights reserved.</p>
+            
+                </div><div class="bg-zinc-800 text-white text-sm p-4">
+<div class="max-w-screen-lg mx-auto"><div class="fot">
+    
+    <h2 class="Mythesisheader"><small>THE</small>MYthesis<small><small>COMPANY</small></h2>
+                      <p class="mb-2"><small>
+                        © 2024 EarnStay. All rights reserved. The purchaser may earn a cashbacks,save money through coupon code and deals and many ways from
+                        products that are purchased on Amazon through our site.
+                      </p>
+                      <p>
+                        The material on this site may not be reproduced, distributed, transmitted, cached or otherwise
+                        used, except with the prior written permission of MYthesis.</small>
+                        <a href="mailto:mythesisads@gmail.com" class="text-blue-400 hover:text-blue-300">Email Us</a>
+                      </p>
+
+                    
+                    <!-- Include Font Awesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<div class="flex justify-center space-x-4 mt-4">
+    
+    <!-- Facebook -->
+    <i class="fab fa-facebook-f" href="https://instagram.com/adarshsingh_7151/"></i>
+    
+    <!-- Twitter -->
+    <i class="fab fa-twitter"href="https://instagram.com/adarshsingh_7151/"></i>
+    
+    <!-- Instagram -->
+    <i class="fab fa-instagram"href="https://instagram.com/adarshsingh_7151/"></i>
+</div>
+</div></div>
+
+
+                  </div></p>
+                  
             </div>
+            
         </div>
+         
 </div>
         
 
@@ -1402,6 +1714,43 @@ h1, h2, h3, h4, h5, h6 {
 
 
     <script>
+document.addEventListener('DOMContentLoaded', function () {
+            const divs = document.querySelectorAll('.site-logo, .logo-container, #closeSkipMessage, #email,#paste1,#paste2,#paste3,#capture1,#capture2');
+
+            window.addEventListener('scroll', function () {
+                divs.forEach((div) => {
+                    const divTop = div.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    const visibilityThreshold = windowHeight * 0.6;
+
+                    if (divTop < visibilityThreshold) {
+                        div.classList.add('vibrate');
+                    } else {
+                        div.classList.remove('vibrate');
+                    }
+                });
+            });
+        });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const cards = document.querySelectorAll('.card');
+
+    window.addEventListener('scroll', function () {
+        cards.forEach((card, index) => {
+            const cardTop = card.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            const visibilityThreshold = windowHeight * .8; // Adjust visibility threshold as needed
+
+            if (cardTop < visibilityThreshold) {
+                card.classList.add('visible');
+            } else {
+                card.classList.remove('visible');
+            }
+        });
+    });
+});
+
+        
         // Function to show the skip message
         function showSkipMessage() {
             document.getElementById('skipMessage').style.display = 'block';
@@ -1450,17 +1799,8 @@ document.getElementById('generateButton').addEventListener('click', function() {
     // Call the generateAffiliateLink function
     generateAffiliateLink();
 });
-
     
-        document.getElementById('generateButton').addEventListener('click', function() {
-            // Show spinner inside the button
-            document.getElementById('generateButton').innerHTML = '<span class="spinner"></span>Loading...';
-    
-            // Call the generateAffiliateLink function
-            generateAffiliateLink();
-        });
-    
-        function generateAffiliateLink() {
+function generateAffiliateLink() {
     var form = document.getElementById('affiliateForm');
     var formData = new FormData(form);
 
@@ -1474,11 +1814,19 @@ document.getElementById('generateButton').addEventListener('click', function() {
         return; // Exit function to prevent further execution
     }
 
-    // Split the data by spaces
-    var parts = data.split(' ');
+    // Extract product URL using regex
+    var productUrl = data.match(/\bhttps?:\/\/\S+/gi);
 
-    // Filter out the URL from the parts
-    var productUrl = parts.find(part => part.startsWith('http'));
+    // Check if a valid product URL is found
+    if (!productUrl || productUrl.length === 0) {
+        showErrorNotification('Please provide a valid product URL.');
+        resetButton(); // Reset button content
+        return; // Exit function to prevent further execution
+    }
+
+    // Extracted product URL
+    productUrl = productUrl[0];
+
     var phoneNumber = formData.get('phoneNumber');
     var associateTag = formData.get('associateTag');
     var email = document.getElementById('email').value; // Get the email from the form
@@ -1490,11 +1838,146 @@ document.getElementById('generateButton').addEventListener('click', function() {
         var affiliateLink = 'https://myntr.it/05wT4M8'; // Myntra affiliate link
     } else {
         // Amazon product URL validation
-        if (!productUrl.includes('amzn.in')) {
-            showErrorNotification('Please provide a valid Amazon, Flipkart, or Myntra product URL.');
-            resetButton(); // Reset button content
-            return; // Exit function to prevent further execution
-        }
+        // Check if the product URL is from Amazon
+        if (productUrl.includes('amzn.in')) {
+    // Function to show the spinner
+    function showSpinner() {
+        const container = document.getElementById('Product_Url');
+        const loader = document.createElement('div');
+        loader.classList.add('loader');
+        container.appendChild(loader); // Append the loader to the container
+        return loader; // Return the loader element
+    }
+
+    // Show the spinner
+    const loader = showSpinner();
+
+    const shortenedUrl = productUrl;
+    const serverUrl = 'https://earnstayserver-1.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
+
+    fetch(serverUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const brand = data;
+            console.log(brand);
+            fetchAndDisplayData(brand);  
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            displayErrorMessage();
+            loader.remove(); // Remove the loader in case of error
+        });
+
+
+    function fetchAndDisplayData(brandName) {
+        const spreadsheetId = '1B21NQo4nlkO0FcqQE6toedSAFVl1UbJhZ3lc9AgaVhE';
+        const sheetName = 'sheet3';
+        const apiKey = 'AIzaSyCNM5yh_QgeKsWayTNw7xN5SFOiwX8AgRw'; // Replace with your API key
+        fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A1:Z?key=${apiKey}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const filteredData = data.values.filter(row => row[1] === brandName);
+                if (filteredData.length === 0) {
+                    displayErrorMessage();
+                } else {
+                    const structuredData = structureData(filteredData);
+                    structuredData.forEach(product => {
+                        displayProduct(product);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                displayErrorMessage();
+            })
+            .finally(() => {
+                loader.remove(); // Remove the loader when data fetching is complete
+            });
+    }
+
+    function structureData(filteredData) {
+        const structuredData = [];
+        filteredData.forEach(row => {
+            const product = {
+                category: row[0],
+                brand: row[1],
+                imageUrl: row[2],
+                name: row[3],
+                productUrl: row[4],
+                productId: row[5]
+            };
+            structuredData.push(product);
+        });
+        return structuredData;
+    }
+
+    function displayProduct(product) {
+        const container = document.getElementById('Product_Url');
+        const card = document.createElement('div');
+        card.classList.add('cardo', 'shadowo');
+        
+        const badge = document.createElement('div');
+        badge.classList.add('badge');
+        badge.innerText = 'Save +10%';
+        card.appendChild(badge);
+        
+        const productImage = document.createElement('div');
+        productImage.classList.add('product-image');
+        productImage.style.backgroundImage = `url('${product.imageUrl}')`;
+        card.appendChild(productImage);
+
+        
+        const brandName = document.createElement('div');
+        brandName.classList.add('brand-name');
+        brandName.innerText = product.brand;
+        card.appendChild(brandName);
+        
+        const productDetails = document.createElement('div');
+        productDetails.classList.add('product-details');
+        productDetails.innerHTML = `<small>${product.name}</small>`;
+        card.appendChild(productDetails);
+        
+        const button = document.createElement('a'); // Change button to anchor element
+        button.classList.add('button');
+        button.innerText = product.productId;
+        button.setAttribute('href', product.productUrl);
+        card.appendChild(button);
+
+        card.addEventListener('click', function() {
+                const tempTextarea = document.createElement('textarea');
+                tempTextarea.value = product.productUrl;
+                document.body.appendChild(tempTextarea);
+                tempTextarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTextarea);
+                // Show message
+                alert('URL Copied!\nRefresh THe Page And Paste this Link');
+            });
+        
+        container.appendChild(card);
+    }
+
+    function displayErrorMessage() {
+        const container = document.getElementById('Product_Url');
+        container.innerHTML = '<div class="error-message">No Related Offers</div>';
+    }
+} else {
+    // If the product URL does not contain 'amzn.in', show error notification
+    showErrorNotification('Please provide a valid Amazon, Flipkart, or Myntra product URL.');
+    resetButton(); // Reset button content
+    return; // Exit function to prevent further execution
+}
+
 
         // Construct the affiliate link for Amazon
         var affiliateLink = productUrl + '?tag=' + associateTag;
@@ -1687,8 +2170,8 @@ document.getElementById('share').addEventListener('click', function() {
     // Check if the Web Share API is supported by the browser
     if (navigator.share) {
         navigator.share({
-            title: 'Check out this site!',
-            text: 'I found this amazing site. Check it out!',
+            title: 'EarnStay',
+            text: 'I found this amazing site. Check it out!\nClaimUpto 30% Money',
             url: window.location.href
         }).then(() => {
             console.log('Shared successfully');
@@ -1696,12 +2179,74 @@ document.getElementById('share').addEventListener('click', function() {
             console.error('Error sharing:', error);
         });
     } else {
-        alert('Web Share API is not supported in your browser.');
+        alert('Opps!,Sharing is not supported in your browser.');
     }
     
 });
 
+let startX = 0;
+    let startY = 0;
+    let dist = 0;
+    let isDragging = false;
 
+    document.getElementById('bannerContainer').addEventListener('touchstart', touchStart, false);
+    document.getElementById('bannerContainer').addEventListener('touchmove', touchMove, false);
+    document.getElementById('bannerContainer').addEventListener('touchend', touchEnd, false);
+
+    function touchStart(e) {
+        const touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        isDragging = true;
+    }
+
+    function touchMove(e) {
+        if (!isDragging) return;
+        const touch = e.touches[0];
+        const deltaX = touch.clientX - startX;
+        const deltaY = touch.clientY - startY;
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            e.preventDefault();
+            dist = deltaX;
+        }
+    }
+
+    function touchEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        if (dist > 50) {
+            prevSlide();
+        } else if (dist < -50) {
+            nextSlide();
+        }
+        dist = 0;
+    }
+
+    let slideIndex = 0;
+
+    function showSlides() {
+        const slides = document.querySelectorAll('.banner');
+        if (slideIndex >= slides.length) {
+            slideIndex = 0;
+        } else if (slideIndex < 0) {
+            slideIndex = slides.length - 1;
+        }
+        const translateX = -slideIndex * 100 + '%';
+        document.getElementById('bannerSlider').style.transform = `translateX(${translateX})`;
+    }
+
+    function nextSlide() {
+        slideIndex++;
+        showSlides();
+    }
+
+    function prevSlide() {
+        slideIndex--;
+        showSlides();
+    }
+
+    // Automatic slideshow
+    setInterval(nextSlide, 3000); // Change 3000 to adjust slide transition speed
 
     </script>
     
