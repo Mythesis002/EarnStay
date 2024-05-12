@@ -221,17 +221,17 @@ body {
         }
         .skip-message {
 
-            height: 200px;
+            height: 220px;
             background-color: rgb(255, 255, 255); /* Adjust opacity as needed */
             font-weight: bold;
-            padding: 20px;
+            padding: 10px;
             
             border-radius: 10px;
             box-shadow: 0 0 10px rgb(255, 255, 255);
             font-size: 12px;
             position: fixed;
             align-items: center;
-            top: 0px;
+            top: 0;
             
             transform: translate(-50%, -50%);
             
@@ -267,7 +267,6 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 5px;
     position: relative;
     display: inline-block;
     box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
@@ -451,7 +450,7 @@ body {
             color: #007bff;
         }
         .header {
-            position: fixed;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
@@ -461,6 +460,7 @@ body {
     background-color: #ffffff; /* Background color */
     padding-bottom: 40px; /* Padding around the header */
     text-align: center;
+    font-family: monospace;
     display: flex; /* Use flexbox for layout */
     justify-content: space-between; /* Space items evenly along the main axis */
     align-items: center; /* Center items vertically */
@@ -491,7 +491,7 @@ body {
     position: relative;
     right: 8px;
     top: 20px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 550;
     display: grid;
     margin-left: 10px; /* Add some spacing between items */
@@ -1092,10 +1092,12 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .containerer {
+
             display: flex; /* Use flexbox */
             overflow-x: auto; /* Enable horizontal scrolling */
             width: 100%; /* Adjust the width as needed */
             gap: 20px; /* Gap between cards */
+            margin-top: 10px;
         }
 
         .cardo {
@@ -1342,6 +1344,13 @@ h1, h2, h3, h4, h5, h6 {
             justify-content: center;
             margin-left: 35px;
         }
+        .col-lg-3{
+            padding-left: 20px;
+            padding-right: 20px;
+            background-color: #ffffff;
+            align-items: center;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -1364,7 +1373,7 @@ h1, h2, h3, h4, h5, h6 {
             <div class="menu-button">&#9776;</div>
             <div class="actions">
                 <a href="mailto:mythesisads@gmail.com" class="ask-me">ASK ME</a>
-                <div class="report-button"><a href="insights-earnstay.html">RATE</a></div>
+                <a class="report-button" href="insights-earnstay.html">RATE</a>
                 <div class="report-options">
                     <a href="Term&conditions.html">LEARN</a>
                     <div class="lineted"></div>
