@@ -198,7 +198,6 @@ body {
             height: auto; /* Let the height adjust based on content */
             z-index: 11111;
         }
-
         @keyframes fadeOut {
             0% {
                 opacity: 1;
@@ -207,7 +206,6 @@ body {
                 opacity: 0;
             }
         }
-
         @media (max-width: 500px) {
             body {
                 background-image: none;
@@ -224,19 +222,15 @@ body {
             height: 220px;
             background-color: rgb(255, 255, 255); /* Adjust opacity as needed */
             font-weight: bold;
-            padding: 10px;
-            
+            padding: 5px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgb(255, 255, 255);
             font-size: 12px;
             position: fixed;
             align-items: center;
             top: 0;
-            
             transform: translate(-50%, -50%);
-            
             background-color: #ffffff;
-            
             border: 2px solid #ffffff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -246,19 +240,13 @@ body {
             align-items:start;
             left: 10%;
             transform: translateX(-50%);
-            /* Shift the logo to the right by 40px */
-            
-
         }
         .skip-message h2 {
             margin-bottom: 10px;
         }
-
         .skip-message p {
-            margin-bottom: 2px;
-            
+            margin-bottom: 2px;    
         }
-
         .skip-message button {
     padding: 10px;
     background-color: rgb(49, 49, 50);
@@ -1351,6 +1339,81 @@ h1, h2, h3, h4, h5, h6 {
             align-items: center;
             text-align: center;
         }
+        .carousel-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 5px;
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/* Card Styles */
+.cardo {
+    flex: 0 0 auto;
+    width: 150px;
+    margin: 10px;
+    border: 1.5px solid #939393;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.cardo:hover {
+    transform: translateY(-5px);
+}
+
+/* Badge Styles */
+.badge {
+    background-color: #ff5722;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+
+/* Product Image Styles */
+.product-image {
+    width: 80%;
+    height: 90px;
+    border-radius: 100%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+}
+
+/* Brand Name Styles */
+.brand-name {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Product Details Styles */
+.product-details {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+/* Button Styles */
+.button {
+    display: block;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    color: rgba(46, 121, 249, 0.859);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
     </style>
 </head>
 <body>
@@ -1373,7 +1436,7 @@ h1, h2, h3, h4, h5, h6 {
             <div class="menu-button">&#9776;</div>
             <div class="actions">
                 <a href="mailto:mythesisads@gmail.com" class="ask-me">ASK ME</a>
-                <a class="report-button" href="insights-earnstay.html">RATE</a>
+                <a class="report-button" href="orderslist.html">EARN</a>
                 <div class="report-options">
                     <a href="Term&conditions.html">LEARN</a>
                     <div class="lineted"></div>
@@ -1417,7 +1480,7 @@ h1, h2, h3, h4, h5, h6 {
         <div class="line"></div>
 
         <div class="brand-logo"></div>
-        <h2 class="Earnstayheadingh2">Shop more,claim more, earn more with EarnStay</h2>
+        <h2 class="Earnstayheadingh2">paste your product,get related offers with cashbacks</h2>
 
         
         <form id="affiliateForm" class="inputs">
@@ -1427,21 +1490,18 @@ h1, h2, h3, h4, h5, h6 {
             <label for="phoneNumber"></label>
             <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number Linked to your bank" required>
         
-            <input type="hidden" id="associateTag" name="associateTag" value="715104-21">
+            <input type="hidden" id="associateTag" name="associateTag" value="7151-21">
         
             <!-- Your provided HTML -->
     
-    <button type="button" id="generateButton">
-        Claim UpTo 30% Of Purchase
-        
-    </button>
-
+    <button type="button" id="generateButton">Search Offers</button>
         </form>
         
 <h3 class="headinging">Related Offers</h3>
 <div class="lineted"></div> <!-- Line below the heading -->
-    <div class="containerer" id="Product_Url">            
-    </div>
+<div id="Product_Url" class="carousel-container">
+    <div class="carousel-wrapper"></div>
+</div>
     
 
         <footer class="new_footer_area bg_color">
@@ -1931,48 +1991,43 @@ function generateAffiliateLink() {
     }
 
     function displayProduct(product) {
-        const container = document.getElementById('Product_Url');
+        const container = document.querySelector('.carousel-wrapper');
         const card = document.createElement('div');
         card.classList.add('cardo', 'shadowo');
-        
+    
         const badge = document.createElement('div');
         badge.classList.add('badge');
         badge.innerText = 'Save +10%';
         card.appendChild(badge);
-        
+    
         const productImage = document.createElement('div');
         productImage.classList.add('product-image');
         productImage.style.backgroundImage = `url('${product.imageUrl}')`;
         card.appendChild(productImage);
-
-        
+    
         const brandName = document.createElement('div');
         brandName.classList.add('brand-name');
         brandName.innerText = product.brand;
         card.appendChild(brandName);
-        
+    
         const productDetails = document.createElement('div');
         productDetails.classList.add('product-details');
         productDetails.innerHTML = `<small>${product.name}</small>`;
         card.appendChild(productDetails);
-        
-        const button = document.createElement('a'); // Change button to anchor element
+    
+        const button = document.createElement('a'); // Use an anchor element
         button.classList.add('button');
         button.innerText = product.productId;
         button.setAttribute('href', product.productUrl);
+        button.setAttribute('target', '_blank'); // Ensures it opens in a new tab
         card.appendChild(button);
-
-        card.addEventListener('click', function() {
-                const tempTextarea = document.createElement('textarea');
-                tempTextarea.value = product.productUrl;
-                document.body.appendChild(tempTextarea);
-                tempTextarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempTextarea);
-                // Show message
-                alert('URL Copied!\nRefresh THe Page And Paste this Link');
-            });
-        
+    
+        card.addEventListener('click', function () {
+            setTimeout(function () {
+                window.open(product.productUrl, '_blank'); // Opens the URL in a new tab
+            }, 1000); // 1000 milliseconds = 1 second
+        });
+    
         container.appendChild(card);
     }
 
@@ -2025,7 +2080,7 @@ function generateAffiliateLink() {
             if (response.ok) {
                 console.log('Data submitted successfully');
                 // Change button text to "Now Buy"
-                document.getElementById('generateButton').innerText = 'Continue';
+                document.getElementById('generateButton').innerText = 'Grab Cashback--Continue';
                 // Redirect user to the affiliate link when the button is clicked
                 document.getElementById('generateButton').setAttribute('onclick', 'window.location.href="' + affiliateLink + '"');
                 return response.json();
