@@ -1100,11 +1100,7 @@ h1, h2, h3, h4, h5, h6 {
             overflow: hidden;
         }
 
-        .shadowo {
-            box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
-                        0 0  0 2px rgb(255, 255, 255);
-                        
-        }
+        
 
         .product-image {
             width: 120px;
@@ -1148,7 +1144,7 @@ h1, h2, h3, h4, h5, h6 {
         .badge {
             position: absolute;
             left: 0;
-            top: 20px;
+            top: 10px;
             text-transform: uppercase;
             font-size: 10px;
             font-weight: 700;
@@ -1360,7 +1356,7 @@ h1, h2, h3, h4, h5, h6 {
     border: 1.5px solid #939393;
     padding: 20px;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 3px;
     cursor: pointer;
     transition: transform 0.3s;
 }
@@ -1930,7 +1926,7 @@ function generateAffiliateLink() {
     const loader = showSpinner();
 
     const shortenedUrl = productUrl;
-    const serverUrl = 'https://earnstayserver-uavo.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
+    const serverUrl = 'https://earnstayserver-1.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
 
     fetch(serverUrl)
         .then(response => {
