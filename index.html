@@ -1410,6 +1410,60 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.9em;
     margin-top: 10px;
 }
+
+
+#phoneFormContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #phoneForm {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        #phoneForm label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        #phoneForm input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        #phoneForm button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #phoneForm button:hover {
+            background: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -1483,9 +1537,6 @@ h1, h2, h3, h4, h5, h6 {
             <label for="productUrl" id="productUrlLabel" onclick="captureClipboard()"></label>
             <input type="text" id="productUrl" name="productUrl" placeholder="Enter product URL" required>
         
-            <label for="phoneNumber"></label>
-            <input type="hidden" id="phoneNumber" name="phoneNumber"value="6392449432">
-        
             <input type="hidden" id="associateTag" name="associateTag" value="7151-21">
         
             <!-- Your provided HTML -->
@@ -1506,10 +1557,10 @@ h1, h2, h3, h4, h5, h6 {
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Get Your Profit</h3>
+                                <h3 class="f-title f_600 t_color f_size_18">Know Your Profit</h3>
                                 <p>Receive Your Cashbacks,Fill before "Search Offers"</p>
                                 <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1" id="emailForm">
-                                    <input type="text" name="EMAIL" id="email" class="form-control memail" placeholder="Paste Phone Number Linked Your Bank">
+                                    <input type="text" name="EMAIL" id="email" class="form-control memail" placeholder="Enter Your Email">
 
                                     <p class="mchimp-errmessage" style="display: none;"></p>
                                     <p class="mchimp-sucmessage" style="display: none;"></p>
@@ -1825,26 +1876,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
         
         // Function to show the skip message
-        function showSkipMessage() {
-            document.getElementById('skipMessage').style.display = 'block';
-        }
-    
-        // Function to hide the skip message
-        function hideSkipMessage() {
-            document.getElementById('skipMessage').style.display = 'none';
-        }
-    
-        // Event listener to show skip message when the window loads
-        window.onload = function() {
-            showSkipMessage();
-        };
-    
-        // Event listener to hide skip message when the skip button is clicked
-        document.getElementById('closeSkipMessage').addEventListener('click', function() {
-            hideSkipMessage();
-        });
+        // Function to show the skip message
+function showSkipMessage() {
+    document.getElementById('skipMessage').style.display = 'block';
+}
 
-        // JavaScript code to toggle the menu when the menu button is clicked
+// Function to hide the skip message
+function hideSkipMessage() {
+    document.getElementById('skipMessage').style.display = 'none';
+}
+
+// Event listener to show skip message when the window loads
+window.onload = function() {
+    showSkipMessage();
+};
+
+// Event listener to hide skip message when the skip button is clicked
+document.getElementById('closeSkipMessage').addEventListener('click', function() {
+    hideSkipMessage();
+});
+
 // JavaScript code to toggle the menu when the menu button is clicked
 document.querySelector('.menu-button').addEventListener('click', function(event) {
     // Prevent the click event from propagating to the document body
@@ -1872,7 +1923,7 @@ document.getElementById('generateButton').addEventListener('click', function() {
     // Call the generateAffiliateLink function
     generateAffiliateLink();
 });
-    
+
 function generateAffiliateLink() {
     var form = document.getElementById('affiliateForm');
     var formData = new FormData(form);
@@ -1900,7 +1951,13 @@ function generateAffiliateLink() {
     // Extracted product URL
     productUrl = productUrl[0];
 
-    var phoneNumber = formData.get('phoneNumber');
+    var phoneNumber = localStorage.getItem('phone');
+    if (!phoneNumber) {
+        // If phone number is not in localStorage, show the form to ask for it
+        showPhoneForm();
+        return; // Exit function to prevent further execution until phone number is provided
+    }
+
     var associateTag = formData.get('associateTag');
     var email = document.getElementById('email').value; // Get the email from the form
 
@@ -1913,139 +1970,137 @@ function generateAffiliateLink() {
         // Amazon product URL validation
         // Check if the product URL is from Amazon
         if (productUrl.includes('amzn.in')) {
-    // Function to show the spinner
-    function showSpinner() {
-        const container = document.getElementById('Product_Url');
-        const loader = document.createElement('div');
-        loader.classList.add('loader');
-        container.appendChild(loader); // Append the loader to the container
-        return loader; // Return the loader element
-    }
-
-    // Show the spinner
-    const loader = showSpinner();
-
-    const shortenedUrl = productUrl;
-    const serverUrl = 'https://earnstayserver-1.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
-
-    fetch(serverUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
+            // Function to show the spinner
+            function showSpinner() {
+                const container = document.getElementById('Product_Url');
+                const loader = document.createElement('div');
+                loader.classList.add('loader');
+                container.appendChild(loader); // Append the loader to the container
+                return loader; // Return the loader element
             }
-            return response.json();
-        })
-        .then(data => {
-            const brand = data;
-            console.log(brand);
-            fetchAndDisplayData(brand);  
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            displayErrorMessage();
-            loader.remove(); // Remove the loader in case of error
-        });
 
+            // Show the spinner
+            const loader = showSpinner();
 
-    function fetchAndDisplayData(brandName) {
-        const spreadsheetId = '1B21NQo4nlkO0FcqQE6toedSAFVl1UbJhZ3lc9AgaVhE';
-        const sheetName = 'sheet3';
-        const apiKey = 'AIzaSyCNM5yh_QgeKsWayTNw7xN5SFOiwX8AgRw'; // Replace with your API key
-        fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A1:Z?key=${apiKey}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch data');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const filteredData = data.values.filter(row => row[1] === brandName);
-                if (filteredData.length === 0) {
+            const shortenedUrl = productUrl;
+            const serverUrl = 'https://earnstayserver-1.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
+
+            fetch(serverUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch data');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const brand = data;
+                    console.log(brand);
+                    fetchAndDisplayData(brand);  
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                     displayErrorMessage();
-                } else {
-                    const structuredData = structureData(filteredData);
-                    structuredData.forEach(product => {
-                        displayProduct(product);
+                    loader.remove(); // Remove the loader in case of error
+                });
+
+            function fetchAndDisplayData(brandName) {
+                const spreadsheetId = '1B21NQo4nlkO0FcqQE6toedSAFVl1UbJhZ3lc9AgaVhE';
+                const sheetName = 'sheet3';
+                const apiKey = 'AIzaSyCNM5yh_QgeKsWayTNw7xN5SFOiwX8AgRw'; // Replace with your API key
+                fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A1:Z?key=${apiKey}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch data');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const filteredData = data.values.filter(row => row[1] === brandName);
+                        if (filteredData.length === 0) {
+                            displayErrorMessage();
+                        } else {
+                            const structuredData = structureData(filteredData);
+                            structuredData.forEach(product => {
+                                displayProduct(product);
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                        displayErrorMessage();
+                    })
+                    .finally(() => {
+                        loader.remove(); // Remove the loader when data fetching is complete
                     });
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                displayErrorMessage();
-            })
-            .finally(() => {
-                loader.remove(); // Remove the loader when data fetching is complete
-            });
-    }
+            }
 
-    function structureData(filteredData) {
-        const structuredData = [];
-        filteredData.forEach(row => {
-            const product = {
-                category: row[0],
-                brand: row[1],
-                imageUrl: row[2],
-                name: row[3],
-                productUrl: row[4],
-                productId: row[5]
-            };
-            structuredData.push(product);
-        });
-        return structuredData;
-    }
+            function structureData(filteredData) {
+                const structuredData = [];
+                filteredData.forEach(row => {
+                    const product = {
+                        category: row[0],
+                        brand: row[1],
+                        imageUrl: row[2],
+                        name: row[3],
+                        productUrl: row[4],
+                        productId: row[5]
+                    };
+                    structuredData.push(product);
+                });
+                return structuredData;
+            }
 
-    function displayProduct(product) {
-        const container = document.querySelector('.carousel-wrapper');
-        const card = document.createElement('div');
-        card.classList.add('cardo', 'shadowo');
-    
-        const badge = document.createElement('div');
-        badge.classList.add('badge');
-        badge.innerText = 'Save +10%';
-        card.appendChild(badge);
-    
-        const productImage = document.createElement('div');
-        productImage.classList.add('product-image');
-        productImage.style.backgroundImage = `url('${product.imageUrl}')`;
-        card.appendChild(productImage);
-    
-        const brandName = document.createElement('div');
-        brandName.classList.add('brand-name');
-        brandName.innerText = product.brand;
-        card.appendChild(brandName);
-    
-        const productDetails = document.createElement('div');
-        productDetails.classList.add('product-details');
-        productDetails.innerHTML = `<small>${product.name}</small>`;
-        card.appendChild(productDetails);
-    
-        const button = document.createElement('a'); // Use an anchor element
-        button.classList.add('button');
-        button.innerText = product.productId;
-        button.setAttribute('href', product.productUrl);
-        button.setAttribute('target', '_blank'); // Ensures it opens in a new tab
-        card.appendChild(button);
-    
-        card.addEventListener('click', function () {
-            setTimeout(function () {
-                window.open(product.productUrl, '_blank'); // Opens the URL in a new tab
-            }, 1000); // 1000 milliseconds = 1 second
-        });
-    
-        container.appendChild(card);
-    }
+            function displayProduct(product) {
+                const container = document.querySelector('.carousel-wrapper');
+                const card = document.createElement('div');
+                card.classList.add('cardo', 'shadowo');
 
-    function displayErrorMessage() {
-        const container = document.getElementById('Product_Url');
-        container.innerHTML = '<div class="error-message">No Related Offers</div>';
-    }
-} else {
-    // If the product URL does not contain 'amzn.in', show error notification
-    showErrorNotification('Please provide a valid Amazon, Flipkart, or Myntra product URL.');
-    resetButton(); // Reset button content
-    return; // Exit function to prevent further execution
-}
+                const badge = document.createElement('div');
+                badge.classList.add('badge');
+                badge.innerText = 'Save +10%';
+                card.appendChild(badge);
 
+                const productImage = document.createElement('div');
+                productImage.classList.add('product-image');
+                productImage.style.backgroundImage = `url('${product.imageUrl}')`;
+                card.appendChild(productImage);
+
+                const brandName = document.createElement('div');
+                brandName.classList.add('brand-name');
+                brandName.innerText = product.brand;
+                card.appendChild(brandName);
+
+                const productDetails = document.createElement('div');
+                productDetails.classList.add('product-details');
+                productDetails.innerHTML = `<small>${product.name}</small>`;
+                card.appendChild(productDetails);
+
+                const button = document.createElement('a'); // Use an anchor element
+                button.classList.add('button');
+                button.innerText = product.productId;
+                button.setAttribute('href', product.productUrl);
+                button.setAttribute('target', '_blank'); // Ensures it opens in a new tab
+                card.appendChild(button);
+
+                card.addEventListener('click', function () {
+                    setTimeout(function () {
+                        window.open(product.productUrl, '_blank'); // Opens the URL in a new tab
+                    }, 1000); // 1000 milliseconds = 1 second
+                });
+
+                container.appendChild(card);
+            }
+
+            function displayErrorMessage() {
+                const container = document.getElementById('Product_Url');
+                container.innerHTML = '<div class="error-message">No Offers Availible On This Product!</div>';
+            }
+        } else {
+            // If the product URL does not contain 'amzn.in', show error notification
+            showErrorNotification('Please provide a valid Amazon, Flipkart, or Myntra product URL.');
+            resetButton(); // Reset button content
+            return; // Exit function to prevent further execution
+        }
 
         // Construct the affiliate link for Amazon
         var affiliateLink = productUrl + '?tag=' + associateTag;
@@ -2098,6 +2153,45 @@ function generateAffiliateLink() {
         });
     }, 3000); // Set the loading/spinning time to 3 seconds
 }
+
+function showPhoneForm() {
+    const formHtml = `
+        <div id="phoneFormContainer">
+            <form id="phoneForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', formHtml);
+
+document.getElementById('phoneForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    if (/^\d{10}$/.test(phoneNumber)) {
+        localStorage.setItem('name', name);
+        localStorage.setItem('phone', phoneNumber);
+        document.getElementById('phoneFormContainer').remove();
+        generateAffiliateLink(); // Retry the affiliate link generation
+    } else {
+        alert('Please enter a valid 10-digit phone number.');
+    }
+});
+}
+
+function showErrorNotification(message) {
+    alert(message); // Replace this with your actual error notification code
+}
+
+function resetButton() {
+    document.getElementById('generateButton').innerText = 'Claim upto 30% Of Purchase';
+}
+
 
 
 
