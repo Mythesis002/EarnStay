@@ -1983,7 +1983,7 @@ function generateAffiliateLink() {
             const loader = showSpinner();
 
             const shortenedUrl = productUrl;
-            const serverUrl = 'https://earnstayserver-1.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
+            const serverUrl = 'https://earnstayserver-uavo.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
 
             fetch(serverUrl)
                 .then(response => {
