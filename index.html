@@ -2119,6 +2119,7 @@ function generateAffiliateLink() {
     // Append timestamp and email to the form data
     formData.append('timestamp', timestamp);
     formData.append('email', email);
+    formData.append('phoneNumber', phoneNumber);
 
     // Log the data to verify it before making the fetch request
     console.log('Data to be sent:', {
