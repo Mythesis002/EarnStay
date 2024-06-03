@@ -40,10 +40,6 @@
         }
 
         body {
-            left: 0;
-            margin: 0;
-            padding: 0;
-            
             display: flex;
             justify-content: center;
             align-items: center;
@@ -54,14 +50,13 @@
 
         .container {
             align-items: center;
-            left: 0;
+            
             width: 100%;
-            max-width: 100%;
+            
             background-color: rgba(255, 255, 255, 0.9);
             padding-bottom: 200px;
             padding-top: 50px;
-            padding-left: 30px;
-            padding-right: 30px;
+
             border-radius: 20px;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
         }
@@ -117,36 +112,7 @@
     color: #1DA1F2; /* Example color change on hover */
 }
 
-        .new_footer_area {
-    background: #fbfbfd;
-}
-.new_footer_top {
-    padding: 0px 0px 270px;
-    position: relative;
-    overflow-x: hidden;
-}
-.new_footer_area .footer_bottom {
-    padding-top: 5px;
-    padding-bottom: 50px;
-}
-.footer_bottom {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 20px;
-    color: #7f88a6;
-    padding: 27px 0px;
-}
-.new_footer_top .company_widget p {
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 28px;
-    color: #6a7695;
-    margin-bottom: 20px;
-}
-.new_footer_top .company_widget .f_subscribe_two .btn_get {
-    border-width: 1px;
-    margin-top: 20px;
-}
+  
 .btn_get_two:hover {
     background: transparent;
     color: #5e2ced;
@@ -225,20 +191,21 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     position: fixed;
     left: 0;
     top: 0;
-    width: 99%;
+    width: 100%;
     border-radius: 5px; /* Remove border-radius */
     border: 2px solid #007bff;
     border-bottom-width: 7px;
     background-color: #ffffff; /* Background color */
     padding-bottom: 40px; /* Padding around the header */
-    
+    text-align: center;
+    font-family: monospace;
     display: flex; /* Use flexbox for layout */
     justify-content: space-between; /* Space items evenly along the main axis */
     align-items: center; /* Center items vertically */
     z-index: 999;
     border-top-left-radius:0px;
     border-top-right-radius:0px;
-    box-shadow: 0 5px 10px rgba(72, 72, 72, 0.8); /* Add shadow */
+    box-shadow: 0 5px 10px rgba(72, 72, 72, 0.8);  /* Add shadow */
 }
 
 .menu-button {
@@ -289,14 +256,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 }
 
 
-.new_footer_top .footer_bg .footer_bg_one.paused {
-    -webkit-animation-play-state: paused;
-    animation-play-state: paused;
-}
-.new_footer_top .footer_bg .footer_bg_two.paused {
-    -webkit-animation-play-state: paused;
-    animation-play-state: paused;
-}
+
 .actions.show-menu .report-options {
     display: block;
 }
@@ -355,52 +315,18 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     height: 25px;
 }
 
-.col-md-8 {
-    position: relative; /* Change to fixed position */
-    bottom: 0; /* Position at the bottom */
-    right: 30px;
-    
-    padding-right: 55px;
-    margin-top: 30px;
-    width: 100%;
-    height: 120px;
-    font-size: small;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 5px;
-    border: 2px solid #007bff;
-    border-top-width: 7px;
-    background-color: #ffffff;
-    display: flex;
-    z-index: 9999; /* Ensure it's above other content */
-}
 
 
 
 
 
-.col-md-8 ul {
-    list-style: none; /* Remove default list styling */
-    padding: 0;
-    margin-bottom: 20px;
-    
-    display: flex; /* Arrange list items in a row */
-    flex-wrap: wrap; /* Allow items to wrap to the next row */
-}
 
-.col-md-8 ul li {
-    margin-right: 20px; /* Add spacing between list items */
-    margin-bottom: 10px; /* Add spacing between rows */
-}
 
-/* Style for the links */
-.col-md-8 ul li a {
-    text-decoration: none; /* Remove underline from links */
-    color: #333; /* Text color */
-}
 
-.col-md-8 ul li a:hover {
-    color: #007bff; /* Change text color on hover */
-}
+
+
+
+
 
 .rightreservedearnstay{
 align-items: center;
@@ -450,7 +376,7 @@ margin-top: 35px;
             font-size: 24px;
             font-weight: 500;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            margin-left: 35%;
+            margin-left: 5%;
         }
         
         label {
@@ -512,6 +438,115 @@ margin-top: 35px;
                 padding: 10px;
             }
         }
+        .descript{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: small;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #phoneFormContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #phoneForm {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        #phoneForm label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        #phoneForm input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        #phoneForm button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #phoneForm button:hover {
+            background: #0056b3;
+        }
+        .bg-zinc-800 {
+            
+            
+            border: #000000;
+            border-width: 100px;
+            justify-content: center;
+            border-width: 50px;
+            z-index: 99999;
+            
+
+        }
+        #insight{
+            font-family: Arial, sans-serif;
+        }
+        
+        body.fot {
+            position: relative;
+            border: #000000;
+            
+            
+            
+            
+            
+        }
+        .fote{
+            color: #fff;
+        }
+        .Mythesisheader{
+            align-items: center;
+            color: #646464b1;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            justify-content: center;
+            margin-left: 35px;
+        }
+        .col-lg-3{
+            padding-left: 20px;
+            padding-right: 20px;
+            background-color: #ffffff;
+            align-items: center;
+            text-align: center;
+        }
+        .lineted {
+    position: absolute;
+    left: 0;
+    
+    width: 100%; /* Set line width */
+    margin-top: -0px; /* Add margin top to create space */
+    border-bottom: 1px solid #505050a8; /* Specify line style and color */
+}
 
     </style>
 </head>
@@ -542,37 +577,47 @@ margin-top: 35px;
             </a>
         </div>
         <div class="container-earn">
-            <h1>Earnings</h1>
-            <!-- Input field for entering the phone number -->
-            <label for="phoneNumber"></label>
-            <input type="text" id="phoneNumber" name="phoneNumber"placeholder="Enter Phone Number To Know Earnings" required>
-            <h1></h1>
-            <button onclick="fetchAndDisplayData()">Authenticate</button>
-    
-            <!-- Table to display the data -->
+            <h1>Earning: <span id="totalEarning">0</span></h1>
             <table id="dataTable">
                 
                 <!-- Table headers will be dynamically added here -->
             </table>
+            <div class="descript"><small>NOTE:<br>your earning will be creadited on tenth day from order.</small></div>
         </div>
         
         
-               
+        <div class="lineted"></div>       
              
-            <div class="copyright-area">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p class="rightreservedearnstay">&copy; 2024 - EarnStay - Profit. All rights reserved.</p>
-                        <ul class="list-unstyled f_list">
-                            <li><a href="http://earnstay.shop/">FAQ</a></li>
-                            <li><a href="Term&conditions.html">Term &amp; conditions</a></li>
-                            <li><a href="https://drive.google.com/file/d/1qFBWLqpQMa4sEBDXVEpB5COTlsAYIZJI/view?usp=sharing">Insights</a></li>
-                            <li><a href="mailto:mythesisads@gmail.com">Support</a></li>
-                            <li><a href="#">Privacy</a></li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="bg-zinc-800 text-white text-sm p-4">
+            <div class="max-w-screen-lg mx-auto"><div class="fot">
+                
+                <h2 class="Mythesisheader"><small>THE</small>MYthesis<small><small>COMPANY</small></h2>
+                                  <p class="mb-2"><small>
+                                    © 2024 EarnStay. All rights reserved. The purchaser may earn a cashbacks,save money through coupon code and deals and many ways from
+                                    products that are purchased on Amazon through our site.
+                                  </p>
+                                  <p>
+                                    The material on this site may not be reproduced, distributed, transmitted, cached or otherwise
+                                    used, except with the prior written permission of MYthesis.</small>
+                                    <a href="mailto:mythesisads@gmail.com" class="text-blue-400 hover:text-blue-300">Email Us</a>
+                                  </p>
+            
+                                
+                                <!-- Include Font Awesome CSS -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            
+            <div class="flex justify-center space-x-4 mt-4">
+                
+                <!-- Facebook -->
+                <i class="fab fa-facebook-f" href="https://instagram.com/adarshsingh_7151/"></i>
+                
+                <!-- Twitter -->
+                <i class="fab fa-twitter"href="https://instagram.com/adarshsingh_7151/"></i>
+                
+                <!-- Instagram -->
+                <i class="fab fa-instagram"href="https://instagram.com/adarshsingh_7151/"></i>
             </div>
+            </div></div>
             
                     </div>
                         
@@ -593,58 +638,107 @@ margin-top: 35px;
     <!-- Include jQuery for simplicity -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        const spreadsheetId = '1ZzebXoJABZJzIDVmBg4-DGA04YrWZxanC0G-5QzbHJA';
-        const sheetName = 'sheet1';
-        const apiKey = 'AIzaSyCNM5yh_QgeKsWayTNw7xN5SFOiwX8AgRw';
+    const spreadsheetId = '1ZzebXoJABZJzIDVmBg4-DGA04YrWZxanC0G-5QzbHJA';
+    const sheetName = 'sheet1';
+    const apiKey = 'AIzaSyCNM5yh_QgeKsWayTNw7xN5SFOiwX8AgRw';
 
-        function fetchAndDisplayData() {
-            const phoneNumber = document.getElementById('phoneNumber').value;
+    const phoneNumber = localStorage.getItem('phone');
+    if (!phoneNumber) {
+        // If phone number is not in localStorage, show the form to ask for it
+        showPhoneForm();
+    } else {
+        fetchData();
+    }
 
-            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A1:Z?key=${apiKey}`)
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error('Failed to fetch data');
-                    }
-                })
-                .then(data => {
-                    // Log the fetched data
-                    console.log('Fetched data:', data);
+    function fetchData() {
+        fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A1:Z?key=${apiKey}`)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Failed to fetch data');
+                }
+            })
+            .then(data => {
+                // Log the fetched data
+                console.log('Fetched data:', data);
 
-                    // Get the table element
-                    const table = document.getElementById('dataTable');
+                // Get the table element
+                const table = document.getElementById('dataTable');
 
-                    // Clear existing table content
-                    table.innerHTML = '';
+                // Clear existing table content
+                table.innerHTML = '';
 
-                    // Create table headers
-                    const headersRow = document.createElement('tr');
-                    data.values[0].forEach(header => {
-                        const th = document.createElement('th');
-                        th.textContent = header;
-                        headersRow.appendChild(th);
-                    });
-                    table.appendChild(headersRow);
-
-                    // Filter data based on phone number
-                    const filteredData = data.values.filter(row => row[2] === phoneNumber);
-
-                    // Populate table rows with filtered data
-                    filteredData.forEach(rowData => {
-                        const row = document.createElement('tr');
-                        rowData.forEach(cellData => {
-                            const td = document.createElement('td');
-                            td.textContent = cellData;
-                            row.appendChild(td);
-                        });
-                        table.appendChild(row);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
+                // Create table headers
+                const headersRow = document.createElement('tr');
+                data.values[0].forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header;
+                    headersRow.appendChild(th);
                 });
-        }
+                table.appendChild(headersRow);
+
+                // Filter data based on phone number
+                const filteredData = data.values.filter(row => row[2] === phoneNumber);
+
+                // Calculate total earnings
+                let totalEarnings = 0;
+                filteredData.forEach(rowData => {
+                    const earningStr = rowData[4]; // Assuming the "Earning" column is the 5th column (index 4)
+                    const earning = parseFloat(earningStr.replace(/[^0-9.-]+/g, ""));
+                    if (!isNaN(earning)) {
+                        totalEarnings += earning;
+                    }
+                });
+
+                // Display total earnings
+                document.getElementById('totalEarning').textContent = `₹${totalEarnings.toFixed(2)}`;
+
+                // Populate table rows with filtered data
+                filteredData.forEach(rowData => {
+                    const row = document.createElement('tr');
+                    rowData.forEach(cellData => {
+                        const td = document.createElement('td');
+                        td.textContent = cellData;
+                        row.appendChild(td);
+                    });
+                    table.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    function showPhoneForm() {
+        const formHtml = `
+            <div id="phoneFormContainer">
+                <form id="phoneForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', formHtml);
+
+        document.getElementById('phoneForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            if (/^\d{10}$/.test(phoneNumber)) {
+                localStorage.setItem('name', name);
+                localStorage.setItem('phone', phoneNumber);
+                document.getElementById('phoneFormContainer').remove();
+                fetchData(); // Retry data fetching
+            } else {
+                alert('Please enter a valid 10-digit phone number.');
+            }
+        });
+    }
     </script>
 
 
