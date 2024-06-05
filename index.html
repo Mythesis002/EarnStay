@@ -1505,15 +1505,13 @@ h1, h2, h3, h4, h5, h6 {
                     <a href="https://earnstay.shop/" target="_blank"></a>
                     <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/ipPv7usUhfs2oXNfMuAXBX" alt="earnstay- earnwhile purchase">
                 </div>
-
-                
                 <div class="banner">
                     <a href="https://earnstay.shop/" target="_blank"></a>
                     <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/t3pSm6HkzUsteiU5mWqasR" alt="cashbacks while earn">
                 </div>
                 <div class="banner">
                     <a href="https://earnstay.shop/" target="_blank"></a>
-                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/iVfDyhobSbyRkr4A1KN3SH" alt="Slide 3">
+                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/5ynn4Hd6KEWwBznTKuyNEy" alt="Slide 3">
                 </div>
                 <div class="banner">
                     <a href="https://earnstay.shop/" target="_blank"></a>
@@ -1930,94 +1928,74 @@ function generateAffiliateLink() {
     var form = document.getElementById('affiliateForm');
     var formData = new FormData(form);
 
-    // Extract data from the form
     var data = formData.get('productUrl');
 
-    // Check if the product URL is provided
     if (!data) {
         showErrorNotification('Please provide a valid Amazon, Flipkart, or Myntra product URL.');
-        resetButton(); // Reset button content
-        return; // Exit function to prevent further execution
+        resetButton();
+        return;
     }
 
-    // Extract product URL using regex
     var productUrl = data.match(/\bhttps?:\/\/\S+/gi);
 
-    // Check if a valid product URL is found
     if (!productUrl || productUrl.length === 0) {
         showErrorNotification('Please provide a valid product URL.');
-        resetButton(); // Reset button content
-        return; // Exit function to prevent further execution
+        resetButton();
+        return;
     }
 
-    // Extracted product URL
     productUrl = productUrl[0];
 
     var phoneNumber = localStorage.getItem('phone');
+    
     if (!phoneNumber) {
-        // If phone number is not in localStorage, show the form to ask for it
         showPhoneForm();
-        return; // Exit function to prevent further execution until phone number is provided
+        return;
     }
 
     var associateTag = formData.get('associateTag');
-    var email = document.getElementById('email').value; // Get the email from the form
+    var email = document.getElementById('email').value;
 
-    // Check if the product URL is from Flipkart or Myntra
     if (productUrl.includes('flipkart.com')) {
-        var affiliateLink = 'https://fktr.in/8xmZOr9'; // Flipkart affiliate link
+        var affiliateLink = 'https://fktr.in/8xmZOr9';
     } else if (productUrl.includes('myntra.com')) {
-        var affiliateLink = 'https://myntr.it/05wT4M8'; // Myntra affiliate link
+        var affiliateLink = 'https://myntr.it/05wT4M8';
     } else {
-        // Amazon product URL validation
-        // Check if the product URL is from Amazon
         if (productUrl.includes('amzn.in')) {
-            // Function to show the spinner
             function showSpinner() {
                 const container = document.getElementById('Product_Url');
                 const loader = document.createElement('div');
                 loader.classList.add('loader');
-                container.appendChild(loader); // Append the loader to the container
-                return loader; // Return the loader element
+                container.appendChild(loader);
+                return loader;
             }
 
-            // Show the spinner
             const loader = showSpinner();
 
             const shortenedUrl = productUrl;
             const serverUrl = 'https://earnstayserver-uavo.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
 
-            fetch(serverUrl)
+            console.log('Fetching data from:', serverUrl); // Log the URL being fetched
+
+            fetchWithRetry(serverUrl, 3, 1000)
                 .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to fetch data');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const brand = data;
+                    const brand = response;
                     console.log(brand);
-                    fetchAndDisplayData(brand);  
+                    fetchAndDisplayData(brand);
                 })
                 .catch(error => {
-                    console.error('Error:', error);
+                    console.error('Error during fetch:', error);
                     displayErrorMessage();
-                    loader.remove(); // Remove the loader in case of error
+                    loader.remove();
                 });
 
             function fetchAndDisplayData(brandName) {
                 const spreadsheetId = '1B21NQo4nlkO0FcqQE6toedSAFVl1UbJhZ3lc9AgaVhE';
                 const sheetName = 'sheet3';
-                const apiKey = 'AIzaSyCNM5yh_QgeKsWayTNw7xN5SFOiwX8AgRw'; // Replace with your API key
-                fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A1:Z?key=${apiKey}`)
+                const apiKey = 'AIzaSyCNM5yh_QgeKsWayTNw7xN5SFOiwX8AgRw';
+                fetchWithRetry(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A1:Z?key=${apiKey}`, 3, 1000)
                     .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Failed to fetch data');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        const filteredData = data.values.filter(row => row[1] === brandName);
+                        const filteredData = response.values.filter(row => row[1].toLowerCase() === brandName.toLowerCase());
                         if (filteredData.length === 0) {
                             displayErrorMessage();
                         } else {
@@ -2032,7 +2010,7 @@ function generateAffiliateLink() {
                         displayErrorMessage();
                     })
                     .finally(() => {
-                        loader.remove(); // Remove the loader when data fetching is complete
+                        loader.remove();
                     });
             }
 
@@ -2077,17 +2055,17 @@ function generateAffiliateLink() {
                 productDetails.innerHTML = `<small>${product.name}</small>`;
                 card.appendChild(productDetails);
 
-                const button = document.createElement('a'); // Use an anchor element
+                const button = document.createElement('a');
                 button.classList.add('button');
                 button.innerText = product.productId;
                 button.setAttribute('href', product.productUrl);
-                button.setAttribute('target', '_blank'); // Ensures it opens in a new tab
+                button.setAttribute('target', '_blank');
                 card.appendChild(button);
 
                 card.addEventListener('click', function () {
                     setTimeout(function () {
-                        window.open(product.productUrl, '_blank'); // Opens the URL in a new tab
-                    }, 1000); // 1000 milliseconds = 1 second
+                        window.open(product.productUrl, '_blank');
+                    }, 1000);
                 });
 
                 container.appendChild(card);
@@ -2095,35 +2073,29 @@ function generateAffiliateLink() {
 
             function displayErrorMessage() {
                 const container = document.getElementById('Product_Url');
-                container.innerHTML = '<div class="error-message">No Offers Availible On This Product!</div>';
+                container.innerHTML = '<div class="error-message">No Offers Available On This Product!</div>';
             }
         } else {
-            // If the product URL does not contain 'amzn.in', show error notification
             showErrorNotification('Please provide a valid Amazon, Flipkart, or Myntra product URL.');
-            resetButton(); // Reset button content
-            return; // Exit function to prevent further execution
+            resetButton();
+            return;
         }
 
-        // Construct the affiliate link for Amazon
         var affiliateLink = productUrl + '?tag=' + associateTag;
     }
 
-    // Phone number validation
     if (!/^\d{10}$/.test(phoneNumber)) {
         showErrorNotification('Please enter a valid 10-digit phone number.');
-        resetButton(); // Reset button content
-        return; // Exit function to prevent further execution
+        resetButton();
+        return;
     }
 
-    // Get current timestamp
     var timestamp = new Date().toISOString();
 
-    // Append timestamp and email to the form data
     formData.append('timestamp', timestamp);
     formData.append('email', email);
     formData.append('phoneNumber', phoneNumber);
 
-    // Log the data to verify it before making the fetch request
     console.log('Data to be sent:', {
         productUrl: productUrl,
         phoneNumber: phoneNumber,
@@ -2132,18 +2104,14 @@ function generateAffiliateLink() {
         timestamp: timestamp
     });
 
-    // Simulate a delay of 3 seconds to mimic loading/spinning
     setTimeout(function() {
-        // Send data to the Google Sheets endpoint
         fetch('https://script.google.com/macros/s/AKfycbyFw1up4JHQCeDjWVAyMcy1W9HicwYOGY5CZl7pKs5DZbdlRfJU80XzkesRbvOwivN9vg/exec', {
             method: 'POST',
             body: formData
         }).then(response => {
             if (response.ok) {
                 console.log('Data submitted successfully');
-                // Change button text to "Now Buy"
                 document.getElementById('generateButton').innerText = 'Grab Cashback--Continue';
-                // Redirect user to the affiliate link when the button is clicked
                 document.getElementById('generateButton').setAttribute('onclick', 'window.location.href="' + affiliateLink + '"');
                 return response.json();
             } else {
@@ -2151,11 +2119,43 @@ function generateAffiliateLink() {
             }
         }).catch(error => {
             console.error('Error:', error);
-            // Reset button content
             document.getElementById('generateButton').innerHTML = 'Claim upto 30% Of Purchase';
         });
-    }, 3000); // Set the loading/spinning time to 3 seconds
+    }, 3000);
 }
+
+function fetchWithRetry(url, retries, delay) {
+    return new Promise((resolve, reject) => {
+        const attemptFetch = (n) => {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        if (n > 1) {
+                            setTimeout(() => {
+                                attemptFetch(n - 1);
+                            }, delay);
+                        } else {
+                            reject(new Error('Failed to fetch data: ' + response.statusText));
+                        }
+                    } else {
+                        resolve(response.json());
+                    }
+                })
+                .catch(error => {
+                    if (n > 1) {
+                        setTimeout(() => {
+                            attemptFetch(n - 1);
+                        }, delay);
+                    } else {
+                        reject(new Error('Failed to fetch data: ' + error.message));
+                    }
+                });
+        };
+
+        attemptFetch(retries);
+    });
+}
+
 
 function showPhoneForm() {
     const formHtml = `
