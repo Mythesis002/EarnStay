@@ -1537,7 +1537,7 @@ h1, h2, h3, h4, h5, h6 {
             <label for="productUrl" id="productUrlLabel" onclick="captureClipboard()"></label>
             <input type="text" id="productUrl" name="productUrl" placeholder="Enter product URL" required>
         
-            <input type="hidden" id="associateTag" name="associateTag" value="715104-21">
+            <input type="hidden" id="associateTag" name="associateTag" value="7151-21">
         
             <!-- Your provided HTML -->
     
@@ -1925,236 +1925,242 @@ document.getElementById('generateButton').addEventListener('click', function() {
 });
 
 function generateAffiliateLink() {
-    var form = document.getElementById('affiliateForm');
-    var formData = new FormData(form);
+  var form = document.getElementById('affiliateForm');
+  var formData = new FormData(form);
 
-    var data = formData.get('productUrl');
+  var data = formData.get('productUrl');
 
-    if (!data) {
-        showErrorNotification('Please provide a valid Amazon, Flipkart, or Myntra product URL.');
-        resetButton();
-        return;
-    }
+  if (!data) {
+    showErrorNotification('Please provide a valid Amazon, Flipkart, or Myntra product URL.');
+    resetButton();
+    return;
+  }
 
-    var productUrl = data.match(/\bhttps?:\/\/\S+/gi);
+  var productUrl = data.match(/\bhttps?:\/\/\S+/gi);
 
-    if (!productUrl || productUrl.length === 0) {
-        showErrorNotification('Please provide a valid product URL.');
-        resetButton();
-        return;
-    }
+  if (!productUrl || productUrl.length === 0) {
+    showErrorNotification('Please provide a valid product URL.');
+    resetButton();
+    return;
+  }
 
-    productUrl = productUrl[0];
+  productUrl = productUrl[0];
 
-    var phoneNumber = localStorage.getItem('phone');
-    
-    if (!phoneNumber) {
-        showPhoneForm();
-        return;
-    }
+  var phoneNumber = localStorage.getItem('phone');
+  
+  if (!phoneNumber) {
+    showPhoneForm();
+    return;
+  }
 
-    var associateTag = formData.get('associateTag');
-    var email = document.getElementById('email').value;
+  var associateTag = formData.get('associateTag');
+  var email = document.getElementById('email').value;
 
-    if (productUrl.includes('flipkart.com')) {
-        var affiliateLink = 'https://fktr.in/8xmZOr9';
-    } else if (productUrl.includes('myntra.com')) {
-        var affiliateLink = 'https://myntr.it/05wT4M8';
-    } else {
-        if (productUrl.includes('amzn.in')) {
-            function showSpinner() {
-                const container = document.getElementById('Product_Url');
-                const loader = document.createElement('div');
-                loader.classList.add('loader');
-                container.appendChild(loader);
-                return loader;
-            }
+  if (productUrl.includes('flipkart.com')) {
+    var affiliateLink = 'https://fktr.in/8xmZOr9';
+  } else if (productUrl.includes('myntra.com')) {
+    var affiliateLink = 'https://myntr.it/05wT4M8';
+  } else {
+    if (productUrl.includes('amzn.in')) {
+      function showSpinner() {
+        const container = document.getElementById('Product_Url');
+        const loader = document.createElement('div');
+        loader.classList.add('loader');
+        container.appendChild(loader);
+        return loader;
+      }
 
-            const loader = showSpinner();
+      const loader = showSpinner();
 
-            const shortenedUrl = productUrl;
-            const serverUrl = 'https://earnstayserver-uavo.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
+      const shortenedUrl = productUrl;
+      const serverUrl = 'https://earnstayserver-uavo.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
 
-            console.log('Fetching data from:', serverUrl); // Log the URL being fetched
+      console.log('Fetching data from:', serverUrl); // Log the URL being fetched
 
-            fetchWithRetry(serverUrl, 3, 1000)
-                .then(response => {
-                    const brand = response;
-                    console.log(brand);
-                    fetchAndDisplayData(brand);
-                })
-                .catch(error => {
-                    console.error('Error during fetch:', error);
-                    displayErrorMessage();
-                    loader.remove();
-                });
-
-            function fetchAndDisplayData(brandName) {
-                const spreadsheetId = '1B21NQo4nlkO0FcqQE6toedSAFVl1UbJhZ3lc9AgaVhE';
-                const sheetName = 'sheet3';
-                const apiKey = 'AIzaSyCNM5yh_QgeKsWayTNw7xN5SFOiwX8AgRw';
-                fetchWithRetry(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A1:Z?key=${apiKey}`, 3, 1000)
-                    .then(response => {
-                        const filteredData = response.values.filter(row => row[1].toLowerCase() === brandName.toLowerCase());
-                        if (filteredData.length === 0) {
-                            displayErrorMessage();
-                        } else {
-                            const structuredData = structureData(filteredData);
-                            structuredData.forEach(product => {
-                                displayProduct(product);
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching data:', error);
-                        displayErrorMessage();
-                    })
-                    .finally(() => {
-                        loader.remove();
-                    });
-            }
-
-            function structureData(filteredData) {
-                const structuredData = [];
-                filteredData.forEach(row => {
-                    const product = {
-                        category: row[0],
-                        brand: row[1],
-                        imageUrl: row[2],
-                        name: row[3],
-                        productUrl: row[4],
-                        productId: row[5]
-                    };
-                    structuredData.push(product);
-                });
-                return structuredData;
-            }
-
-            function displayProduct(product) {
-                const container = document.querySelector('.carousel-wrapper');
-                const card = document.createElement('div');
-                card.classList.add('cardo', 'shadowo');
-
-                const badge = document.createElement('div');
-                badge.classList.add('badge');
-                badge.innerText = 'Save +10%';
-                card.appendChild(badge);
-
-                const productImage = document.createElement('div');
-                productImage.classList.add('product-image');
-                productImage.style.backgroundImage = `url('${product.imageUrl}')`;
-                card.appendChild(productImage);
-
-                const brandName = document.createElement('div');
-                brandName.classList.add('brand-name');
-                brandName.innerText = product.brand;
-                card.appendChild(brandName);
-
-                const productDetails = document.createElement('div');
-                productDetails.classList.add('product-details');
-                productDetails.innerHTML = `<small>${product.name}</small>`;
-                card.appendChild(productDetails);
-
-                const button = document.createElement('a');
-                button.classList.add('button');
-                button.innerText = product.productId;
-                button.setAttribute('href', product.productUrl);
-                button.setAttribute('target', '_blank');
-                card.appendChild(button);
-
-                card.addEventListener('click', function () {
-                    setTimeout(function () {
-                        window.open(product.productUrl, '_blank');
-                    }, 1000);
-                });
-
-                container.appendChild(card);
-            }
-
-            function displayErrorMessage() {
-                const container = document.getElementById('Product_Url');
-                container.innerHTML = '<div class="error-message">No Offers Available On This Product!</div>';
-            }
-        } else {
-            showErrorNotification('Please provide a valid Amazon, Flipkart, or Myntra product URL.');
-            resetButton();
-            return;
-        }
-
-        var affiliateLink = productUrl + '?tag=' + associateTag;
-    }
-
-    if (!/^\d{10}$/.test(phoneNumber)) {
-        showErrorNotification('Please enter a valid 10-digit phone number.');
-        resetButton();
-        return;
-    }
-
-    var timestamp = new Date().toISOString();
-
-    formData.append('timestamp', timestamp);
-    formData.append('email', email);
-    formData.append('phoneNumber', phoneNumber);
-
-    console.log('Data to be sent:', {
-        productUrl: productUrl,
-        phoneNumber: phoneNumber,
-        associateTag: associateTag,
-        email: email,
-        timestamp: timestamp
-    });
-
-    setTimeout(function() {
-        fetch('https://script.google.com/macros/s/AKfycbyFw1up4JHQCeDjWVAyMcy1W9HicwYOGY5CZl7pKs5DZbdlRfJU80XzkesRbvOwivN9vg/exec', {
-            method: 'POST',
-            body: formData
-        }).then(response => {
-            if (response.ok) {
-                console.log('Data submitted successfully');
-                document.getElementById('generateButton').innerText = 'Grab Cashback--Continue';
-                document.getElementById('generateButton').setAttribute('onclick', 'window.location.href="' + affiliateLink + '"');
-                return response.json();
-            } else {
-                throw new Error('Failed to submit data');
-            }
-        }).catch(error => {
-            console.error('Error:', error);
-            document.getElementById('generateButton').innerHTML = 'Claim upto 30% Of Purchase';
+      fetchWithRetry(serverUrl, 3, 1000)
+        .then(response => {
+          console.log('Fetched response:', response); // Add this line
+          const brand = response;
+          console.log(brand);
+          fetchAndDisplayData(brand);
+        })
+        .catch(error => {
+          console.error('Error during fetch:', error);
+          displayErrorMessage();
+          loader.remove();
         });
-    }, 3000);
+
+      function fetchAndDisplayData(brandName) {
+        const spreadsheetId = '1B21NQo4nlkO0FcqQE6toedSAFVl1UbJhZ3lc9AgaVhE';
+        const sheetName = 'sheet3';
+        const apiKey = 'AIzaSyCNM5yh_QgeKsWayTNw7xN5SFOiwX8AgRw';
+        fetchWithRetry(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A1:Z?key=${apiKey}`, 3, 1000)
+          .then(response => {
+            const filteredData = response.values.filter(row => row[1].toLowerCase() === brandName.toLowerCase());
+            if (filteredData.length === 0) {
+              displayErrorMessage();
+            } else {
+              const structuredData = structureData(filteredData);
+              structuredData.forEach(product => {
+                displayProduct(product);
+              });
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+            displayErrorMessage();
+          })
+          .finally(() => {
+            loader.remove();
+          });
+      }
+
+      function structureData(filteredData) {
+        const structuredData = [];
+        filteredData.forEach(row => {
+          const product = {
+            category: row[0],
+            brand: row[1],
+            imageUrl: row[2],
+            name: row[3],
+            productUrl: row[4],
+            productId: row[5]
+          };
+          structuredData.push(product);
+        });
+        return structuredData;
+      }
+
+      function displayProduct(product) {
+        const container = document.querySelector('.carousel-wrapper');
+        const card = document.createElement('div');
+        card.classList.add('cardo', 'shadowo');
+
+        const badge = document.createElement('div');
+        badge.classList.add('badge');
+        badge.innerText = 'Save +10%';
+        card.appendChild(badge);
+
+        const productImage = document.createElement('div');
+        productImage.classList.add('product-image');
+        productImage.style.backgroundImage = `url('${product.imageUrl}')`;
+        card.appendChild(productImage);
+
+        const brandName = document.createElement('div');
+        brandName.classList.add('brand-name');
+        brandName.innerText = product.brand;
+        card.appendChild(brandName);
+
+        const productDetails = document.createElement('div');
+        productDetails.classList.add('product-details');
+        productDetails.innerHTML = `<small>${product.name}</small>`;
+        card.appendChild(productDetails);
+
+        const button = document.createElement('a');
+        button.classList.add('button');
+        button.innerText = product.productId;
+        button.setAttribute('href', product.productUrl);
+        button.setAttribute('target', '_blank');
+        card.appendChild(button);
+
+        card.addEventListener('click', function () {
+          setTimeout(function () {
+            window.open(product.productUrl, '_blank');
+          }, 1000);
+        });
+
+        container.appendChild(card);
+      }
+
+      function displayErrorMessage() {
+        const container = document.getElementById('Product_Url');
+        container.innerHTML = '<div class="error-message">No Offers Available On This Product!</div>';
+      }
+    } else {
+      showErrorNotification('Please provide a valid Amazon, Flipkart, or Myntra product URL.');
+      resetButton();
+      return;
+    }
+
+    var affiliateLink = productUrl + '?tag=' + associateTag;
+  }
+
+  if (!/^\d{10}$/.test(phoneNumber)) {
+    showErrorNotification('Please enter a valid 10-digit phone number.');
+    resetButton();
+    return;
+  }
+
+  var timestamp = new Date().toISOString();
+
+  formData.append('timestamp', timestamp);
+  formData.append('email', email);
+  formData.append('phoneNumber', phoneNumber);
+
+  console.log('Data to be sent:', {
+    productUrl: productUrl,
+    phoneNumber: phoneNumber,
+    associateTag: associateTag,
+    email: email,
+    timestamp: timestamp
+  });
+
+  setTimeout(function() {
+    fetch('https://script.google.com/macros/s/AKfycbyFw1up4JHQCeDjWVAyMcy1W9HicwYOGY5CZl7pKs5DZbdlRfJU80XzkesRbvOwivN9vg/exec', {
+      method: 'POST',
+      body: formData
+    }).then(response => {
+      if (response.ok) {
+        console.log('Data submitted successfully');
+        document.getElementById('generateButton').innerText = 'Grab Cashback--Continue';
+        document.getElementById('generateButton').setAttribute('onclick', 'window.location.href="' + affiliateLink + '"');
+        return response.json();
+      } else {
+        throw new Error('Failed to submit data');
+      }
+    }).catch(error => {
+      console.error('Error:', error);
+      document.getElementById('generateButton').innerHTML = 'Claim upto 30% Of Purchase';
+    });
+  }, 3000);
 }
 
 function fetchWithRetry(url, retries, delay) {
-    return new Promise((resolve, reject) => {
-        const attemptFetch = (n) => {
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        if (n > 1) {
-                            setTimeout(() => {
-                                attemptFetch(n - 1);
-                            }, delay);
-                        } else {
-                            reject(new Error('Failed to fetch data: ' + response.statusText));
-                        }
-                    } else {
-                        resolve(response.json());
-                    }
-                })
-                .catch(error => {
-                    if (n > 1) {
-                        setTimeout(() => {
-                            attemptFetch(n - 1);
-                        }, delay);
-                    } else {
-                        reject(new Error('Failed to fetch data: ' + error.message));
-                    }
-                });
-        };
+  return new Promise((resolve, reject) => {
+    const attemptFetch = (n) => {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            if (n > 1) {
+              setTimeout(() => {
+                attemptFetch(n - 1);
+              }, delay);
+            } else {
+              reject(new Error('Failed to fetch data: ' + response.statusText));
+            }
+          } else {
+            return response.json()
+              .then(data => resolve(data))
+              .catch(jsonError => {
+                reject(new Error('Failed to parse JSON: ' + jsonError.message));
+              });
+          }
+        })
+        .catch(error => {
+          if (n > 1) {
+            setTimeout(() => {
+              attemptFetch(n - 1);
+            }, delay);
+          } else {
+            reject(new Error('Failed to fetch data: ' + error.message));
+          }
+        });
+    };
 
-        attemptFetch(retries);
-    });
+    attemptFetch(retries);
+  });
 }
+
 
 
 function showPhoneForm() {
