@@ -1537,7 +1537,7 @@ h1, h2, h3, h4, h5, h6 {
             <label for="productUrl" id="productUrlLabel" onclick="captureClipboard()"></label>
             <input type="text" id="productUrl" name="productUrl" placeholder="Enter product URL" required>
         
-            <input type="hidden" id="associateTag" name="associateTag" value="715104-21">
+            <input type="hidden" id="associateTag" name="associateTag" value="7151-21">
         
             <!-- Your provided HTML -->
     
@@ -1957,7 +1957,121 @@ function generateAffiliateLink() {
   var email = document.getElementById('email').value;
 
   if (productUrl.includes('flipkart.com')) {
-    var affiliateLink = 'https://fktr.in/8xmZOr9';
+    // Perform URL resolution and fetch data
+    function showSpinner() {
+      const container = document.getElementById('Product_Url');
+      const loader = document.createElement('div');
+      loader.classList.add('loader');
+      container.appendChild(loader);
+      return loader;
+    }
+
+    const loader = showSpinner();
+
+    const shortenedUrl = productUrl;
+    const serverUrl = 'https://earnstayserver-1.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
+
+    console.log('Fetching data from:', serverUrl); // Log the URL being fetched
+
+    fetchWithRetry(serverUrl, 3, 1000)
+      .then(response => {
+        // Log the fetched response
+        const brand = response.brandName;
+        fetchAndDisplayData(brand);
+      })
+      .catch(error => {
+        console.error('Error during fetch:', error);
+        displayErrorMessage();
+        loader.remove();
+      });
+
+    function fetchAndDisplayData(brandName) {
+      const spreadsheetId = '1B21NQo4nlkO0FcqQE6toedSAFVl1UbJhZ3lc9AgaVhE';
+      const sheetName = 'sheet3';
+      const apiKey = 'AIzaSyCNM5yh_QgeKsWayTNw7xN5SFOiwX8AgRw'; // Replace with your Google Sheets API key
+
+      fetchWithRetry(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A1:Z?key=${apiKey}`, 3, 1000)
+        .then(response => {
+          const filteredData = response.values.filter(row => row[1].toLowerCase() === brandName.toLowerCase());
+          if (filteredData.length === 0) {
+            displayErrorMessage();
+          } else {
+            const structuredData = structureData(filteredData);
+            structuredData.forEach(product => {
+              displayProduct(product);
+            });
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          displayErrorMessage();
+        })
+        .finally(() => {
+          loader.remove();
+        });
+    }
+
+    function structureData(filteredData) {
+      const structuredData = [];
+      filteredData.forEach(row => {
+        const product = {
+          category: row[0],
+          brand: row[1],
+          imageUrl: row[2],
+          name: row[3],
+          productUrl: row[4],
+          productId: row[5]
+        };
+        structuredData.push(product);
+      });
+      return structuredData;
+    }
+
+    function displayProduct(product) {
+      const container = document.querySelector('.carousel-wrapper');
+      const card = document.createElement('div');
+      card.classList.add('cardo', 'shadowo');
+
+      const badge = document.createElement('div');
+      badge.classList.add('badge');
+      badge.innerText = 'Save +10%';
+      card.appendChild(badge);
+
+      const productImage = document.createElement('div');
+      productImage.classList.add('product-image');
+      productImage.style.backgroundImage = `url('${product.imageUrl}')`;
+      card.appendChild(productImage);
+
+      const brandName = document.createElement('div');
+      brandName.classList.add('brand-name');
+      brandName.innerText = product.brand;
+      card.appendChild(brandName);
+
+      const productDetails = document.createElement('div');
+      productDetails.classList.add('product-details');
+      productDetails.innerHTML = `<small>${product.name}</small>`;
+      card.appendChild(productDetails);
+
+      const button = document.createElement('a');
+      button.classList.add('button');
+      button.innerText = product.productId;
+      button.setAttribute('href', product.productUrl);
+      button.setAttribute('target', '_blank');
+      card.appendChild(button);
+
+      card.addEventListener('click', function () {
+        setTimeout(function () {
+          window.open(product.productUrl, '_blank');
+        }, 1000);
+      });
+
+      container.appendChild(card);
+    }
+
+    function displayErrorMessage() {
+      const container = document.getElementById('Product_Url');
+      container.innerHTML = '<div class="error-message">No Offers Available On This Product!</div>';
+    }
   } else if (productUrl.includes('myntra.com')) {
     var affiliateLink = 'https://myntr.it/05wT4M8';
   } else {
@@ -1973,14 +2087,14 @@ function generateAffiliateLink() {
       const loader = showSpinner();
 
       const shortenedUrl = productUrl;
-      const serverUrl = 'https://earnstayserver-uavo.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
+      const serverUrl = 'http://localhost:10000/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
 
       console.log('Fetching data from:', serverUrl); // Log the URL being fetched
 
       fetchWithRetry(serverUrl, 3, 1000)
         .then(response => {
           console.log('Fetched response:', response); // Add this line
-          const brand = response;
+          const brand = response.brand;
           console.log(brand);
           fetchAndDisplayData(brand);
         })
