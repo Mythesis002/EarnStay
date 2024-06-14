@@ -2087,7 +2087,7 @@ function generateAffiliateLink() {
       const loader = showSpinner();
 
       const shortenedUrl = productUrl;
-      const serverUrl = 'http://localhost:10000/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
+      const serverUrl = 'https://earnstayserver-1.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
 
       console.log('Fetching data from:', serverUrl); // Log the URL being fetched
 
