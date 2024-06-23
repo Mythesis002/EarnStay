@@ -1969,21 +1969,24 @@ function generateAffiliateLink() {
     const loader = showSpinner();
 
     const shortenedUrl = productUrl;
-    const serverUrl = 'https://earnstayserver-1.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
+const serverUrl = 'https://earnstayserver-uavo.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(shortenedUrl);
 
-    console.log('Fetching data from:', serverUrl); // Log the URL being fetched
+console.log('Fetching data from:', serverUrl); // Log the URL being fetched
 
-    fetchWithRetry(serverUrl, 3, 1000)
-      .then(response => {
-        // Log the fetched response
-        const brand = response.brandName;
-        fetchAndDisplayData(brand);
-      })
-      .catch(error => {
-        console.error('Error during fetch:', error);
-        displayErrorMessage();
-        loader.remove();
-      });
+fetchWithRetry(serverUrl, 3, 1000)
+  
+  .then(data => {
+    console.log('Fetched response:', data); // Add this line
+    const brand = data.brand; // Extract the brand name
+    console.log('Brand:', brand);
+    fetchAndDisplayData(brand);
+  })
+  .catch(error => {
+    console.error('Error during fetch:', error);
+    displayErrorMessage();
+    loader.remove();
+  });
+
 
     function fetchAndDisplayData(brandName) {
       const spreadsheetId = '1B21NQo4nlkO0FcqQE6toedSAFVl1UbJhZ3lc9AgaVhE';
