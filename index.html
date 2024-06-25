@@ -1987,6 +1987,8 @@ function generateAffiliateLink() {
   var associateTag = formData.get('associateTag');
   var email = document.getElementById('email').value;
 
+  var affiliateLink = productUrl + '?tag=' + associateTag;
+
   if (productUrl.includes('flipkart.com')) {
     // Perform URL resolution and fetch data
 function showSpinner() {
@@ -2375,7 +2377,7 @@ if (spinnerResult) {
       return;
     }
 
-    var affiliateLink = productUrl + '?tag=' + associateTag;
+
   }
 
   if (!/^\d{10}$/.test(phoneNumber)) {
