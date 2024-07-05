@@ -39,11 +39,9 @@
             caret-color: hsl(201, 67%, 49%);
         }
 
-        body {
-            
+        body {  
             margin: 0;
             padding: 0;
-            
             display: flex;
             justify-content: center;
             align-items: center;
@@ -52,40 +50,39 @@
             background: url("https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/b7SLH9vGCBCsAcSEE4HKTW") no-repeat center;
             background-position: center;
         }
-
         .container {
-            bottom: 0;
+            top: 0;
             width: 100%;
             max-width: 1200px;
             background-color: rgba(255, 255, 255, 0.9);
-            padding-bottom: 200px;
-            padding-top: 50px;
+            padding-bottom: 1px;
+            padding-top: 0;
             padding-left: 50px;
             padding-right: 50px;
             border-radius: 20px;
+            border-top-left-radius: 0 ;
+            border-top-right-radius: 0 ;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
         }
 
         .brand-logo {
-            position: fixed;
-            align-items: center;
-            
-            top: 15px;
-            width: 80px;
-            height: 40px;
-            margin: auto;
-            background: url("https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/b7SLH9vGCBCsAcSEE4HKTW") no-repeat center;
-            background-size: 80px;
-            border-radius: 5%;
-            z-index: 1000;
-            /* Center the logo horizontally */
-            left: 50%;
-            transform: translateX(-50%);
-            /* Shift the logo to the right by 40px */
-            margin-right: 45px;
+    position: fixed;
+    align-items: center;
+    top: 0;
+    width: 80px;
+    height: 40px;
+    margin: auto;
+    background: url("https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/b7SLH9vGCBCsAcSEE4HKTW") no-repeat center;
+    background-size: 80px;
+    border-radius: 4%;
+    z-index: 1000;
+    left: 20%;
+    transform: translateX(-50%);
+    margin-right: 45px;
 }
-
-
+.brand-logo.hidden {
+    display: none;
+}
         .brand-title {
             margin-top: 0px;
             font-weight: 800;
@@ -120,19 +117,6 @@
             initial-value: -1;
             inherits: true
         }
-
-        /* Updated CSS */
-html, body {
-    min-height: 100%;
-}
-
-body {
-    overflow: auto; /* Enable scrolling when necessary */
-}
-
-/* Your existing CSS */
-/* ... */
-
 
         button {
             --m: 1;
@@ -213,9 +197,7 @@ body {
                 padding-top: 20px;
             }
 
-            .container {
-                margin-top: 20px;
-            }
+            
         }
         .skip-message {
 
@@ -437,31 +419,12 @@ body {
         .company-icons .icon:hover {
             color: #007bff;
         }
-        .header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    border-radius: 5px; /* Remove border-radius */
-    border: 2px solid #007bff;
-    border-bottom-width: 7px;
-    background-color: #ffffff; /* Background color */
-    padding-bottom: 40px; /* Padding around the header */
-    text-align: center;
-    font-family: monospace;
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space items evenly along the main axis */
-    align-items: center; /* Center items vertically */
-    z-index: 999;
-    border-top-left-radius:0px;
-    border-top-right-radius:0px;
-    box-shadow: 0 5px 10px rgba(72, 72, 72, 0.8); /* Add shadow */
-}
+        
 
 .menu-button {
     position: relative;
-    left:5px;
-    top: 20px;
+    right:40px;
+    top: 4px;
     font-size: 20px; /* Font size of the menu button */
     cursor: pointer; /* Change cursor to pointer on hover */
 }
@@ -493,7 +456,7 @@ body {
     display: none; /* Initially hide the report options */
     position: absolute; /* Position absolute to overlay other content */
     top: calc(100% + 10px); /* Position below the report button with additional spacing */
-    left: 50%; /* Align with the center of the report button */
+    right: 0; /* Align with the center of the report button */
     transform: translateX(-50%); /* Move back half of the report options width */
     background-color: #fefefea8; /* Background color */
     border: 20px;
@@ -1497,6 +1460,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #65676b;
   font-size: 12px;
 }
+.nomobar{
+    top: 80px;
+    background-color: #007BFF;
+}
     </style>
 </head>
 <body>
@@ -1513,7 +1480,7 @@ h1, h2, h3, h4, h5, h6 {
         </p>
         <button id="closeSkipMessage">Skip</button>
     </div>
-
+    <div class = "nomobar">
     <div class="container" itemprop="mainEntity">
         <header class="header">
             <div class="menu-button">&#9776;</div>
@@ -1533,36 +1500,9 @@ h1, h2, h3, h4, h5, h6 {
 
         
         
-        <div class="banner-container" id="bannerContainer">
-            <div class="banners" id="bannerSlider">
-                <!-- Image Banners -->
-                <div class="banner">
-                    <a href="https://earnstay.shop/" target="_blank"></a>
-                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/ipPv7usUhfs2oXNfMuAXBX" alt="earnstay- earnwhile purchase">
-                </div>
-                <div class="banner">
-                    <a href="https://earnstay.shop/" target="_blank"></a>
-                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/t3pSm6HkzUsteiU5mWqasR" alt="cashbacks while earn">
-                </div>
-                <div class="banner">
-                    <a href="https://earnstay.shop/" target="_blank"></a>
-                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/5ynn4Hd6KEWwBznTKuyNEy" alt="Slide 3">
-                </div>
-                <div class="banner">
-                    <a href="https://earnstay.shop/" target="_blank"></a>
-                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/cYapBbPVaGdzEcEjPUCMYT" alt="Slide 4">
-                </div>
-                <div class="banner">
-                    <a href="https://earnstay.shop/" target="_blank"></a>
-                    <img src="https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/sPmwsUCP5gxqxkcNcvLpa3" alt="Slide 5">
-                </div>
-                <!-- Add more banners here -->
-            </div>
-            <div class="carousel-btn prev-btn" onclick="prevSlide()">&#10094;</div>
-            <div class="carousel-btn next-btn" onclick="nextSlide()">&#10095;</div>
-        </div>
         
-        <div class="line"></div>
+        
+        
 
         <div class="brand-logo"></div>
         <h2 class="Earnstayheadingh2">Discover tailored deals and earn cashback on every purchase</h2>
@@ -1580,7 +1520,8 @@ h1, h2, h3, h4, h5, h6 {
         </form>
         
 <h3 class="headinging">Related Offers</h3>
-<div class="lineted"></div> <!-- Line below the heading -->
+
+</div> <!-- Line below the heading -->
 <div id="Product_Url" class="carousel-container">
     <div class="carousel-wrapper"></div>
 </div>
@@ -2648,6 +2589,14 @@ document.getElementById('share').addEventListener('click', function() {
         alert('Opps!,Sharing is not supported in your browser.');
     }
     
+});
+window.addEventListener('scroll', function() {
+    var logo = document.querySelector('.brand-logo');
+    if (window.scrollY > 230) {
+        logo.classList.add('hidden');
+    } else {
+        logo.classList.remove('hidden');
+    }
 });
 
 let startX = 0;
