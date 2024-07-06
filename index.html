@@ -421,70 +421,94 @@
         }
         
 
-.menu-button {
+        .menu-button {
     position: relative;
-    right:40px;
+    right: 40px;
     top: 4px;
-    font-size: 20px; /* Font size of the menu button */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .actions {
-    display: flex; /* Use flexbox for layout */
+    display: flex;
     align-items: center;
-    display: flex; /* Use flexbox for layout */
-     /* Center items vertically */
+    flex-direction: column;
 }
 
-.ask-me,
-.report-button {
+.ask-me, .report-button {
     position: relative;
     right: 8px;
     top: 20px;
     font-size: 13px;
     font-weight: 550;
     display: grid;
-    margin-left: 10px; /* Add some spacing between items */
-    color: inherit; /* Inherit color from parent */
-    text-decoration: none; /* Remove underline */
-    text-decoration: none; /* Remove underline from links */
-    color: #161616; /* Text color */
+    margin-left: 10px;
+    color: #161616;
+    text-decoration: none;
 }
 
 .report-options {
-    text-align: center;
-    display: none; /* Initially hide the report options */
-    position: absolute; /* Position absolute to overlay other content */
-    top: calc(100% + 10px); /* Position below the report button with additional spacing */
-    right: 0; /* Align with the center of the report button */
-    transform: translateX(-50%); /* Move back half of the report options width */
-    background-color: #fefefea8; /* Background color */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fefefe;
+    padding: 7px;
     border: 20px;
     border-width: 10px;
-    text-decoration: none; /* Remove underline from links */
     border-radius: 2px;
-    margin-top: 10px;
     font-weight: 700;
-    text-decoration: none; /* Remove underline from links */
+    text-decoration: none;
     border-color: #013a77;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-    padding: 10px; /* Padding inside the report options */
-    z-index: 9999; /* Ensure it's above other content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.report-options.show {
+    transform: translateX(0);
+    flex-direction: column;
 }
 
 .report-options a {
-    display: inline-block; /* Display links as inline-block elements */
-    margin: 5px; /* Add some margin between options */
-    padding: 3px 10px; /* Add padding */
-    text-decoration: none; /* Remove underline from links */
-    color: #282727db; /* Text color */
-    text-decoration: none; /* Remove underline from links */
+    display: inline-block;
+    padding: 3px 10px;
+    text-decoration: none;
+    color: #282727db;
+    opacity: 0;
+    transform: translateX(-20px);
+    flex-direction: column;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
+.report-options.show a {
+    opacity: 1;
+    transform: translateX(0);
+    flex-direction: column;
+}
+
+.report-options a:nth-child(1) { transition-delay: 0.1s; }
+.report-options a:nth-child(2) { transition-delay: 0.2s; }
+.report-options a:nth-child(3) { transition-delay: 0.3s; }
+/* Add more if you have more options */
+
 .report-options a:hover {
-    background-color: #007bff; /* Change background color on hover to blue */
-    
-    color: #fff; /* Change text color to white */
+    background-color: #007bff;
+    flex-direction: column;
+    color: #fff;
+}
+
+.report-options a:nth-child(1) { transition-delay: 0.15s; }
+.report-options a:nth-child(2) { transition-delay: 0.25s; }
+.report-options a:nth-child(3) { transition-delay: 0.35s; }
+/* Add more if you have more options */
+
+.report-options a:hover {
+    background-color: #007bff;
+    flex-direction: column;
+    color: #fff;
 }
 .new_footer_area {
     background: #fbfbfd;
@@ -926,17 +950,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .Earnstayheadingh2 {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 24px; /* Increase font size for emphasis */
-    ;
-    color: #707070; /* Dark color for better readability */
-    text-align: center; /* Center-align the text */
-    margin-top: 30px; /* Add some top margin for spacing */
-    text-transform: uppercase; /* Convert text to uppercase for emphasis */
-    letter-spacing: 1px; /* Add some letter spacing for readability */
-    line-height: 1.5; /* Increase line height for better readability */
+    letter-spacing: .01em;
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-family: WF Visual Sans, sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
     
-
 }
 
 .cards-list {
@@ -1463,6 +1485,8 @@ h1, h2, h3, h4, h5, h6 {
 .nomobar{
     top: 80px;
     background-color: #007BFF;
+    color-interpolation-filters: auto;
+    
 }
     </style>
 </head>
@@ -1487,11 +1511,11 @@ h1, h2, h3, h4, h5, h6 {
             <div class="actions">
                 <a href="mailto:mythesisads@gmail.com" class="ask-me">Ask me</a>
                 <a class="report-button" href="orderslist.html">Earned</a>
-                <div class="report-options">
+                <div id = "report-options" class="report-options">
                     <a href="Term&conditions.html">LEARN</a>
-                    <div class="lineted"></div>
+                    
                     <a href="https://telegram.im/@EarnStay">EARN</a>
-                    <div class="lineted"></div>
+                    
                     <a href="index.html">Claim Now</a>
                 </div>
 
@@ -1505,7 +1529,7 @@ h1, h2, h3, h4, h5, h6 {
         
 
         <div class="brand-logo"></div>
-        <h2 class="Earnstayheadingh2">Discover tailored deals and earn cashback on every purchase</h2>
+        <h2 class="Earnstayheadingh2">Discover Tailored Deals And Earn Cashback On Every Purchase</h2>
 
         
         <form id="affiliateForm" class="inputs">
@@ -1519,7 +1543,7 @@ h1, h2, h3, h4, h5, h6 {
     <button type="button" id="generateButton">Search Offers</button>
         </form>
         
-<h3 class="headinging">Related Offers</h3>
+<h3 class="headinging">DealBox</h3>
 
 </div> <!-- Line below the heading -->
 <div id="Product_Url" class="carousel-container">
@@ -1845,7 +1869,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const menuButton = document.querySelector('.menu-button');
+    const reportOptions = document.querySelector('.report-options');
+    const links = reportOptions.querySelectorAll('a');
 
+    menuButton.addEventListener('click', function() {
+        reportOptions.classList.toggle('show');
+        
+        if (reportOptions.classList.contains('show')) {
+            // Opening animation
+            links.forEach((link, index) => {
+                setTimeout(() => {
+                    link.style.opacity = '1';
+                    link.style.transform = 'translateX(0)';
+                }, 100 * (index + 1));
+            });
+        } else {
+            // Closing animation
+            links.forEach((link, index) => {
+                setTimeout(() => {
+                    link.style.opacity = '0';
+                    link.style.transform = 'translateX(-20px)';
+                }, 100 * (links.length - index));
+            });
+        }
+    });
+
+    // Close the menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!reportOptions.contains(event.target) && !menuButton.contains(event.target)) {
+            reportOptions.classList.remove('show');
+            
+            // Closing animation
+            links.forEach((link, index) => {
+                setTimeout(() => {
+                    link.style.opacity = '0';
+                    link.style.transform = 'translateX(-20px)';
+                }, 100 * (links.length - index));
+            });
+        }
+    });
+});
         
         // Function to show the skip message
         // Function to show the skip message
@@ -2592,7 +2657,7 @@ document.getElementById('share').addEventListener('click', function() {
 });
 window.addEventListener('scroll', function() {
     var logo = document.querySelector('.brand-logo');
-    if (window.scrollY > 230) {
+    if (window.scrollY > 185) {
         logo.classList.add('hidden');
     } else {
         logo.classList.remove('hidden');
