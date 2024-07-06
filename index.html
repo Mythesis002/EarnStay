@@ -425,14 +425,13 @@
     position: relative;
     right: 40px;
     top: 4px;
-    font-size: 20px;
+    font-weight: 200;
     cursor: pointer;
 }
 
 .actions {
     display: flex;
     align-items: center;
-    flex-direction: column;
 }
 
 .ask-me, .report-button {
@@ -450,26 +449,25 @@
 .report-options {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 35px;
     background-color: #fefefe;
-    padding: 7px;
+    padding: 7.8px;
     border: 20px;
     border-width: 10px;
     border-radius: 2px;
-    font-weight: 700;
+    font-weight: 200;
     text-decoration: none;
     border-color: #013a77;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
     display: flex;
     flex-direction: column;
     transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
 }
 
 .report-options.show {
     transform: translateX(0);
-    flex-direction: column;
+    opacity: 1;
 }
 
 .report-options a {
@@ -479,25 +477,12 @@
     color: #282727db;
     opacity: 0;
     transform: translateX(-20px);
-    flex-direction: column;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .report-options.show a {
     opacity: 1;
     transform: translateX(0);
-    flex-direction: column;
-}
-
-.report-options a:nth-child(1) { transition-delay: 0.1s; }
-.report-options a:nth-child(2) { transition-delay: 0.2s; }
-.report-options a:nth-child(3) { transition-delay: 0.3s; }
-/* Add more if you have more options */
-
-.report-options a:hover {
-    background-color: #007bff;
-    flex-direction: column;
-    color: #fff;
 }
 
 .report-options a:nth-child(1) { transition-delay: 0.15s; }
@@ -507,7 +492,6 @@
 
 .report-options a:hover {
     background-color: #007bff;
-    flex-direction: column;
     color: #fff;
 }
 .new_footer_area {
@@ -1872,42 +1856,15 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', function() {
     const menuButton = document.querySelector('.menu-button');
     const reportOptions = document.querySelector('.report-options');
-    const links = reportOptions.querySelectorAll('a');
 
     menuButton.addEventListener('click', function() {
         reportOptions.classList.toggle('show');
-        
-        if (reportOptions.classList.contains('show')) {
-            // Opening animation
-            links.forEach((link, index) => {
-                setTimeout(() => {
-                    link.style.opacity = '1';
-                    link.style.transform = 'translateX(0)';
-                }, 100 * (index + 1));
-            });
-        } else {
-            // Closing animation
-            links.forEach((link, index) => {
-                setTimeout(() => {
-                    link.style.opacity = '0';
-                    link.style.transform = 'translateX(-20px)';
-                }, 100 * (links.length - index));
-            });
-        }
     });
 
     // Close the menu when clicking outside
     document.addEventListener('click', function(event) {
         if (!reportOptions.contains(event.target) && !menuButton.contains(event.target)) {
             reportOptions.classList.remove('show');
-            
-            // Closing animation
-            links.forEach((link, index) => {
-                setTimeout(() => {
-                    link.style.opacity = '0';
-                    link.style.transform = 'translateX(-20px)';
-                }, 100 * (links.length - index));
-            });
         }
     });
 });
