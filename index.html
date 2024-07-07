@@ -425,8 +425,8 @@
     position: relative;
     right: 40px;
     top: 4px;
-    font-size:24px;
-    font-weight: bold;
+    font-weight:bold;
+    font-size: 25;
     cursor: pointer;
 }
 
@@ -938,7 +938,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: .01em;
     margin-top: 30px;
     margin-bottom: 0;
-    font-family: WF Visual Sans, sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 2rem;
     font-weight: 600;
     line-height: 1.2;
@@ -1514,7 +1514,7 @@ h1, h2, h3, h4, h5, h6 {
         
 
         <div class="brand-logo"></div>
-        <h2 class="Earnstayheadingh2">Check Offers And Earn Cashback On Every Product</h2>
+        <h2 class="Earnstayheadingh2">Paste your Product URL to Check Coupon,Deals and Cashback</h2>
 
         
         <form id="affiliateForm" class="inputs">
@@ -1525,10 +1525,10 @@ h1, h2, h3, h4, h5, h6 {
         
             <!-- Your provided HTML -->
     
-    <button type="button" id="generateButton">Search Offers</button>
+    <button type="button" id="generateButton">Check</button>
         </form>
         
-<h3 class="headinging">DealBox</h3>
+<h3 class="headinging">Sandbox</h3>
 
 </div> <!-- Line below the heading -->
 <div id="Product_Url" class="carousel-container">
@@ -1542,6 +1542,7 @@ h1, h2, h3, h4, h5, h6 {
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                                
                                 <h3 class="f-title f_600 t_color f_size_18">Know Your Profit</h3>
                                 <p>Receive Your Cashbacks,Fill before "Search Offers"</p>
                                 <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1" id="emailForm">
@@ -1849,7 +1850,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     generateButton.addEventListener('click', () => {
         window.scrollBy({
-            top: 180, // Scroll 70px down
+            top: 220, // Scroll 70px down
             behavior: 'smooth' // Smooth scrolling
         });
     });
@@ -2476,7 +2477,7 @@ function resetButton() {
     
         function resetButton() {
             // Reset button content to its original state
-            document.getElementById('generateButton').innerHTML = 'Claim upto 30% Of Purchase';
+            document.getElementById('generateButton').innerHTML = 'Check';
         }
 
 
@@ -2508,41 +2509,6 @@ function resetButton() {
         }, 1000);
     });
 });
- 
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    var bannersContainer = document.querySelector('.banners');
-    var banners = document.querySelectorAll('.banner');
-    var currentIndex = 0;
-    var direction = 'right';
-
-    setInterval(function() {
-        if (direction === 'right') {
-            currentIndex++;
-            if (currentIndex >= banners.length) {
-                currentIndex = 0;
-            }
-        } else {
-            currentIndex--;
-            if (currentIndex < 0) {
-                currentIndex = banners.length - 1;
-            }
-        }
-
-        var translateXValue = -100 * currentIndex + '%';
-        bannersContainer.style.transform = 'translateX(' + translateXValue + ')';
-        
-        setTimeout(function() {
-            direction = (direction === 'right') ? 'left' : 'right';
-        }, 5000);
-
-    }, 12000);
-});
-
 
 function captureClipboard() {
     navigator.clipboard.readText()
@@ -2615,76 +2581,13 @@ document.getElementById('share').addEventListener('click', function() {
 });
 window.addEventListener('scroll', function() {
     var logo = document.querySelector('.brand-logo');
-    if (window.scrollY > 185) {
+    if (window.scrollY > 180) {
         logo.classList.add('hidden');
     } else {
         logo.classList.remove('hidden');
     }
 });
 
-let startX = 0;
-    let startY = 0;
-    let dist = 0;
-    let isDragging = false;
-
-    document.getElementById('bannerContainer').addEventListener('touchstart', touchStart, false);
-    document.getElementById('bannerContainer').addEventListener('touchmove', touchMove, false);
-    document.getElementById('bannerContainer').addEventListener('touchend', touchEnd, false);
-
-    function touchStart(e) {
-        const touch = e.touches[0];
-        startX = touch.clientX;
-        startY = touch.clientY;
-        isDragging = true;
-    }
-
-    function touchMove(e) {
-        if (!isDragging) return;
-        const touch = e.touches[0];
-        const deltaX = touch.clientX - startX;
-        const deltaY = touch.clientY - startY;
-        if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            e.preventDefault();
-            dist = deltaX;
-        }
-    }
-
-    function touchEnd() {
-        if (!isDragging) return;
-        isDragging = false;
-        if (dist > 50) {
-            prevSlide();
-        } else if (dist < -50) {
-            nextSlide();
-        }
-        dist = 0;
-    }
-
-    let slideIndex = 0;
-
-    function showSlides() {
-        const slides = document.querySelectorAll('.banner');
-        if (slideIndex >= slides.length) {
-            slideIndex = 0;
-        } else if (slideIndex < 0) {
-            slideIndex = slides.length - 1;
-        }
-        const translateX = -slideIndex * 100 + '%';
-        document.getElementById('bannerSlider').style.transform = `translateX(${translateX})`;
-    }
-
-    function nextSlide() {
-        slideIndex++;
-        showSlides();
-    }
-
-    function prevSlide() {
-        slideIndex--;
-        showSlides();
-    }
-
-    // Automatic slideshow
-    setInterval(nextSlide, 3000); // Change 3000 to adjust slide transition speed
 
     </script>
     
