@@ -51,19 +51,33 @@
             background-position: center;
         }
         .container {
-            top: 0;
-            width: 100%;
-            max-width: 1200px;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding-bottom: 1px;
-            padding-top: 0;
-            padding-left: 50px;
-            padding-right: 50px;
-            border-radius: 20px;
-            border-top-left-radius: 0 ;
-            border-top-right-radius: 0 ;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        }
+    position: relative;
+    top: 0;
+    width: 100%;
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding-bottom: 1px;
+    padding-top: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* To ensure the pseudo-element is clipped within the container */
+}
+.container::before {
+    content: '';
+    position: absolute;
+    top: 405px;
+    left: 0;
+    width: 100%;
+    height: 34%;
+    background-color: #0056b3;
+    z-index: -1; /* Ensure the gradient is behind the content */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
 
         .brand-logo {
     position: fixed;
@@ -117,6 +131,7 @@
             initial-value: -1;
             inherits: true
         }
+        
 
         button {
             --m: 1;
@@ -450,9 +465,9 @@
 .report-options {
     position: fixed;
     top: 0;
-    right: 35px;
+    right: 45px;
     background-color: #fefefe;
-    padding: 7.8px;
+    padding: 7.5px;
     border: 20px;
     border-width: 10px;
     border-radius: 2px;
@@ -461,6 +476,7 @@
     border-color: #013a77;
     display: flex;
     flex-direction: column;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     opacity: 0;
@@ -1046,6 +1062,7 @@ h1, h2, h3, h4, h5, h6 {
                 transform: scale(1.05);
             }
         }
+        
         .headinging {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 16px; /* Adjust font size as needed */
@@ -1074,11 +1091,13 @@ h1, h2, h3, h4, h5, h6 {
 
         
 
+        
         .text-3xl {
             font-size: 1.2rem;
             color: rgb(33, 33, 33);
             font-family: Arial, Helvetica, sans-serif;
         }
+        
 
         .font-bold {
             font-weight: 700;
@@ -1202,30 +1221,41 @@ h1, h2, h3, h4, h5, h6 {
             align-items: center;
             text-align: center;
         }
+        body {
+    overflow-x: none;
+}
+
+
         .carousel-container {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 5px;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%; /* Ensure it doesn't exceed the width of its parent */
+    margin: 0 auto; /* Center the carousel if it's narrower than its parent */
 }
 
 /* Carousel Wrapper */
 .carousel-wrapper {
     display: flex;
     flex-wrap: nowrap;
+    width: max-content; /* Allow it to grow based on content */
+    background-color: rgb(226, 236, 247);
 }
 
 /* Card Styles */
 .cardo {
-    flex: 0 0 auto;
+    flex: 0 0 150px; /* Fixed width, no growing or shrinking */
     width: 150px;
     margin: 10px;
-    border: 1.5px solid #939393;
+    border: 1.5px solid #ffffff;
     padding: 20px;
     background-color: white;
     border-radius: 3px;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .cardo:hover {
@@ -1469,10 +1499,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 .nomobar{
     top: 80px;
-    background-color: #007BFF;
+    
     color-interpolation-filters: auto;
     
 }
+.new_footer_area{
+    background-color: rgb(226, 236, 247);
+
+}
+.box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between boxes */
+}
+
+.box {
+    background-color: #ffffff; /* Background color for the boxes */
+    color: rgb(0, 0, 0); /* Text color */
+    padding: 10px;
+    border: 4px;
+    border-color: azure;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 150px; /* Fixed width for each box */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    transition: transform 0.2s; /* Smooth hover effect */
+}
+
     </style>
 </head>
 <body>
@@ -1489,7 +1544,7 @@ h1, h2, h3, h4, h5, h6 {
         </p>
         <button id="closeSkipMessage">Skip</button>
     </div>
-    <div class = "nomobar">
+    <div class="nomobar"></div>
     <div class="container" itemprop="mainEntity">
         <header class="header">
             <div class="menu-button">&#9776;</div>
@@ -1512,7 +1567,7 @@ h1, h2, h3, h4, h5, h6 {
         
         
         
-
+        
         <div class="brand-logo"></div>
         <h2 class="Earnstayheadingh2">Paste your Product URL to Check Coupon,Deals and Cashback</h2>
 
@@ -1521,29 +1576,54 @@ h1, h2, h3, h4, h5, h6 {
             <label for="productUrl" id="productUrlLabel" onclick="captureClipboard()"></label>
             <input type="text" id="productUrl" name="productUrl" placeholder="Enter product URL" required>
         
-            <input type="hidden" id="associateTag" name="associateTag" value="715104-21">
+            <input type="hidden" id="associateTag" name="associateTag" value="7151-21">
         
             <!-- Your provided HTML -->
     
     <button type="button" id="generateButton">Check</button>
         </form>
+    
         
 <h3 class="headinging">Sandbox</h3>
+<div class="lineted"></div>
 
-</div> <!-- Line below the heading -->
+ <!-- Line below the heading -->
 <div id="Product_Url" class="carousel-container">
     <div class="carousel-wrapper"></div>
 </div>
+
+
     
 
         <footer class="new_footer_area bg_color">
-            <div class="new_footer_top">
+            
                 <div class="foamter">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6">
+                        
                             <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                                 
-                                <h3 class="f-title f_600 t_color f_size_18">Know Your Profit</h3>
+                                <h3 class="f-title f_600 t_color f_size_18">Top Deals</h3>
+                                <div class="nomobar"></div> <!-- Example element with nomobar class -->
+                                <div class="box-container">
+                                    <div class="box">Coupon</div>
+                                    <div class="box">Deal</div>
+                                    <div class="box">CashBack</div>
+                                </div>
+
+                                <div class="carousel-container">
+                                    <div class="carousel-wrapper">
+                                        {% for product in products %}
+                                        <div class="cardo">
+                                            <div class="badge">New</div>
+                                            <div class="product-image" style="background-image: url('{{ product[4] }}')"></div>
+                                            <div class="brand-name">{{ product[1] }}</div>
+                                            <div class="product-details">{{ product[2] }}</div>
+                                            <div class="product-price">{{ product[3] }}</div>
+                                            <a href="{{ product[5] }}" class="button" target="_blank">Buy Now</a>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
                                 <p>Receive Your Cashbacks,Fill before "Search Offers"</p>
                                 <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1" id="emailForm">
                                     <input type="text" name="EMAIL" id="email" class="form-control memail" placeholder="Enter Your Email">
@@ -1762,8 +1842,10 @@ h1, h2, h3, h4, h5, h6 {
         <div class="lineted"></div>
         <div class="row">
             
-                </div><div class="bg-zinc-800 text-white text-sm p-4">
-<div class="max-w-screen-lg mx-auto"><div class="fot">
+        </div>
+        <div class="bg-zinc-800 text-white text-sm p-4">
+    <div class="max-w-screen-lg mx-auto">
+    <div class="fot">
     
     <h2 class="Mythesisheader"><small>THE</small>MYthesis<small><small>COMPANY</small></h2>
                       <p class="mb-2"><small>
@@ -1914,7 +1996,7 @@ document.querySelector('.actions').addEventListener('click', function(event) {
 // Event listener to handle clicks on the "Generate" button
 document.getElementById('generateButton').addEventListener('click', function() {
     // Show spinner inside the button
-    document.getElementById('generateButton').innerHTML = '<span class="spinner"></span>Loading...';
+    document.getElementById('generateButton').innerHTML = '<span class="spinner"></span>Checking...';
 
     // Call the generateAffiliateLink function
     generateAffiliateLink();
