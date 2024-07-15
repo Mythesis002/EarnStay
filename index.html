@@ -47,7 +47,7 @@
             align-items: center;
             font-family: 'Poppins', sans-serif;
             background-size: cover;
-            background: url("https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/b7SLH9vGCBCsAcSEE4HKTW") no-repeat center;
+            
             background-position: center;
         }
         .container {
@@ -72,7 +72,7 @@
     top: 405px;
     left: 0;
     width: 100%;
-    height: 34%;
+    height: 28%;
     background-color: #0056b3;
     z-index: -1; /* Ensure the gradient is behind the content */
     border-top-left-radius: 20px;
@@ -137,7 +137,6 @@
             --m: 1;
             grid-area: 2/ 1/ span 1/ span 2;
             position: relative;
-            
             border: solid 2em transparent;
             padding: 15px 20px;
             border-radius: 5px;
@@ -147,9 +146,7 @@
                 radial-gradient(#a0c2ed, 35%, #a0c2ed00 70%) 50% 0/ 80% 50% repeat-y;
             color: #f2fdfe;
             font: 700 1.5em/ 1 montserrat, sans-serif;
-            
             #slow:checked ~ & { --m: 5 }
-            
             &:active { translate: 0 2px }
         }
 
@@ -206,11 +203,7 @@
             }
         }
         @media (max-width: 500px) {
-            body {
-                background-image: none;
-                justify-content: flex-start;
-                padding-top: 20px;
-            }
+            
 
             
         }
@@ -966,9 +959,11 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 0;
     width: 100%;
     display: flex;
+    border-radius: 10px;
     top: 0;
     justify-content: space-around;
     flex-wrap: wrap;
+    background-color: #ffffff;
 }
 
 .card {
@@ -1230,7 +1225,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding: 5px;
+    
     -webkit-overflow-scrolling: touch;
     max-width: 100%; /* Ensure it doesn't exceed the width of its parent */
     margin: 0 auto; /* Center the carousel if it's narrower than its parent */
@@ -1241,7 +1236,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-wrap: nowrap;
     width: max-content; /* Allow it to grow based on content */
-    background-color: rgb(226, 236, 247);
+    
 }
 
 /* Card Styles */
@@ -1388,13 +1383,13 @@ h1, h2, h3, h4, h5, h6 {
             background: #0056b3;
         }
         .loader-container {
+ 
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 160px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
+  
   padding: 20px;
   position: relative;
 }
@@ -1402,12 +1397,14 @@ h1, h2, h3, h4, h5, h6 {
 .loader {
   width: 20px;
   height: 20px;
-  border: 5px solid #f3f3f3;
+  
   border-top: 3px solid #3498db;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   position: relative;
-  top: 40px;
+  top: 25px;
+  left: 130px;
+  align-items: center;
 }
 
 @keyframes spin {
@@ -1419,11 +1416,11 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   font-size: 16px;
   font-family: Arial, sans-serif;
-  color: #333;
+  color: #42c0fb;
   max-width: 300px;
   position: relative;
   bottom: 40px;
-  left: 20px;
+  left: 0;
   right: 20px;
   height: 3em;
   display: flex;
@@ -1527,6 +1524,30 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer; /* Changes cursor to pointer on hover */
     transition: transform 0.2s; /* Smooth hover effect */
 }
+.step {
+            display: none;
+            opacity: 0;
+            transition: opacity 2s;
+            margin-top: 10px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .fade-in {
+            display: block;
+            opacity: 1;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .bold-clickable {
+            color: #0056b3;
+            font-weight: bold;
+            cursor: pointer;
+            
+        }
+        #thankYou {
+            text-align: right;
+            margin-top: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+  
 
     </style>
 </head>
@@ -1587,13 +1608,27 @@ h1, h2, h3, h4, h5, h6 {
 <h3 class="headinging">Sandbox</h3>
 <div class="lineted"></div>
 
- <!-- Line below the heading -->
+
+
+<div id="step1" class="step">
+    <p><span style="color: #1DA1F2;">Hello Sir,</span></p>
+<p>These are the steps You can Follow to save More Money!</p>1: Watch ads to save ₹10 <span id="watchAd" class="bold-clickable">Watch</span>
+</div>
+<div id="step2" class="step">
+    2: You Won a Cashback of <span style="color: #1DA1F2;">5%</span>  <label><span style="color: #1DA1F2;"><small>Apply</small></span><input type="checkbox"></label>
+</div>
+<div id="step3" class="step">
+    3: You Can Choose Some Offers to save more money than usual
+</div>
 <div id="Product_Url" class="carousel-container">
     <div class="carousel-wrapper"></div>
 </div>
+<div id="thankYou" class="step">
+    If don't intrested in Offered Product Go To <span style="color: #1DA1F2;">"Continue"</span> Thanks, save more!
+</div>
+<div class="lineted"></div>
 
 
-    
 
         <footer class="new_footer_area bg_color">
             
@@ -1925,6 +1960,44 @@ document.addEventListener('DOMContentLoaded', function () {
                 card.classList.remove('visible');
             }
         });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const step3 = document.getElementById('step3');
+    const thankYou = document.getElementById('thankYou');
+    const watchAd = document.getElementById('watchAd');
+    const generateBtn = document.getElementById('generateButton');
+    const adsterraLink = 'https://www.highrevenuenetwork.com/jgudczj4u?key=5de9fca0d8a37ddf690e9543e253f1d4';
+
+    // Handle click on the "Generate" button
+    generateBtn.addEventListener('click', () => {
+        // Show step 1 immediately
+        setTimeout(() => {
+            step1.classList.add('fade-in');
+        }, 2000);
+
+        // Show step 2 after 1 second
+        setTimeout(() => {
+            step2.classList.add('fade-in');
+        }, 4000);
+
+        // Show step 3 after another 1 second
+        setTimeout(() => {
+            step3.classList.add('fade-in');
+        }, 0);
+
+        // Show "Thanks, save more!" after another 1 second
+        setTimeout(() => {
+            thankYou.classList.add('fade-in');
+        }, 8000);
+    });
+
+    // Handle click on the "Watch" link
+    watchAd.addEventListener('click', () => {
+        window.open(adsterraLink, '_blank');
     });
 });
 document.addEventListener('DOMContentLoaded', () => {
