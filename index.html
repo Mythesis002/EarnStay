@@ -53,6 +53,7 @@
 
 /* Additional styles to ensure flexibility on mobile devices */
 .container {
+    margin: 0;
     width: 100%;
     max-width: 1200px; /* Set a maximum width for larger screens */
     padding: 20px;
@@ -66,7 +67,8 @@
     }
     
     .container {
-        padding: 10px; /* Reduce padding on small screens */
+        
+        padding: .5px; /* Reduce padding on small screens */
     }
 }
 
@@ -292,7 +294,7 @@
 }
 
 .skip-message button:hover {
-    background: transparent;
+    
     color: #76aef1;
     box-shadow: none;
 }
@@ -438,21 +440,37 @@
 
 .menu-button {
     position: relative;
-    
-    top: 3px;
-    font-weight:bold;
-    font-size: 45;
+    width: 30px; /* Size is usually defined by width and height */
+    height: 30px;
+    left: 10px;
+    top: 0;
+    font-weight: bold;
     cursor: pointer;
+    display: flex; /* Center content */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    background-color: #fff; /* Add a background color for visibility */
+    border: 1px solid #ccc; /* Add a border for better visibility */
+    border-radius: 3px; /* Optional: round the corners */
+    
+    transition: background-color 0.3s; /* Optional: smooth transition effect */
 }
+
+.menu-button:hover {
+    background-color: #f0f0f0; /* Optional: change background color on hover */
+}
+
 
 .actions {
     display: flex;
     align-items: center;
+   
+    font-weight:bold;
 }
 
 .ask-me, .report-button {
     position: relative;
-    right: 8px;
+    
     top: 20px;
     font-size: 13px;
     font-weight: 550;
@@ -466,7 +484,7 @@
     position: fixed;
     top: 0;
     right: 45px;
-    background-color: #fefefe;
+    background-color: #053fff;
     padding: 7.5px;
     border: 20px;
     border-width: 10px;
@@ -744,18 +762,7 @@ h1, h2, h3, h4, h5, h6 {
     .next-btn {
         right: 0;
     }
-.line {
-    position: fixed;
-    top: 68px;
-    left: 0;
-    align-items: center;
-    margin-left: 0px;
-    margin-right: 100%;
-    width: 0%;
-    height: 2px;
-    background-color: rgb(28, 169, 225);
-    animation: slideLine 8s linear ;
-}
+
 @keyframes slideLine {
     0% { width: 0; }
     100% { width: 100%; }
@@ -780,7 +787,7 @@ h1, h2, h3, h4, h5, h6 {
     right: -5%;
 }
 #productUrlLabel:active::after {
-    background-color: #1d90e8; /* Change background color when clicked */
+    background-color: #005da4; /* Change background color when clicked */
 }
 .col-md-8 {
     position: relative; /* Change to fixed position */
@@ -949,10 +956,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .Earnstayheadingh2 {
     letter-spacing: .01em;
-    margin-top: 30px;
-    margin-bottom: 0;
+    margin: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 600;
     line-height: 1.2;
     text-align: center;
@@ -1062,8 +1068,9 @@ h1, h2, h3, h4, h5, h6 {
             }
         }
         
-        .headinging {
+.headinging {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 20px;
     font-size: 16px; /* Adjust font size as needed */
     margin-bottom: 5px; /* Decrease margin bottom to reduce space */
     margin-top: 10px; /* Add margin top to create space */
@@ -1220,19 +1227,16 @@ h1, h2, h3, h4, h5, h6 {
             align-items: center;
             text-align: center;
         }
-        body {
-    overflow-x: none;
-}
+    
 
 
-        .carousel-container {
+.carousel-container {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
-    
     -webkit-overflow-scrolling: touch;
-    max-width: 100%; /* Ensure it doesn't exceed the width of its parent */
-    margin: 0 auto; /* Center the carousel if it's narrower than its parent */
+    width: 100%; /* Ensure it doesn't exceed the width of its parent */
+    margin: 0; /* Center the carousel if it's narrower than its parent */
 }
 
 /* Carousel Wrapper */
@@ -1402,7 +1406,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 20px;
   height: 20px;
   
-  border-top: 3px solid #3498db;
+  border-top: 3px solid #ffffff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   position: relative;
@@ -1420,7 +1424,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   font-size: 16px;
   font-family: Arial, sans-serif;
-  color: #42c0fb;
+  color: #ffffff;
   max-width: 300px;
   position: relative;
   bottom: 40px;
@@ -1512,42 +1516,51 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* Space between boxes */
+    gap: 12px; /* Space between boxes */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 10px;
 }
 
 .box {
-    background-color: #ffffff; /* Background color for the boxes */
     color: rgb(0, 0, 0); /* Text color */
     padding: 10px;
-    border: 4px;
-    border-color: azure;
+    border: 1px solid rgb(203, 203, 203);
     border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    
     text-align: center;
     width: 150px; /* Fixed width for each box */
     cursor: pointer; /* Changes cursor to pointer on hover */
     transition: transform 0.2s; /* Smooth hover effect */
 }
+
+
+
 .step {
-            display: none;
-            opacity: 0;
-            transition: opacity 2s;
-            margin-top: 10px;
-            margin-left: 20px;
-            margin-right: 20px;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
+    display: none;
+    opacity: 0;
+    transition: opacity 2s;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 15px; /* Add padding to ensure the border is larger than the text */
+     /* Increase border thickness */
+    border-radius: 10px;
+    background-color: #ffffff; /* Optional: Add a background color to make the border stand out */
+}
+
         .fade-in {
             display: block;
             opacity: 1;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
         .bold-clickable {
-            color: #d7d7d7;
+            color: #000000;
             font-weight: bold;
+            border-radius: 6px;
+            border: 2px; 
             cursor: pointer;
-            background-color: rgb(255, 157, 9);
-            
+            background-color: rgb(0, 143, 226);
         }
         #thankYou {
             text-align: right;
@@ -1556,15 +1569,19 @@ h1, h2, h3, h4, h5, h6 {
         }
 .sandboxbg{
     position: relative;
-    background-color: #73b7ff;
-    top: 0;
-    left: 0;
+    padding: 50px;
+    background-color: #1f6fc5;
+    border: 5px;
+    border-color: #000;
+    
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     
     z-index: 99;
 }  
-
+.fadeInLeft{
+    background-color: #ffffff;
+}
     </style>
 </head>
 <body>
@@ -1627,7 +1644,7 @@ h1, h2, h3, h4, h5, h6 {
 
 <div class="sandboxbg">
 <div id="step1" class="step">
-<p id="greeting"><span style="color: #ffffff;">Hello,</span></p>
+<p id="greeting"><span style="color: #2185f7;">Hello,</span></p>
 
 <p>These are the steps You can Follow to save More Money!</p>1: Watch ads to save ₹10 <span id="watchAd" class="bold-clickable">Watch</span>
 </div>
@@ -1642,9 +1659,10 @@ h1, h2, h3, h4, h5, h6 {
     <div class="carousel-wrapper"></div>
 </div>
 <div id="thankYou" class="step">
-    If don't intrested in Offered Product Go To <span style="color: #ffffff;">"Continue"</span> Thanks, save more!
+    If don't intrested in Offered Product Go To <span style="color: #0041b9;">"Continue"</span> Thanks, save more!
 </div>
-
+</div>
+<div class="lineted"></div>
 
         <footer class="new_footer_area bg_color">
             
@@ -2049,7 +2067,7 @@ function showSkipMessage() {
 }
 // Assuming the user's name is stored in local storage under the key 'userName'
 var userName = localStorage.getItem('name') || 'Sir'; // Default to 'Sir' if no name is found
-document.getElementById('greeting').innerHTML = `<span style="color: #ffffff;">Hello, ${userName}</span>`;
+document.getElementById('greeting').innerHTML = `<span style="color: #0041b9;">Hello, ${userName}</span>`;
 
 // Function to hide the skip message
 function hideSkipMessage() {
