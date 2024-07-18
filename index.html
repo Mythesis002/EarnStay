@@ -78,14 +78,14 @@
     position: fixed;
     align-items: center;
     top: 0;
-    width: 80px;
-    height: 40px;
+    width: 100px;
+    height: 45px;
     margin: auto;
     background: url("https://embed.filekitcdn.com/e/ercg4Zjiyu1hGGNbUanY63/b7SLH9vGCBCsAcSEE4HKTW") no-repeat center;
-    background-size: 80px;
-    border-radius: 4%;
+    background-size: 104px;
+    
     z-index: 1000;
-    left: 20%;
+    left: 22%;
     transform: translateX(-50%);
     margin-right: 45px;
 }
@@ -120,7 +120,9 @@
         input {
             padding: 10px;
             font-size: 14px;
-            border: 2px solid #04379c;
+            border: 2px solid #ededed;
+            background-color: #ececec;
+            border-radius: 15px;
             
         }
         /* Your provided CSS */
@@ -440,24 +442,26 @@
 
 .menu-button {
     position: relative;
-    width: 30px; /* Size is usually defined by width and height */
-    height: 30px;
+    width: 35px; /* Size is usually defined by width and height */
+    height: 35px;
     left: 10px;
     top: 0;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: 25px;
     cursor: pointer;
     display: flex; /* Center content */
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
     background-color: #fff; /* Add a background color for visibility */
-    border: 1px solid #ccc; /* Add a border for better visibility */
-    border-radius: 3px; /* Optional: round the corners */
-    
+    border: none;
+    border-radius: 2px;
     transition: background-color 0.3s; /* Optional: smooth transition effect */
 }
 
 .menu-button:hover {
-    background-color: #f0f0f0; /* Optional: change background color on hover */
+    background-color: #0b7fe4; /* Optional: change background color on hover */
+    color:#ffffff; 
+    
 }
 
 
@@ -509,6 +513,8 @@
 .report-options a {
     display: inline-block;
     padding: 3px 10px;
+    font-size: 14px;
+    font-weight: 300;
     text-decoration: none;
     color: #ffffffdb;
     opacity: 0;
@@ -776,20 +782,16 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     background-color: #09417d;
     color: white;
-    top: 1px;
+
     right: 0;
-    padding: 12px 12px; /* Adjust padding as needed */
-    border-radius: 5px;
+    padding: 13.2px 13.2px; /* Adjust padding as needed */
+    border-top-right-radius: 15px;
+    
     font-size: 12px; /* Increase font size for better visibility */
     cursor: pointer;
     transition: right 0.4s ease;
 }
-#productUrlLabel:hover::after {
-    right: -5%;
-}
-#productUrlLabel:active::after {
-    background-color: #005da4; /* Change background color when clicked */
-}
+
 .col-md-8 {
     position: relative; /* Change to fixed position */
     bottom: 0; /* Position at the bottom */
@@ -959,7 +961,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: .01em;
     margin: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: bolder;
     line-height: 1.2;
     text-align: center;
@@ -1584,13 +1586,14 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #ffffff;
 }
 .subheading {
-    font-size: .6em;
+    font-size: .8em;
     color: #666; /* Grey color for the text */
     margin-bottom: 10px;
     text-align: center;
     line-height: 1.4; /* Improve readability */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif; /* Consistent font */
 }
+
 
     </style>
 </head>
@@ -1646,7 +1649,7 @@ h1, h2, h3, h4, h5, h6 {
     
     <button type="button" id="generateButton">Check</button>
         </form>
-        <p class="subheading">Enter a product URL, click 'Check,' and start saving!</p>
+        <p class="subheading">*Enter a product URL, click 'Check,' and start saving!</p>
 
         
 <h3 class="headinging">Sandbox</h3>
