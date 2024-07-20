@@ -1252,40 +1252,43 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Card Styles */
 .cardo {
-    flex: 0 0 150px; /* Fixed width, no growing or shrinking */
-    width: 150px;
+    flex: 0 0 200px; /* Fixed width, no growing or shrinking */
+    width: 200px;
     margin: 10px;
-    border: .5px solid #d2d2d2;
-    padding: 20px;
-    background-color: white;
-    border-radius: 1.5px;
+    border: 1px solid #d2d2d2;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 4px;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* For positioning the badge */
 }
 
 .cardo:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
+
 
 /* Badge Styles */
 .badge {
     background-color: #ff3300;
-    left: 0px;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     padding: 5px 10px;
-    border: 5px;
-    border-radius: 2px;
-    border-color: #000;
-    font-size: 0.8em;
-    margin-bottom: 10px;
+    border-radius: 15px;
+    font-size: 0.75em;
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 /* Product Image Styles */
 .product-image {
-    width: 80%;
-    height: 90px;
-    border-radius: 100%;
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
     background-size: cover;
     background-position: center;
     margin-bottom: 10px;
@@ -1293,14 +1296,19 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Brand Name Styles */
 .brand-name {
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: bold;
     margin-bottom: 10px;
+    color: #333;
 }
 
 /* Product Details Styles */
 .product-details {
     font-size: 0.9em;
+    margin-bottom: 10px;
+    color: #555;
+    border-bottom: 1px solid #d2d2d2;
+    padding-bottom: 10px;
     margin-bottom: 10px;
 }
 
@@ -1308,13 +1316,20 @@ h1, h2, h3, h4, h5, h6 {
 .button {
     display: block;
     padding: 10px 15px;
-    background-color: #ffffff;
-    color: rgba(46, 121, 249, 0.859);
+    background-color: #dbdbdb;
+    color: #000000;
     text-align: center;
+
     text-decoration: none;
-    border-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     font-size: 0.9em;
     margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #1b61d1;
 }
 .error-message {
     
@@ -1542,15 +1557,16 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .step {
+    width: 100%;
     display: none;
     opacity: 0;
-    transition: opacity 2s;
+    transition: opacity 3s;
     margin-top: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: 15px; /* Add padding to ensure the border is larger than the text */
-     /* Increase border thickness */
+    
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px; /* Add padding to ensure the border is larger than the text */
+    
+    /* Increase border thickness */
     border-radius: 10px;
     background-color: #ffffff; /* Optional: Add a background color to make the border stand out */
 }
@@ -1558,7 +1574,7 @@ h1, h2, h3, h4, h5, h6 {
         .fade-in {
             display: block;
             opacity: 1;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            
         }
         .bold-clickable {
             color: #000000;
@@ -1572,7 +1588,7 @@ h1, h2, h3, h4, h5, h6 {
         #thankYou {
             text-align: right;
             margin-top: 20px;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            
         }
 .sandboxbg{
     position: relative;
@@ -1625,6 +1641,15 @@ h1, h2, h3, h4, h5, h6 {
         }
         #load-more:hover {
             background-color: #e2e1e1;
+        }
+        #boc1{
+            background-color: #f1f1f1;
+        }
+        #boc2{
+            background-color: #f1f1f1;
+        }
+        #boc3{
+            background-color: #f1f1f1;
         }
     </style>
 </head>
@@ -1695,8 +1720,8 @@ h1, h2, h3, h4, h5, h6 {
 </div>
 
 <div id="stepl" class="step">
-    2: Share To Friend and Save ₹10 Extra  <a href="#" id="share"><img src="share.png" alt="Share" style="width: 25px; height: auto; margin-left: 40%;margin-top: 5px;"></a>
-    <span id="share-count">0/1</span> <!-- Display share count here -->
+    2: Share To Friend and Save ₹10 Extra  <a href="#" id="share"><img src="share.png" alt="Share" style="padding: 4px;border-radius: 4px;background-color: #e4e3e3ca;width: 25px; height: auto; margin-left: 40%;margin-top: 10pxpx;"></a>
+    <span id="share-count">Share</span> <!-- Display share count here -->
 </div>
 <div id="step2" class="step">
     3: You Got a Cashback of <span style="color: #ff0004;background-color: #000000;border-radius: 4px;padding: 4px;">5%</span> <label><span style="color: #ffffff; background-color: #35de7e;border-radius: 4px;padding: 2px;margin-top: 25px;"><small> Apply </small></span><input type="checkbox"></label>
@@ -1727,9 +1752,9 @@ h1, h2, h3, h4, h5, h6 {
                                 <h3 class="f-title f_600 t_color f_size_18">Top Deals</h3>
                                 <div class="nomobar"></div> <!-- Example element with nomobar class -->
                                 <div class="box-container">
-                                    <div class="box">Coupon</div>
-                                    <div class="box">Deal</div>
-                                    <div class="box">CashBack</div>
+                                    <div id="boc1" class="box">Coupon</div>
+                                    <div id="boc2" class="box">Deal</div>
+                                    <div id="boc3" class="box">CashBack</div>
                                 </div>
                                 <div  id="load-more"> Show More</div>
                                 <div class="carousel-containerfetch">
@@ -2314,7 +2339,7 @@ fetchWithRetry(serverUrl, 3, 1000)
           if (filteredData.length === 0) {
             displayErrorMessage();
           } else {
-            const structuredData = structureData(filteredData);
+            const structuredData = structureData(filteredData.reverse());
             structuredData.forEach(product => {
               displayProduct(product);
             });
@@ -2505,8 +2530,9 @@ if (spinnerResult) {
             if (filteredData.length === 0) {
               displayErrorMessage();
             } else {
-              const structuredData = structureData(filteredData);
+              const structuredData = structureData(filteredData.reverse());
               structuredData.forEach(product => {
+              
                 displayProduct(product);
               });
             }
