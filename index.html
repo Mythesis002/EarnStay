@@ -2639,7 +2639,7 @@ if (spinnerResult) {
     }).then(response => {
       if (response.ok) {
         console.log('Data submitted successfully');
-        document.getElementById('generateButton').innerText = 'Grab Cashback--Continue';
+        document.getElementById('generateButton').innerText = 'Continue';
         document.getElementById('generateButton').setAttribute('onclick', 'window.location.href="' + affiliateLink + '"');
         return response.json();
       } else {
@@ -2744,7 +2744,7 @@ function resetButton() {
     
         function resetButton() {
             // Reset button content to its original state
-            document.getElementById('generateButton').innerHTML = 'Check';
+            document.getElementById('generateButton').innerHTML = 'Save Now';
         }
 
 
