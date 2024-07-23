@@ -1078,7 +1078,7 @@ h1, h2, h3, h4, h5, h6 {
             padding: 2px;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
             background-color: #ebebeb;
-           font-size: 12px;
+           font-size: 10px;
            border: 4px;
            border-radius: 12px;
            border-color: #000;
@@ -1110,7 +1110,7 @@ h1, h2, h3, h4, h5, h6 {
         
         .text-3xl {
             font-size: 1.2rem;
-            color: rgb(33, 33, 33);
+            color: #4b505e;
             font-family: Arial, Helvetica, sans-serif;
         }
         
@@ -1216,6 +1216,7 @@ h1, h2, h3, h4, h5, h6 {
         
         body.fot {
             border: #ffffff;
+           
             
             
             
@@ -1237,7 +1238,10 @@ h1, h2, h3, h4, h5, h6 {
             align-items: center;
             text-align: center;
         }
-    
+.fot{
+    margin: 30px;
+    align-items: center;
+}    
 
 
 .carousel-container {
@@ -1654,6 +1658,38 @@ h1, h2, h3, h4, h5, h6 {
         #boc3{
             background-color: #f1f1f1;
         }
+        .tokyo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .tokyo:hover {
+            transform: scale(1.05);
+        }
+        .paris {
+            width: 50px;
+            height: 50px;
+            background-color: #0b7fe4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .london {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+        }
+        .new-york {
+            font-size: 1.125rem;
+            color: #333;
+        }
+        .foamter{
+            background-color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -1764,13 +1800,7 @@ h1, h2, h3, h4, h5, h6 {
                                     </div>
                                 </div>
                                 
-                                <p>Receive Your Cashbacks,Fill before "Search Offers"</p>
-                                <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1" id="emailForm">
-                                    <input type="text" name="EMAIL" id="email" class="form-control memail" placeholder="Enter Your Email">
-
-                                    <p class="mchimp-errmessage" style="display: none;"></p>
-                                    <p class="mchimp-sucmessage" style="display: none;"></p>
-                                </form>
+                                
                             </div>
                         </div>
 
@@ -1822,6 +1852,7 @@ h1, h2, h3, h4, h5, h6 {
                                  <a href="javascript:void(0)" onclick="saveBookmark()">
                                  <img class="site-logo" src="save.png" alt="Site Logo">
                                  </a>
+
                                  <div class="col-lg-3 col-md-6">
                                     <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                                         <h3 class="f-title f_600 t_color f_size_18">Save</h3>
@@ -1840,64 +1871,46 @@ h1, h2, h3, h4, h5, h6 {
 <div class="lineted"></div>
 
 
-                        <div class="bg-white dark:bg-zinc-800">
-                            <div class="max-w-lg mx-auto py-10 px-4">
-                              <h1 class="text-3xl font-bold text-center text-black dark:text-white mb-10">Get Cashbacks</h1>
-                          
-                              <div class="flex flex-col items-center space-y-8">
-                                <div class="text-center transition-transform transform hover:scale-105" id="paste1">
-                                  <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                                    <div class="fote">
-                                    <img
-                                      src="https://icons.getbootstrap.com/assets/icons/clipboard.svg"
-                                      alt="Copy Icon"
-                                      class="w-8 h-8 text-white fill-current"
-                                    />
-                                </div>
-                                  </div>
-                                  <p class="text-lg text-black dark:text-white">Paste  / Product Link</p>
-                                </div>
-                          
-                          
-                                <div class="flex flex-col items-center space-y-8">
-                                  <div class="text-center transition-transform transform hover:scale-105"id="paste2">
-                                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                                        <div class="fote">
-                                      <img
-                                      src="https://icons.getbootstrap.com/assets/icons/clipboard-check.svg"
-                                        alt="Copy Icon"
-                                        class="w-8 h-8 text-white fill-current"
-                                      />
-                                    </div>
-                                    </div>
-                                    <p class="text-lg text-black dark:text-white">Search Offer/Choose</p>
-                                  </div>
-                          
-                          
-                          
-                          
-                                  <div class="flex flex-col items-center space-y-8">
-                                      <div class="text-center transition-transform transform hover:scale-105"id="paste3">
-                                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                                            <div class="fote">
-                                          <img
-                                          src="https://icons.getbootstrap.com/assets/icons/currency-rupee.svg"
-                                            alt="Copy Icon"
-                                            class="w-8 h-8 text-white fill-current"
-                                          />
-                                        </div>
-                                        </div>
-                                        <p class="text-lg text-black dark:text-white">You Earn/Purchase!</p>
-                                      </div>
-                          
-                                
-                              </div>
-                            </div>
-                            <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                                
+<div class="max-w-lg mx-auto py-10 px-4">
+    <h1 class="text-3xl font-bold text-center text-black dark:text-white mb-10">How To Save</h1>
+
+    <div class="space-y-8">
+        <div class="tokyo" id="paste1">
+            <div class="paris">
+                <img src="https://icons.getbootstrap.com/assets/icons/clipboard.svg" alt="Copy Icon" class="london">
+            </div>
+            <p class="new-york"><small>Paste your Product Link</small></p>
+        </div>
+        <script type="text/javascript">
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.async = true;
+                script.src = "//telegram.im/widget-button/index.php?id=@EarnStay";
+                document.getElementsByTagName("head")[0].appendChild(script);
+            })();
+        </script>
+
+        <div class="tokyo" id="paste2">
+            <div class="paris">
+                <img src="https://icons.getbootstrap.com/assets/icons/clipboard-check.svg" alt="Select Tricks Icon" class="london">
+            </div>
+            <p class="new-york"><small>Select All Tricks To Save More</small></p>
+        </div>
+
+        <div class="tokyo" id="paste3">
+            <div class="paris">
+                <img src="https://icons.getbootstrap.com/assets/icons/currency-rupee.svg" alt="Save Icon" class="london">
+            </div>
+            <p class="new-york"><small>Click On Continue/any offered Product To Save More</small></p>
+        </div>
+    </div>
+</div>
+
+    
                                 <div class="lineted"></div>
                                 <h6></h6>
-                                <p>Share Your Product Offers on Our Telegram Channel and Earn While Sold!</p>
+                                <p><small>Share Your Product Offers on Our Telegram Channel and Earn While Sold!</small></p>
                             
                             <script type="text/javascript">(function() {var script=document.createElement("script");script.type="text/javascript";script.async =true;script.src="//telegram.im/widget-button/index.php?id=@EarnStay";document.getElementsByTagName("head")[0].appendChild(script);})();</script>
                             <a href="https://telegram.im/@EarnStay" target="_blank" class="telegramim_button telegramim_shadow telegramim_pulse" style="font-size:12px;width:78px;background:#27A5E7;box-shadow:1px 1px 5px #27A5E7;color:#ffffff;border-radius:100px;" title=""><i></i>Affiliate</a>
@@ -1945,7 +1958,7 @@ h1, h2, h3, h4, h5, h6 {
 
                     
                         <div class="col-lg-3 col-md-6">
-                            <div class="lineted"></div>
+                            
                             <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="100s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Help</h3>
                                 <ul class="list-unstyled f_list">
@@ -1977,11 +1990,8 @@ h1, h2, h3, h4, h5, h6 {
                     <div class="footer_bg_two"></div>
                 </div>
             </div>
-        
-        
-        <div class="lineted"></div>
         <div class="row">
-            
+            <div class="lineted"></div>   
         </div>
         <div class="bg-zinc-800 text-white text-sm p-4">
     <div class="max-w-screen-lg mx-auto">
