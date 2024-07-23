@@ -2845,16 +2845,27 @@ document.getElementById('like').addEventListener('click', function() {
 });
 
 
-document.getElementById('share').addEventListener('click', function() {
-    const imageUrl = 'Just See one ads and Earn 10 rupees.png'; // Replace with your image URL
-    const appId = '504063268683934'; // Replace with your Facebook App ID
+document.getElementById('shareButton').addEventListener('click', function() {
+            // Replace with the URL of your hosted image
+            const imageUrl = 'https://your-server.com/path/to/your/image.jpg'; // Make sure this is a direct link to the image
+            const appId = '781949254142113'; // Replace with your Facebook App ID
 
-    // This creates the Instagram URL scheme to share the photo
-    const instagramUrl = `instagram-stories://share?source_application=${appId}&background_image_url=${encodeURIComponent(imageUrl)}`;
+            const encodedImageUrl = encodeURIComponent(imageUrl);
+            const instagramUrl = `instagram-stories://share?source_application=${appId}&background_image_url=${encodedImageUrl}`;
 
-    // Open the URL, this will trigger the Instagram app to open and share the image
-    window.location.href = instagramUrl;
-});
+            // Create an iframe to attempt to open the URL scheme
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = instagramUrl;
+            document.body.appendChild(iframe);
+
+            setTimeout(() => {
+                document.body.removeChild(iframe);
+
+                // Fallback: Redirect to Instagram installation page if URL scheme fails
+                window.location.href = 'https://www.instagram.com';
+            }, 1000);
+        });
 
 window.addEventListener('scroll', function() {
     var logo = document.querySelector('.brand-logo');
