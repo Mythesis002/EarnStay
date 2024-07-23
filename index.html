@@ -1072,13 +1072,20 @@ h1, h2, h3, h4, h5, h6 {
         }
         
 .headinging {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-left: 20px;
-    font-size: 16px; /* Adjust font size as needed */
-    margin-bottom: 5px; /* Decrease margin bottom to reduce space */
-    margin-top: 10px; /* Add margin top to create space */
-    color: #605f5f; /* Set heading color */
+    position: relative;
+            margin-right: 85%;
+            left: 10px;
+            padding: 2px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            background-color: #ebebeb;
+           font-size: 12px;
+           border: 4px;
+           border-radius: 12px;
+           border-color: #000;
 }
+.headinging:hover {
+            background-color: #e2e1e1;
+        }
 
 .lineted {
     position: absolute;
@@ -1561,7 +1568,7 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
     opacity: 0;
     transition: opacity 3s;
-    gap: 5px;
+    gap: 15px;
     border: 2px solid #0041b9; /* Border color consistent with your site's theme */
     border-radius: 10px;
     font-family: Arial, Helvetica, sans-serif;
@@ -1656,10 +1663,10 @@ h1, h2, h3, h4, h5, h6 {
     <div id="skipMessage" class="skip-message" style="display: none;"itemprop="about">
         <h2>content<span="earnstay.shop"></span></h2>
         <p>
-            <span style="color: #1DA1F2;">EarnStay</span> revolutionizes online shopping, offering a seamless way to earn while you shop. Simply input product URLs and phone numbers to claim up to 30% profits on purchases. With EarnStay, every purchase translates into financial gain on a futuristic platform. Join Free to experience Profit.
+            <span style="color: #1DA1F2;">EarnStay</span> revolutionizes online shopping, offering a seamless way to Save Money while you shop. Simply input product URLs and yes You Save UpTo 30% profits on purchases. With EarnStay, every purchase translates into financial gain on a futuristic platform. Join Free to experience Profit.
         </p>
         <p>
-            <a href="https://stly.link/6KCzk" class="btn">Watch Tutorial</a>   
+            <a href="https://instagram.com/earnstay" class="btn">Watch Tutorial</a>   
         </p>
         <button id="closeSkipMessage">Skip</button>
     </div>
@@ -1704,15 +1711,13 @@ h1, h2, h3, h4, h5, h6 {
         <p class="subheading">*Enter a product URL, click 'Save Now,' it'l show Saving Tips!</p>
 
         
-<h3 class="headinging">Sandbox</h3>
+        <div id="whatsave" class="headinging">What Save?</div>
 <div class="lineted"></div>
-
-
 <div class="sandboxbg">
 <div id="step1" class="step">
 <p id="greeting"><span style="color: #2185f7;">Hello,</span></p>
 
-<p>These are the steps You can Follow to save More Money!</p>1: Watch ads to save ₹10 <span id="watchAd" class="bold-clickable">Watch</span>
+<p>These are the ways You can Follow to save More Money!</p>1: Watch ads to save ₹10 <span id="watchAd" class="bold-clickable">Watch</span>
 </div>
 
 <div id="stepl" class="step">
@@ -2063,6 +2068,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+document.getElementById('whatsave').addEventListener('click', function() {
+        document.getElementById('generateButton').click();
+    });
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const step1 = document.getElementById('step1');
