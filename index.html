@@ -444,7 +444,7 @@
     position: relative;
     width: 35px; /* Size is usually defined by width and height */
     height: 35px;
-    left: 10px;
+    left: 0px;
     top: 0;
     font-weight: bolder;
     font-size: 25px;
@@ -487,8 +487,9 @@
 .report-options {
     position: fixed;
     top: 0;
-    right: 45px;
+    right: 0;
     background-color: #0b7fe4;
+    
     padding: 7.5px;
     
     border: 20px;
@@ -1690,6 +1691,42 @@ h1, h2, h3, h4, h5, h6 {
         .foamter{
             background-color: #ffffff;
         }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.simple-container {
+    
+    
+    margin: 10px;
+    padding: .5rem;
+    max-width: 100%;
+}
+.simple-title {
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #343a40;
+}
+.simple-checklist {
+    list-style: none;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: .9rem;
+    color: #495057;
+}
+.simple-checklist li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.simple-checklist li::before {
+    content: '✔';
+    color: #1DA1F2;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}  
+     
     </style>
 </head>
 <body>
@@ -1731,7 +1768,15 @@ h1, h2, h3, h4, h5, h6 {
         
         
         <div class="brand-logo"></div>
-        <h2 class="Earnstayheadingh2">Paste your Product URL and Save UpTo 30%</h2>
+        <div class="simple-container">
+            <h1 class="simple-title">Save upto 30% On Any e-commerse Products</h1>
+            
+            <ul class="simple-checklist">
+                <li>Watch Ads To Save upto ₹20</li>
+                <li>Share To Friends To Save upto ₹15</li>
+                <li>Choose offered Product To save More!</li>
+            </ul>
+        </div>
 
         
         <form id="affiliateForm" class="inputs">
@@ -2776,24 +2821,7 @@ function resetButton() {
 
          
 
-        document.addEventListener("DOMContentLoaded", function () {
-    var footerBgOne = document.querySelector('.new_footer_top .footer_bg .footer_bg_one');
-    var footerBgTwo = document.querySelector('.new_footer_top .footer_bg .footer_bg_two');
-    
-    footerBgOne.addEventListener("click", function () {
-        footerBgOne.classList.toggle('paused');
-        setTimeout(function () {
-            footerBgOne.classList.toggle('paused');
-        }, 1000);
-    });
-    
-    footerBgTwo.addEventListener("click", function () {
-        footerBgTwo.classList.toggle('paused');
-        setTimeout(function () {
-            footerBgTwo.classList.toggle('paused');
-        }, 1000);
-    });
-});
+
 
 function captureClipboard() {
     navigator.clipboard.readText()
