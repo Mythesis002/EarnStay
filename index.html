@@ -2308,9 +2308,14 @@ function generateAffiliateLink() {
   var associateTag = formData.get('associateTag');
   var email = document.getElementById('email').value;
 
-  var affiliateLink = productUrl + '?tag=' + associateTag;
+  
 
   if (productUrl.includes('flipkart.com')) {
+    productUrl = productUrl.split('&')[0];
+    // Add affiliate parameters
+    affiliateLink = productUrl + '&affid=' + 'adminnxtify' + '&affExtParam1=EPTG2490028';
+    
+    
     // Perform URL resolution and fetch data
 function showSpinner() {
     const container = document.getElementById('Product_Url');
@@ -2505,6 +2510,7 @@ fetchWithRetry(serverUrl, 3, 1000)
     var affiliateLink = 'https://myntr.it/05wT4M8';
   } else {
     if (productUrl.includes('amzn.in')) {
+        var affiliateLink = productUrl + '?tag=' + associateTag;
         // Perform URL resolution and fetch data
 function showSpinner() {
     const container = document.getElementById('Product_Url');
