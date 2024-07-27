@@ -1722,10 +1722,15 @@ align-items: center;
 margin-bottom: 0.5rem;
 }
 .simple-checklist li::before {
-content: '✔';
-color: #1DA1F2;
-margin-right: 0.5rem;
-font-size: 1rem;
+    content: "";
+    background-image: url('check.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    margin-right: 0.5rem;
+    vertical-align: middle;
 } 
 .f_widget {
     padding-top: 10px;
