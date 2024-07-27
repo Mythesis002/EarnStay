@@ -1590,7 +1590,7 @@ background-color: #ffffff; /* Optional: Add a background color to make the borde
     
 }
 .bold-clickable {
-    color: #fff;
+    color: #ffffff;
     font-weight: bold;
     padding: 4px;
     border-radius: 6px;
@@ -1710,7 +1710,7 @@ color: #343a40;
 }
 .simple-checklist {
 list-style: none;
-margin: 30px;
+margin-left: 30px;
 padding: 0;
 font-family: 'Roboto', sans-serif;
 font-size: .9rem;
@@ -1731,12 +1731,84 @@ margin-bottom: 0.5rem;
     height: .8rem;
     margin-right: 0.5rem;
     vertical-align: middle;
-} 
+}
+ 
 .f_widget {
     padding-top: 10px;
     background: #c5e6f4;
     padding-bottom: 20px;
 }
+.mandog{
+    background-color: #000;
+}
+.custom-checkbox-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .custom-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ccc;
+            border-radius: 3px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .custom-checkbox.checked {
+            background-color: #1DA1F2;
+            border-color: #1DA1F2;
+        }
+
+        .custom-checkbox.checked::before {
+            content: '✔';
+            color: white;
+            font-size: 14px;
+        }
+
+        .custom-checkbox-container .applied-text {
+            opacity: 0;
+            margin-left: 10px;
+            color: #1DA1F2;
+            font-weight: 100;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .custom-checkbox-container .applied-text.visible {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        #continueMessage {
+            display: none;
+            color: #000000;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            animation: fadeOut 4s forwards; /* Animation lasts 4 seconds */
+        }
+        
+        .clickable {
+            color: #0041b9;
+            cursor: pointer;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -1779,7 +1851,7 @@ margin-bottom: 0.5rem;
         
         <div class="brand-logo"></div>
         <div class="simple-container">
-            <h1 class="simple-title">Save upto 30% on any e-commerse products</h1>
+            <h1 class="simple-title">Save <small>upto</small> 30% <small>on any</small> e-commerse <small>Products</small></h1>
             
             <ul class="simple-checklist">
                 <li>Watch Ads To Save upto ₹20</li>
@@ -1817,8 +1889,13 @@ margin-bottom: 0.5rem;
     <span id="share-count">Share</span> <!-- Display share count here -->
 </div>
 <div id="step2" class="step">
-    3: You Got a Cashback of <span style="color: #ff0004;background-color: #000000;border-radius: 4px;padding: 4px;">5%</span> <label><span style="color: #ffffff; background-color: #35de7e;border-radius: 4px;padding: 2px;margin-top: 25px;"><small> Apply </small></span><input type="checkbox"></label>
-
+    3: You Got a Cashback of <span style="color: #ff0004;background-color: #000000;border-radius: 4px;padding: 4px;">5%</span> 
+    <label class="custom-checkbox-container">
+        <span style="color: #ffffff; background-color: #35de7e;border-radius: 4px;padding: 2px;margin-right: 10px;"><small> Apply </small></span>
+        <div class="custom-checkbox"></div>
+        <span></span>
+        <span class="applied-text">Applied</span>
+    </label>
 </div>
 
 
@@ -1830,8 +1907,11 @@ margin-bottom: 0.5rem;
     <div class="carousel-wrapper"></div>
 </div>
 <div id="thankYou" class="step">
-    If don't intrested in Offered Product Go To <span style="color: #0041b9;">"Continue"</span> Thanks, save more!
+    If don't interested in Offered Product Go To <span id="continueText" class="clickable">"Continue"</span> Thanks, save more!
 </div>
+
+<div id="continueMessage">Click On Continue button Present in bottom of label</div>
+
 </div>
 <div class="lineted"></div>
 
@@ -1985,6 +2065,7 @@ margin-bottom: 0.5rem;
                                 
                               </div>
                             </div>
+
                             <div class=" company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                                 
                                 <div class="lineted"></div>
@@ -1996,7 +2077,7 @@ margin-bottom: 0.5rem;
                         </div>
 
                         <div class="comments-container">
-                            <h2 class="comments-header">Recent Comments</h2>
+                            <h2 class="comments-header">What People Talk</h2>
                             <div class="comment">
                               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9FORNQ5JgJo-4Dx-enaJ3yEui1dgHfo0WVqE5YtOBJqYxuhyzmrpgDbENrjakwu55B9I&usqp=CAU" alt="profile image" class="profile-img">
                               <div class="comment-content">
@@ -2020,7 +2101,7 @@ margin-bottom: 0.5rem;
                               </div>
                             </div>
                           </div>
-                            
+
                                     
                         
                         
@@ -2237,7 +2318,11 @@ document.getElementById('watchAd').addEventListener('click', function() {
     var randomNumber = `Saved ₹${Math.floor(Math.random() * 10) + 6}` // Generates a random number between 6 and 15
     this.innerText = randomNumber; // Updates the text to the random number
 });
-
+document.getElementById('continueText').addEventListener('click', function() {
+            var message = document.getElementById('continueMessage');
+            message.style.display = 'block';
+            message.style.animation = 'fadeInOut 4s forwards';
+        });
         
         // Function to show the skip message
         // Function to show the skip message
@@ -3061,7 +3146,18 @@ const spreadsheetId = '1B21NQo4nlkO0FcqQE6toedSAFVl1UbJhZ3lc9AgaVhE';
         }
 
 
-
+        document.querySelector('.custom-checkbox-container').addEventListener('click', function() {
+            const checkbox = this.querySelector('.custom-checkbox');
+            const appliedText = this.querySelector('.applied-text');
+            
+            checkbox.classList.toggle('checked');
+            
+            if (checkbox.classList.contains('checked')) {
+                appliedText.classList.add('visible');
+            } else {
+                appliedText.classList.remove('visible');
+            }
+        });
 
     </script>
     
