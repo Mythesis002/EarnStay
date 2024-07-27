@@ -2228,6 +2228,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+document.getElementById('watchAd').addEventListener('click', function() {
+    var randomNumber = `Saved ₹${Math.floor(Math.random() * 10) + 6}` // Generates a random number between 6 and 15
+    this.innerText = randomNumber; // Updates the text to the random number
+});
+
         
         // Function to show the skip message
         // Function to show the skip message
@@ -2918,7 +2923,7 @@ function saveBookmark() {
         }
 
 
-        // JavaScript code for counting likes and shares
+// JavaScript code for counting likes and shares
 let likeCount = 7078;
 let shareCount = 243;
 
@@ -2929,7 +2934,7 @@ document.getElementById('like').addEventListener('click', function() {
 
 document.getElementById('share').addEventListener('click', function() {
     shareCount++;
-    document.getElementById('share-count').textContent = '✅';
+    document.getElementById('share-count').textContent = `Saved ₹${Math.floor(Math.random() * 12) + 9}`;
 
     // Check if the Web Share API is supported by the browser
     if (navigator.share) {
@@ -2943,10 +2948,10 @@ document.getElementById('share').addEventListener('click', function() {
             console.error('Error sharing:', error);
         });
     } else {
-        alert('Opps!,Sharing is not supported in your browser.');
+        alert('Opps!, Sharing is not supported in your browser.');
     }
-    
 });
+
 window.addEventListener('scroll', function() {
     var logo = document.querySelector('.brand-logo');
     if (window.scrollY > 180) {
