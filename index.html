@@ -490,7 +490,33 @@ font-size: 14px;
   color: #e0e0e0;
 }
 
+.loading-text {
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0099ff, #000000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation: gradient-animation   
+ 2s linear infinite;
+        }
 
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position:   
+ 100% 100%;
+            }
+        }
 
 </style>
 <body>
@@ -558,7 +584,7 @@ font-size: 14px;
         <div class="description">With a better idea of how clothes will look and fit, customers are more likely to be satisfied with their purchases, leading to higher levels of customer loyalty and repeat business.</div>
       </div>
 </div>
-<div class="content-container" style="position: absolute; left: 50%; transform: translateX(-50%); top: 215%; font-size: 20px;">
+<div class="content-container" style="position: absolute; left: 50%; transform: translateX(-50%); top: 200%; font-size: 20px;">
     <div class="glowing-text">About AI</div>
     <div class="description">
         Introducing our AI-powered virtual try-on tool, designed to help you find the perfect clothing that suits your body. 
@@ -569,16 +595,36 @@ font-size: 14px;
 </div>
     
                   
-        <div class="tshirt-container">
-            <img src="tshirts1bg.png" alt="T-shirt 1">
-            <img src="tshirt2bg.png" alt="T-shirt 2">
-            <img src="testbg3.jpg" alt="T-shirt 2">
-           
-        </div>
-        <!-- From Uiverse.io by codebykay101 -->
+<div class="tshirt-container">
+    <img src="tshirts1bg.png" alt="T-shirt 1" id="tshirt1">
+    <img src="tshirt2bg.png" alt="T-shirt 2" id="tshirt2">
+    <div class="loading-text">Opentry </div>
+    
+</div>
 
-  
-          <script>
+<script>
+    const tshirt1 = document.getElementById('tshirt1');
+    const tshirt2 = document.getElementById('tshirt2');
+    const loadingText = document.querySelector('.loading-text');
+
+    function checkImagesLoaded() {
+        if (tshirt1.complete && tshirt2.complete) {
+            loadingText.style.display = 'none'; // Hide the loading text
+            tshirt1.style.opacity = 1; // Show the first image
+            setTimeout(() => {
+                tshirt2.style.opacity = 1; // Show the second image after a slight delay
+            }, 500);
+        }
+    }
+
+    checkImagesLoaded(); // Check immediately if images are already loaded
+    window.addEventListener('load', checkImagesLoaded); // Check on page load
+    document.getElementById('generateButton').addEventListener('click', function () {
+    if (!this.classList.contains('download-mode')) {
+        generateAffiliateLink();
+    }
+});
+
             document.querySelector('.menu-button').addEventListener('click', function() {
             const menuOptions = document.querySelector('.menu-options');
             if (menuOptions.style.display === 'block') {
@@ -598,6 +644,10 @@ font-size: 14px;
                 var form = document.getElementById('affiliateForm');
                 var formData = new FormData(form);
                 var productUrl = formData.get('productUrl');
+                var spinner = document.getElementById('spinner');
+                var imagePreview = document.getElementById('imagePreview');
+
+                spinner.style.display = 'block';
     
                 if (!productUrl) {
                     showErrorNotification('I Think You forget To Paste Your Cloth Url, If Getting Problem visit Totorial.');
@@ -614,6 +664,7 @@ font-size: 14px;
                         if (data.brand) {
                             cloth_img = data.brand;
                             if (image_file) {
+                                spinner.style.display = 'none';
                                 sendDataToServer();  // Send data only when both image and cloth URL are ready
                             }
                         } else {
@@ -675,6 +726,12 @@ font-size: 14px;
                     imagePreview.style.display = 'block';
                     imagePreview.style.maxWidth = '100%';
                     imagePreview.style.height = 'auto';
+                    // Modify the generate button to download the processed image
+                    var generateButton = document.getElementById('generateButton');
+                    generateButton.textContent = 'Download Image';
+                    generateButton.href = data.processedImageUrl;
+                    generateButton.download = 'processed_image.jpg';
+                    generateButton.classList.add('download-mode'); 
                 } else {
                     imagePreview.src = '';  // Clear the preview if there's an error
                     alert('Failed to process the images.');
