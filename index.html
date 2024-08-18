@@ -343,8 +343,9 @@ label {
 input {
     padding: 10px 50px;
     font-size: 14px;
-    border: 2px solid #ededed;
-    background-color: #ececec;
+    border: 2px solid #323232e0;
+    background: linear-gradient( rgba(0, 0, 0, 0.100),rgba(0, 0, 0, 0.100));
+    backdrop-filter: blur(2px);
     border-radius: 5px;
 }
 
@@ -360,13 +361,14 @@ button {
     --m: 1;
     grid-area: 2/ 1/ span 1/ span 2;
     position: relative;
+    font-family: "Averta",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     border: solid 2em transparent;
     padding: 15px 20px;
     border-radius: 5px;
     box-shadow: inset 0 0 1px #40acf4;
     background: 
-        radial-gradient(#111a39, 67.5%, #3476da) padding-box, 
-        radial-gradient(#a0c2ed, 35%, #a0c2ed00 70%) 50% 0/ 80% 50% repeat-y;
+        radial-gradient(#111a39dd, 67.5%, #3476da) padding-box, 
+        radial-gradient(#95c1fc, 35%, #a0c2ed00 70%) 50% 0/ 80% 50% repeat-y;
     color: #f2fdfe;
     font: 700 1.5em/ 1 montserrat, sans-serif;
     #slow:checked ~ & { --m: 5 }
@@ -451,15 +453,17 @@ font-size: 14px;
 /* From Uiverse.io by codebykay101 */
 .containering {
   position: absolute;
-  top: 130%;
+  top: 150%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for the element's own size */
   display: grid;
+  max-width: 400px;
   
-  grid-auto-flow:row;
+  grid-auto-flow: row;
   gap: 50px;
 }
 
 .content-container {
-  /* Remove absolute positioning */
   position: relative;
   padding: 40px;
   align-items: center;
@@ -490,10 +494,11 @@ font-size: 14px;
   color: #e0e0e0;
 }
 
+
 .loading-text {
             position: absolute;
             top: 50%;
-            left: 40%;
+            left: 38%;
             align-items: center;
             justify-content: center;
             font-size: 36px;
@@ -518,6 +523,79 @@ font-size: 14px;
             }
         }
 
+
+.footer {
+    
+    padding: 4px 0;
+  
+    text-align: center;
+}
+
+
+
+.footer-copyright {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 15px;
+    }
+    .footer .glowing-text {
+        font-size: 1.2em;
+    }
+    .footer-copyright {
+        font-size: 0.8em;
+    }
+}
+.main-heading {
+    font-size: 48px; /* Size of the text */
+    font-weight: bold; /* Bold text */
+    font-family: "Averta",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    text-align: center; /* Center-align the text */
+    color: #ffffff; /* White text color */
+    background: linear-gradient(to right, #0099ff, #000000); /* Gradient effect */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make the text color transparent */
+    background-clip: text; /* Apply background clip for non-webkit browsers */
+    animation: gradient-animation 3s ease infinite; /* Add animation to the gradient */
+    margin: 20px 0; /* Add some margin */
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+/* Change placeholder text color */
+#productUrl::placeholder {
+        color: #c8c8c8; /* Replace this with the desired color */
+        opacity: 1; /* Ensure the color is fully applied */
+    }
+.ai-clothing-heading {
+    top: 9%;
+    font-size: 30px; /* Size of the text */
+    font-weight: 800; /* Bold text */
+    font-family: "Averta",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    text-align: center; /* Center-align the text */
+    color: #ffffff; /* White text color */
+    background: linear-gradient(to right, #000000, #0099ff); /* Gradient effect */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make the text color transparent */
+    background-clip: text; /* Apply background clip for non-webkit browsers */
+    animation: gradient-animation 3s ease infinite; /* Add animation to the gradient */
+     /* Add some margin */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+}
+
+
+
 </style>
 <body>
     <div class="container">
@@ -534,7 +612,11 @@ font-size: 14px;
                 <li><a href="#">Earnstay</a></li>
                 <li><a href="#">contact</a></li>
             </ul>
+            
         </div>
+        <h1 class="ai-clothing-heading" style="position: absolute;">Style Meets <span style="color:  #bc6c1d;">AI</span>: Try Cloth Before You Buy!</h1>
+        
+
         <div class="foamstation">
             <div class="Neon Neon-theme-dragdropbox">
                 <input style="z-index: 999; opacity: 0; width: 100%; height: 100%; position: absolute; right: 0px; left: 0px; margin-right: auto; margin-left: auto;" 
@@ -558,13 +640,14 @@ font-size: 14px;
                     </div>
                 </div>
             </div>
+            
             <div id="spinner"></div>
             <div id="result"></div>
             <form id="affiliateForm" class="inputs">
                 <label for="productUrl" id="productUrlLabel"></label>
                 <input type="text" id="productUrl" name="productUrl" placeholder="Paste Your Cloth URL" required>
                 <input type="hidden" id="associateTag" name="associateTag" value="715104-21">
-                <button type="button" id="generateButton" onclick="generateAffiliateLink()">Try it on</button>
+                <button type="button" id="generateButton" onclick="generateAffiliateLink()">Try it On</button>
             </form>
             
             
@@ -584,7 +667,7 @@ font-size: 14px;
         <div class="description">With a better idea of how clothes will look and fit, customers are more likely to be satisfied with their purchases, leading to higher levels of customer loyalty and repeat business.</div>
       </div>
 </div>
-<div class="content-container" style="position: absolute; left: 50%; transform: translateX(-50%); top: 220%; font-size: 20px;">
+<div class="content-container" style="position: absolute; left: 50%; transform: translateX(-50%); top: 200%; font-size: 20px;">
     <div class="glowing-text">About AI</div>
     <div class="description">
         Introducing our AI-powered virtual try-on tool, designed to help you find the perfect clothing that suits your body. 
@@ -593,7 +676,7 @@ font-size: 14px;
         Experience shopping in a whole new way, ensuring every piece you buy enhances your look.
     </div>
 </div>
-    
+   
                   
 <div class="tshirt-container">
     <img src="tshirts1bg.png" alt="T-shirt 1" id="tshirt1">
@@ -601,6 +684,38 @@ font-size: 14px;
     <div class="loading-text">Opentry </div>
     
 </div>
+<h1 class="main-heading">Best Ai Tool For Clothing!</h1>
+<div class="footer">
+    
+    <div class="containeral my-5">
+        <footer class="footer-containeral text-center">
+            <!-- Grid container -->
+            <div class="containeral p-4 pb-0">
+                <!-- Section: Form -->
+                <section>
+                    <form action="">
+                        <!--Grid row-->
+                        <div class="row d-flex justify-content-center">
+                            <!--Grid column-->
+                            <!-- Add any form content here if needed -->
+                        </div>
+                        <!--Grid row-->
+                    </form>
+                </section>
+                <!-- Section: Form -->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3 footer-copyright">
+                © 2024 Copyright:
+                <a class="text-dark" href="https://earnstay.shop/">Opentry.in</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+    </div>
+</div>
+
 
 <script>
     const tshirt1 = document.getElementById('tshirt1');
