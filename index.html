@@ -451,7 +451,7 @@ font-size: 14px;
 /* From Uiverse.io by codebykay101 */
 .containering {
   position: absolute;
-  top: 120%;
+  top: 100%;
   display: grid;
   
   grid-auto-flow:row;
@@ -549,7 +549,7 @@ font-size: 14px;
                         <div class="Neon-input-icon"><i class="fa fa-file-image-o"></i></div>
                         <div class="Neon-input-text">
                             <h3>Drag & Drop Files Here</h3>
-                            <h6>*Capture entire body for accuracy</h6> 
+                            <h6>*What Are You Trying?</h6> 
                             <span style="display:inline-block; margin: 15px 0">or</span>
                             <h4 class="Neon-input-choose-btn blue">Browse Files</h4>
 
@@ -610,7 +610,7 @@ font-size: 14px;
     function checkImagesLoaded() {
         if (tshirt1.complete && tshirt2.complete) {
             loadingText.style.display = 'none'; // Hide the loading text
-            tshirt1.style.opacity = 1; // Show the first image
+            tshirt1.style.opacity = 1; // Show the first imagez
             setTimeout(() => {
                 tshirt2.style.opacity = 1; // Show the second image after a slight delay
             }, 500);
@@ -752,7 +752,14 @@ font-size: 14px;
             document.getElementById('generateButton').addEventListener('click', generateAffiliateLink);
 
 
-
+    function downloadImage(url) {
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = 'processed_image.jpg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 
 function showErrorNotification(message) {
 var notification = document.createElement('div');
