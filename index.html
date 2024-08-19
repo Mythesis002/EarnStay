@@ -57,8 +57,8 @@ width: 100%; /* Ensure it takes the full width of the viewport */
 .menu-options {
     position: absolute;
     width: 100%;
-    background: rgba(255, 255, 255, 0.308);
-    backdrop-filter: blur(14px);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.479), rgba(104, 105, 105, 0.6),rgba(255, 255, 255, 0.444));
+    backdrop-filter: blur(2px);
     justify-content: space-between; /* Align items to the left */
     align-items: center;
     font-size: small;
@@ -253,7 +253,7 @@ html {
 /* Optional: Slow down the scrolling even more using JavaScript */
 .foamstation {
     position: absolute;
-    top: 65%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
@@ -343,7 +343,7 @@ label {
 input {
     padding: 10px 50px;
     font-size: 14px;
-    border: 2px solid #323232e0;
+    border: 2px solid #323232ee;
     background: linear-gradient( rgba(0, 0, 0, 0.100),rgba(0, 0, 0, 0.100));
     backdrop-filter: blur(2px);
     border-radius: 5px;
@@ -453,8 +453,10 @@ font-size: 14px;
 /* From Uiverse.io by codebykay101 */
 .containering {
   position: absolute;
-  top: 150%; /* Center vertically */
-  left: 50%; /* Center horizontally */
+  top: 150%;
+  left: 50%; /* Center vertically */
+  align-items: center;
+  justify-content: center; /* Center horizontally */
   transform: translate(-50%, -50%); /* Adjust for the element's own size */
   display: grid;
   max-width: 400px;
@@ -578,8 +580,8 @@ font-size: 14px;
         opacity: 1; /* Ensure the color is fully applied */
     }
 .ai-clothing-heading {
-    top: 9%;
-    font-size: 30px; /* Size of the text */
+    
+    font-size: 35px; /* Size of the text */
     font-weight: 800; /* Bold text */
     font-family: "Averta",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     text-align: center; /* Center-align the text */
@@ -614,7 +616,7 @@ font-size: 14px;
             </ul>
             
         </div>
-        <h1 class="ai-clothing-heading" style="position: absolute;">Style Meets <span style="color:  #bc6c1d;">AI</span>: Try Cloth Before You Buy!</h1>
+    
         
 
         <div class="foamstation">
@@ -630,10 +632,12 @@ font-size: 14px;
                         <img id="imagePreview" alt="Preview">
                         <div class="Neon-input-icon"><i class="fa fa-file-image-o"></i></div>
                         <div class="Neon-input-text">
-                            <h3>Drag & Drop Files Here</h3>
-                            <h6>*What Are You Trying?</h6> 
+                            <h1 class="ai-clothing-heading" style="position:absolute;top: 0;left: 2px;">Virtual Outfit Try-On</h1>
+                            <h3>Upload Your Photo, See Your look with AI</h3>
+                            <h6>AMAZON ||  FLIPKART</h6> 
                             <span style="display:inline-block; margin: 15px 0">or</span>
                             <h4 class="Neon-input-choose-btn blue">Browse Files</h4>
+                            
 
                         </div>
                         
