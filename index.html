@@ -262,6 +262,7 @@ html {
     border-radius: 15px;
     background: linear-gradient(45deg, rgba(0, 0, 0, 0.479), rgba(104, 105, 105, 0.6),rgba(0, 0, 0, 0.444));
     backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(7px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
@@ -297,8 +298,8 @@ html {
     border: none;
     border-radius: 20px;
     background-color: #0099ff;
-    color: #fff;
-    font-size: 14px;
+    color: #ffffff;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -346,6 +347,7 @@ input {
     border: 2px solid #323232ee;
     background: linear-gradient( rgba(0, 0, 0, 0.100),rgba(0, 0, 0, 0.100));
     backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     border-radius: 5px;
 }
 
@@ -366,9 +368,19 @@ button {
     padding: 15px 20px;
     border-radius: 5px;
     box-shadow: inset 0 0 1px #40acf4;
-    background: 
-        radial-gradient(#111a39dd, 67.5%, #3476da) padding-box, 
-        radial-gradient(#95c1fc, 35%, #a0c2ed00 70%) 50% 0/ 80% 50% repeat-y;
+    background: linear-gradient(
+    320deg,
+    #7C84F3,
+    #000000,
+    #3b96ff,
+    #000000,
+    #0066ff,
+    #000000,
+    #3b96ff
+  );
+  background-size: 400% 400%;
+  animation: buttonGradient 45s ease infinite;
+
     color: #f2fdfe;
     font: 700 1.5em/ 1 montserrat, sans-serif;
     #slow:checked ~ & { --m: 5 }
@@ -376,6 +388,18 @@ button {
 }
 
 @keyframes k { 0%, 33.3% { --k: 1 } }
+@keyframes buttonGradient {
+  0%, 33.3% { --k: 1; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 
 
@@ -473,6 +497,7 @@ font-size: 14px;
   max-width: 400px;
   background: rgba(0, 0, 0, 0.389);
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(7px);
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
@@ -633,7 +658,7 @@ font-size: 14px;
                         <div class="Neon-input-icon"><i class="fa fa-file-image-o"></i></div>
                         <div class="Neon-input-text">
                             <h1 class="ai-clothing-heading" style="position:absolute;top: 0;left: 2px;">Virtual Outfit Try-On</h1>
-                            <h3>Upload Your Photo, See Your look with AI</h3>
+                            <h3>Upload Your Photo,Cloth Link,See Your look with AI</h3>
                             <h6>AMAZON ||  FLIPKART</h6> 
                             <span style="display:inline-block; margin: 15px 0">or</span>
                             <h4 class="Neon-input-choose-btn blue">Browse Files</h4>
@@ -649,7 +674,7 @@ font-size: 14px;
             <div id="result"></div>
             <form id="affiliateForm" class="inputs">
                 <label for="productUrl" id="productUrlLabel"></label>
-                <input type="text" id="productUrl" name="productUrl" placeholder="Paste Your Cloth URL" required>
+                <input type="text" id="productUrl" name="productUrl" placeholder="Cloth URL from Amazon,Flipkart" required>
                 <input type="hidden" id="associateTag" name="associateTag" value="715104-21">
                 <button type="button" id="generateButton" onclick="generateAffiliateLink()">Try it On</button>
             </form>
@@ -683,8 +708,8 @@ font-size: 14px;
    
                   
 <div class="tshirt-container">
-    <img src="tshirts1bg.png" alt="T-shirt 1" id="tshirt1">
-    <img src="tshirt2bg.png" alt="T-shirt 2" id="tshirt2">
+    <img src="tshirts1bg.png"loading="lazy" alt="T-shirt 1" id="tshirt1">
+    <img src="tshirt2bg.png" loading="lazy" alt="T-shirt 2" id="tshirt2">
     <div class="loading-text">Opentry </div>
     
 </div>
@@ -762,11 +787,12 @@ font-size: 14px;
                 isFetching = true; // Set fetching to true to block further requests
                 var form = document.getElementById('affiliateForm');
                 var formData = new FormData(form);
-                var productUrl = formData.get('productUrl');
+                var data = formData.get('productUrl');
                 var spinner = document.getElementById('spinner');
                 var imagePreview = document.getElementById('imagePreview');
 
                 spinner.style.display = 'block';
+                var productUrl = data.match(/\bhttps?:\/\/\S+/gi);
     
                 if (!productUrl) {
                     showErrorNotification('I Think You forget To Paste Your Cloth Url, If Getting Problem visit Totorial.');
@@ -871,7 +897,7 @@ font-size: 14px;
             document.getElementById('generateButton').addEventListener('click', generateAffiliateLink);
 
 
-    function downloadImage(url) {
+function downloadImage(url) {
     var link = document.createElement('a');
     link.href = url;
     link.download = 'processed_image.jpg';
