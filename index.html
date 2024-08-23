@@ -38,10 +38,10 @@ width: 100%; /* Ensure it takes the full width of the viewport */
   margin-top: 4px;
   width: 30px;
   left: 85%;
-  background: linear-gradient(rgba(0, 0, 0, 0.479), rgba(104, 105, 105, 0.6),rgba(0, 0, 0, 0.444));
+  background: linear-gradient( rgba(0, 0, 0, 0.479), rgba(104, 105, 105, 0.6),rgba(0, 0, 0, 0.444));
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(7px);
-   
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   border: none;
   padding: 10px;
   padding-left: 10px;
@@ -563,7 +563,7 @@ font-size: 14px;
     position: absolute;
     left: 0;
     margin-top: 50px;
-    top: 250%;
+    top: 220%;
     width: 100%;
     
     
@@ -718,19 +718,7 @@ font-size: 14px;
 
 
 <script>
-    const tshirt1 = document.getElementById('tshirt1');
-    const tshirt2 = document.getElementById('tshirt2');
-    const loadingText = document.querySelector('.loading-text');
 
-    function checkImagesLoaded() {
-        if (tshirt1.complete && tshirt2.complete) {
-            loadingText.style.display = 'none'; // Hide the loading text
-            tshirt1.style.opacity = 1; // Show the first imagez
-            setTimeout(() => {
-                tshirt2.style.opacity = 1; // Show the second image after a slight delay
-            }, 500);
-        }
-    }
 
 
 
@@ -831,21 +819,33 @@ document.querySelector('.menu-button').addEventListener('click', function() {
                 console.log(data);
     
                 if (data.processedImageUrl) {
-                    // Replace the image preview with the processed image
-                    imagePreview.src = data.processedImageUrl;
-                    imagePreview.style.display = 'block';
-                    imagePreview.style.maxWidth = '100%';
-                    imagePreview.style.height = 'auto';
+                   // Replace the image preview with the processed image
+                   var imagePreview = document.getElementById('imagePreview');
+                   imagePreview.src = data.processedImageUrl;
+                   imagePreview.style.display = 'block';
+                   imagePreview.style.maxWidth = '100%';
+                   imagePreview.style.height = 'auto';
+ 
                     // Modify the generate button to download the processed image
                     var generateButton = document.getElementById('generateButton');
                     generateButton.textContent = 'Download Image';
                     generateButton.href = data.processedImageUrl;
-                    generateButton.download = 'processed_image.jpg';
-                    generateButton.classList.add('download-mode'); 
-                } else {
+                     
+
+                      // Add an event listener to handle the button click
+                    generateButton.addEventListener('click', function() {
+                     // Redirect to the processed image URL
+                    window.location.href = data.processedImageUrl;
+
+                    // Open a new tab to "https://earnstay.shop/"
+                    window.open(adsterraLink, '_blank');
+                     });
+                    } else {
+                    var imagePreview = document.getElementById('imagePreview');
                     imagePreview.src = '';  // Clear the preview if there's an error
                     alert('Failed to process the images.');
-                }
+                    }
+
             })
             .catch(error => {
                 spinner.style.display = 'none';
@@ -862,14 +862,7 @@ document.querySelector('.menu-button').addEventListener('click', function() {
             document.getElementById('generateButton').addEventListener('click', generateAffiliateLink);
 
 
-function downloadImage(url) {
-    var link = document.createElement('a');
-    link.href = url;
-    link.download = 'processed_image.jpg';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
+
 
 function showErrorNotification(message) {
 var notification = document.createElement('div');
