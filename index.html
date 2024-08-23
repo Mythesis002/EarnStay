@@ -16,6 +16,7 @@ align-items: center;
 font-family: Arial, sans-serif;
 background-size: cover;
 background-position: center;
+background-color: #000000;
 width: 100%; /* Ensure it takes the full width of the viewport */
 }
 
@@ -23,6 +24,7 @@ width: 100%; /* Ensure it takes the full width of the viewport */
 .header{
     position: fixed;
     top: 0;
+    left: 0;
     background: rgba(255, 255, 255, 0.308);
     backdrop-filter: blur(14px);
     width: 100%;
@@ -35,8 +37,10 @@ width: 100%; /* Ensure it takes the full width of the viewport */
   margin-top: 4px;
   width: 30px;
   left: 85%;
-  background: rgba(255, 255, 255, 0.308);
-  backdrop-filter: blur(px);
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.479), rgba(104, 105, 105, 0.6),rgba(0, 0, 0, 0.444));
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(7px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   border: none;
   padding: 10px;
   padding-left: 10px;
@@ -57,18 +61,20 @@ width: 100%; /* Ensure it takes the full width of the viewport */
 .menu-options {
     position: absolute;
     width: 100%;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.479), rgba(104, 105, 105, 0.6),rgba(255, 255, 255, 0.444));
-    backdrop-filter: blur(2px);
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.479), rgba(188, 188, 188, 0.308),rgba(255, 255, 255, 0.308));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     justify-content: space-between; /* Align items to the left */
     align-items: center;
     font-size: small;
     top: 37px;
-    color: #fff;
+    
     display: flex;
     padding-left: 0; /* Remove padding from the left */
     list-style: none; /* Remove default list styling */
     display: none; /* Initially hide the menu */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    
     animation: bounceIn 0.5s ease; /* Apply bounce animation */
 }
 
@@ -114,7 +120,7 @@ width: 100%; /* Ensure it takes the full width of the viewport */
     font-size: 36px;
     font-weight: bold;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #0099ff, #000000);
+    background: linear-gradient(to right, #0099ff, #ffffff41);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -495,9 +501,10 @@ font-size: 14px;
   align-items: center;
   width: 300px;
   max-width: 400px;
-  background: rgba(0, 0, 0, 0.389);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(7px);
+  background: linear-gradient(30deg, rgba(0, 0, 0, 0.479), rgba(104, 105, 105, 0.316),rgba(0, 0, 0, 0.444));
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(7px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
@@ -552,38 +559,35 @@ font-size: 14px;
 
 
 .footer {
+    position: absolute;
+    left: 0;
+    margin-top: 50px;
+    top: 220%;
+    width: 100%;
     
-    padding: 4px 0;
-  
+    
+    
     text-align: center;
 }
 
 
 
 .footer-copyright {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgb(255, 255, 255);
     padding: 10px;
+    left: 0;
     font-size: 0.9em;
 }
 
-@media (max-width: 768px) {
-    .footer-container {
-        padding: 15px;
-    }
-    .footer .glowing-text {
-        font-size: 1.2em;
-    }
-    .footer-copyright {
-        font-size: 0.8em;
-    }
-}
+
 .main-heading {
+    
     font-size: 48px; /* Size of the text */
     font-weight: bold; /* Bold text */
     font-family: "Averta",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     text-align: center; /* Center-align the text */
     color: #ffffff; /* White text color */
-    background: linear-gradient(to right, #0099ff, #000000); /* Gradient effect */
+    background: linear-gradient(to right, #0099ff, #ffffff3e,#ffffff96); /* Gradient effect */
     -webkit-background-clip: text; /* Clip the background to the text */
     -webkit-text-fill-color: transparent; /* Make the text color transparent */
     background-clip: text; /* Apply background clip for non-webkit browsers */
@@ -591,14 +595,7 @@ font-size: 14px;
     margin: 20px 0; /* Add some margin */
 }
 
-@keyframes gradient-animation {
-    0% {
-        background-position: 0% 0%;
-    }
-    100% {
-        background-position: 100% 100%;
-    }
-}
+
 /* Change placeholder text color */
 #productUrl::placeholder {
         color: #c8c8c8; /* Replace this with the desired color */
@@ -696,7 +693,7 @@ font-size: 14px;
         <div class="description">With a better idea of how clothes will look and fit, customers are more likely to be satisfied with their purchases, leading to higher levels of customer loyalty and repeat business.</div>
       </div>
 </div>
-<div class="content-container" style="position: absolute; left: 50%; transform: translateX(-50%); top: 200%; font-size: 20px;">
+<div class="content-container" style="position: absolute; left: 51%; transform: translateX(-50%); top: 200%; font-size: 20px;justify-content: center;">
     <div class="glowing-text">About AI</div>
     <div class="description">
         Introducing our AI-powered virtual try-on tool, designed to help you find the perfect clothing that suits your body. 
@@ -707,43 +704,16 @@ font-size: 14px;
 </div>
    
                   
-<div class="tshirt-container">
-    <img src="tshirts1bg.png"loading="lazy" alt="T-shirt 1" id="tshirt1">
-    <img src="tshirt2bg.png" loading="lazy" alt="T-shirt 2" id="tshirt2">
-    <div class="loading-text">Opentry </div>
-    
-</div>
-<h1 class="main-heading">Best Ai Tool For Clothing!</h1>
 <div class="footer">
-    
-    <div class="containeral my-5">
-        <footer class="footer-containeral text-center">
-            <!-- Grid container -->
-            <div class="containeral p-4 pb-0">
-                <!-- Section: Form -->
-                <section>
-                    <form action="">
-                        <!--Grid row-->
-                        <div class="row d-flex justify-content-center">
-                            <!--Grid column-->
-                            <!-- Add any form content here if needed -->
-                        </div>
-                        <!--Grid row-->
-                    </form>
-                </section>
-                <!-- Section: Form -->
-            </div>
-            <!-- Grid container -->
-
-            <!-- Copyright -->
-            <div class="text-center p-3 footer-copyright">
-                © 2024 Copyright:
-                <a class="text-dark" href="https://earnstay.shop/">Opentry.in</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
+    <h1 class="main-heading">Best Ai Tool For Clothing!</h1>
+    <div class="text-center p-3 footer-copyright">
+        © 2024 Copyright:
+        <a class="text-dark" href="https://earnstay.shop/">Opentry.in</a>
     </div>
-</div>
+    <!-- Copyright -->
+</footer>
+
+
 
 
 <script>
@@ -761,22 +731,16 @@ font-size: 14px;
         }
     }
 
-    checkImagesLoaded(); // Check immediately if images are already loaded
-    window.addEventListener('load', checkImagesLoaded); // Check on page load
-    document.getElementById('generateButton').addEventListener('click', function () {
-    if (!this.classList.contains('download-mode')) {
-        generateAffiliateLink();
-    }
-});
 
-            document.querySelector('.menu-button').addEventListener('click', function() {
-            const menuOptions = document.querySelector('.menu-options');
-            if (menuOptions.style.display === 'block') {
-                menuOptions.style.display = 'none';
-            } else {
-                menuOptions.style.display = 'block';
-            }
-        });
+
+document.querySelector('.menu-button').addEventListener('click', function() {
+    const menuOptions = document.querySelector('.menu-options');
+        if (menuOptions.style.display === 'block') {
+            menuOptions.style.display = 'none';
+    } else {
+            menuOptions.style.display = 'block';
+    }
+});          
             var cloth_img = '';  // Variable to store cloth image URL
             var image_file = null;  // Variable to store image file
             var isFetching = false; // State to prevent multiple fetch calls
