@@ -38,10 +38,10 @@ width: 100%; /* Ensure it takes the full width of the viewport */
   margin-top: 4px;
   width: 30px;
   left: 85%;
-  background: linear-gradient(rgba(0, 0, 0, 0.444));
+  background: linear-gradient( rgba(0, 0, 0, 0.479), rgba(104, 105, 105, 0.6),rgba(0, 0, 0, 0.444));
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(7px);
-   
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   border: none;
   padding: 10px;
   padding-left: 10px;
@@ -78,7 +78,6 @@ width: 100%; /* Ensure it takes the full width of the viewport */
     
     animation: bounceIn 0.5s ease; /* Apply bounce animation */
 }
-
 
 
 .menu-options li {
@@ -564,7 +563,7 @@ font-size: 14px;
     position: absolute;
     left: 0;
     margin-top: 50px;
-    top: 250%;
+    top: 220%;
     width: 100%;
     
     
@@ -673,10 +672,11 @@ font-size: 14px;
             <div id="result"></div>
             <form id="affiliateForm" class="inputs">
                 <label for="productUrl" id="productUrlLabel"></label>
-                <input type="text" id="productUrl" name="productUrl" placeholder="Cloth URL from Amazon,Flipkart" required>
+                <input type="text" id="productUrl" name="productUrl" placeholder="Cloth URL from Amazon, Flipkart" required>
                 <input type="hidden" id="associateTag" name="associateTag" value="715104-21">
-                <button type="button" id="generateButton" onclick="generateAffiliateLink()">Try it On</button>
+                <button type="button" id="generateButton">Try it On</button>
             </form>
+            
             
             
         </div>
@@ -720,168 +720,172 @@ font-size: 14px;
 
 <script>
 
-    const tshirt1 = document.getElementById('tshirt1');
-    const tshirt2 = document.getElementById('tshirt2');
-    const loadingText = document.querySelector('.loading-text');
-
-    function checkImagesLoaded() {
-        if (tshirt1.complete && tshirt2.complete) {
-            loadingText.style.display = 'none'; // Hide the loading text
-            tshirt1.style.opacity = 1; // Show the first imagez
-            setTimeout(() => {
-                tshirt2.style.opacity = 1; // Show the second image after a slight delay
-            }, 500);
-        }
-    }
-
-
+const adsterraLink = 'https://www.highratecpm.com/vt9djay1q?key=d2662ffeb1304d97f5475cf334d54798';
 
 document.querySelector('.menu-button').addEventListener('click', function() {
     const menuOptions = document.querySelector('.menu-options');
-        if (menuOptions.style.display === 'block') {
-            menuOptions.style.display = 'none';
-    } else {
-            menuOptions.style.display = 'block';
+    menuOptions.style.display = (menuOptions.style.display === 'block') ? 'none' : 'block';
+});
+
+let cloth_img = '';  // Variable to store cloth image URL
+let uploadi_mg = '';  // Variable to store uploaded image URL
+
+function previewAndStoreImage() {
+    const imageInput = document.getElementById('imageInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+
+    if (imageInput.files && imageInput.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block';
+            imagePreviewContainer.querySelector('.Neon-input-icon').style.display = 'none';
+            imagePreviewContainer.querySelector('.Neon-input-text').style.display = 'none';
+        };
+
+        reader.readAsDataURL(imageInput.files[0]);
+
+        uploadImage(imageInput.files[0]);  // Automatically upload the image file
     }
-});          
-            var cloth_img = '';  // Variable to store cloth image URL
-            var image_file = null;  // Variable to store image file
-            var isFetching = false; // State to prevent multiple fetch calls
-    
-            function generateAffiliateLink() {
-                if (isFetching) return; // Prevent multiple requests
-    
-                isFetching = true; // Set fetching to true to block further requests
-                var form = document.getElementById('affiliateForm');
-                var formData = new FormData(form);
-                var data = formData.get('productUrl');
-                var spinner = document.getElementById('spinner');
-                var imagePreview = document.getElementById('imagePreview');
+}
 
-                spinner.style.display = 'block';
-                var productUrl = data.match(/\bhttps?:\/\/\S+/gi);
-    
-                if (!productUrl) {
-                    showErrorNotification('I Think You forget To Paste Your Cloth Url, If Getting Problem visit Totorial.');
+async function uploadImage(imageFile) {
+    const serverUrl = 'https://clothchangergraadioserver.onrender.com/uploadclodiver';
+    const formData = new FormData();
+    formData.append('file', imageFile);
 
-                    isFetching = false;
-                    return;
-                }
-    
-                const serverUrl = 'https://earnstayserver-uavo.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(productUrl);
-    
-                fetch(serverUrl)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.brand) {
-                            cloth_img = data.brand;
-                            if (image_file) {
-                                spinner.style.display = 'none';
-                                sendDataToServer();  // Send data only when both image and cloth URL are ready
-                            }
-                        } else {
-                            console.error('No image URL found in the response.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error during fetch:', error);
-                    })
-                    .finally(() => {
-                        isFetching = false; // Reset fetching state
-                    });
-            }
-    
-            function previewAndStoreImage() {
-                var imageInput = document.getElementById('imageInput');
-                var imagePreview = document.getElementById('imagePreview');
-                var imagePreviewContainer = document.getElementById('imagePreviewContainer');
-    
-                if (imageInput.files && imageInput.files[0]) {
-                    var reader = new FileReader();
-    
-                    reader.onload = function (e) {
-                        imagePreview.src = e.target.result;
-                        imagePreview.style.display = 'block';
-                        imagePreviewContainer.querySelector('.Neon-input-icon').style.display = 'none';
-                        imagePreviewContainer.querySelector('.Neon-input-text').style.display = 'none';
-                    };
-    
-                    reader.readAsDataURL(imageInput.files[0]);
-    
-                    image_file = imageInput.files[0];  // Store the image file
-                }
-            }
-    
-            function sendDataToServer() {
-        if (image_file && cloth_img) {
-            var formData = new FormData();
-            formData.append('image', image_file);
-            formData.append('cloth', cloth_img);
-    
-            var spinner = document.getElementById('spinner');
-            var imagePreview = document.getElementById('imagePreview');
-    
-            spinner.style.display = 'block';
-    
-            fetch('https://pythonproductdatacoresoul.onrender.com/upload', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                spinner.style.display = 'none';
-                console.log(data);
-    
-                if (data.processedImageUrl) {
-                    // Replace the image preview with the processed image
-                    imagePreview.src = data.processedImageUrl;
-                    imagePreview.style.display = 'block';
-                    imagePreview.style.maxWidth = '100%';
-                    imagePreview.style.height = 'auto';
-                    // Modify the generate button to download the processed image
-                    var generateButton = document.getElementById('generateButton');
-                    generateButton.textContent = 'Download Image';
-                    generateButton.href = data.processedImageUrl;
-                    generateButton.download = 'processed_image.jpg';
-                    generateButton.classList.add('download-mode'); 
-                } else {
-                    imagePreview.src = '';  // Clear the preview if there's an error
-                    alert('Failed to process the images.');
-                }
-            })
-            .catch(error => {
-                spinner.style.display = 'none';
-                console.error('An error occurred:', error.message);
-                alert('An error occurred: ' + error.message);
+    try {
+        const response = await fetch(serverUrl, {
+            method: 'POST',
+            body: formData
+        });
+        const data = await response.json();
+        if (data.uploadedimage) {
+            uploadi_mg = data.uploadedimage;
+            console.log('Uploaded Image URL:', uploadi_mg);
+            checkIfReady();
+        } else {
+            console.error('No image URL found in the response.');
+        }
+    } catch (error) {
+        console.error('Error during fetch:', error);
+    }
+}
+
+async function resolveProductUrl(event) {
+    const productUrl = event.target.value;
+    if (!productUrl.match(/\bhttps?:\/\/\S+/gi)) {
+        showErrorNotification('Please provide a valid URL.');
+        return;
+    }
+
+    const serverUrl = 'https://earnstayserver-uavo.onrender.com/resolveShortenedUrl?url=' + encodeURIComponent(productUrl);
+
+    try {
+        const response = await fetch(serverUrl);
+        const data = await response.json();
+        if (data.brand) {
+            cloth_img = data.brand;
+            console.log('Cloth Image URL:', cloth_img);
+            checkIfReady();
+        } else {
+            console.error('No image URL found in the response.');
+        }
+    } catch (error) {
+        console.error('Error during fetch:', error);
+    }
+}
+
+function checkIfReady() {
+    const generateButton = document.getElementById('generateButton');
+    if (cloth_img && uploadi_mg) {
+        generateButton.textContent = 'Try-Now';
+        generateButton.disabled = false;
+    } else {
+        generateButton.textContent = 'Uploading-image';
+        generateButton.disabled = true;
+    }
+}
+
+function generateAffiliateLink() {
+    if (uploadi_mg && cloth_img) {
+        sendDataToServer();
+    } else {
+        showErrorNotification('Please wait until both the image and cloth URL are processed.');
+    }
+}
+
+function sendDataToServer() {
+    var formData = new FormData();
+    formData.append('image', uploadi_mg);
+    formData.append('cloth', cloth_img);
+
+    const spinner = document.getElementById('spinner');
+    const imagePreview = document.getElementById('imagePreview');
+
+    spinner.style.display = 'block';
+
+    fetch('https://pythonproductdatacoresoul.onrender.com/uploaded', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        spinner.style.display = 'none';
+
+        if (data.processedImageUrl) {
+            imagePreview.src = data.processedImageUrl;
+            imagePreview.style.display = 'block';
+            imagePreview.style.maxWidth = '100%';
+            imagePreview.style.height = 'auto';
+
+            const generateButton = document.getElementById('generateButton');
+            generateButton.textContent = 'Download Image';
+            generateButton.href = data.processedImageUrl;
+            generateButton.download = 'processed_image.jpg';
+
+            generateButton.addEventListener('click', function() {
+                window.location.href = data.processedImageUrl;
+                window.open(adsterraLink, '_blank');
             });
         } else {
-            console.error('Image file or cloth URL is missing.');
+            imagePreview.src = '';  // Clear the preview if there's an error
+            alert('Failed to process the images.');
         }
-    }
-    
-    
-    
-            document.getElementById('generateButton').addEventListener('click', generateAffiliateLink);
-
-
-function downloadImage(url) {
-    var link = document.createElement('a');
-    link.href = url;
-    link.download = 'processed_image.jpg';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    })
+    .catch(error => {
+        spinner.style.display = 'none';
+        console.error('An error occurred:', error.message);
+        alert('An error occurred: ' + error.message);
+    });
 }
+
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
+document.getElementById('productUrl').addEventListener('input', debounce(resolveProductUrl, 300));
+
+
 
 function showErrorNotification(message) {
-var notification = document.createElement('div');
-notification.classList.add('error-notification');
-notification.textContent = message;
-document.body.appendChild(notification);
-setTimeout(function() {
-    notification.remove();
-    }, 10000); // Remove the notification after 3 seconds
+    const notification = document.createElement('div');
+    notification.classList.add('error-notification');
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    setTimeout(function() {
+        notification.remove();
+    }, 10000); // Remove the notification after 10 seconds
 }
+
+document.getElementById('generateButton').addEventListener('click', generateAffiliateLink);
+
         </script>          
                 
 </body>
